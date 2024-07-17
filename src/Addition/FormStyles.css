@@ -1,0 +1,23 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  padding: 0;
+}
+
+form {
+  margin: 10px;
+}
+label {
+  padding: 12px 5px;
+}
+input{
+  height: 22px;
+}
+input[type=number], #add {
+  width:50px;
+}
