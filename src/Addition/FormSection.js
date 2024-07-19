@@ -17,6 +17,12 @@ const options = (
   </>
 );
 
+const submitter = async () => {
+  fetch('http://localhost:4000/submit/');
+  window.location.reload();
+}
+
+
 // creates the form for Character Creation
 export function FormSection({
   isMulticlassed,
@@ -46,12 +52,13 @@ export function FormSection({
             },
           ],
         });
+        submitter;
         e.preventDefault();
         console.log(isClass);
       }}
     >
       <label>
-        {"Username:"}
+        {"Username: "} 
         <input
           type="text"
           required
