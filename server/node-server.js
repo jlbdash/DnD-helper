@@ -12,23 +12,6 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
 con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
-
-  con.query("CREATE DATABASE if not exists test", function (err, result) {
-    if (err) throw err;
-    console.log("Database created");
-  });
-});
-
-//Table for Users
-conn.connect(function (err) {
-  if (err) throw err;
-  console.log("Connected!");
-  var sql =
-    "CREATE TABLE IF NOT EXISTS users (id INT(6) unsigned AUTO_INCREMENT PRIMARY KEY, username VARCHAR(60), 'character name' VARCHAR(25)";
-  conn.query(sql, function (err, result) {
-    if (err) throw err;
-    console.log("Table created");
-  });
 });
 
 //Table for Characters
@@ -53,74 +36,11 @@ app.get("/read", (req, res) => {
   });
 });
 
-// Create an endpoint called /update that responds with nothing but updates the entry
-app.post("/movie/:id/", urlencodedParser, (req, res) => {
-  var response = {
-    id: req.body.id,
-    name: req.body.name,
-    genre: req.body.genre,
-    date: req.body.date,
-    rating: req.body.rating,
-  };
-
-  var dbmovie = 'SELECT * FROM movies WHERE id = "' + response["id"] + '" ';
-
-  conn.query(dbmovie, function (err, result) {
-    if (response["name"] !== result[0]["name"]) {
-      var sql =
-        "UPDATE movies SET name =" +
-        response["name"] +
-        " WHERE id=" +
-        response["id"];
-      conn.query(sql, function (err, result) {
-        if (err) throw err;
-        console.log("Name updated");
-      });
-    }
-    if (response["genre"] !== result[0]["genre"]) {
-      var sql =
-        "UPDATE movies SET genre =" +
-        response["genre"] +
-        " WHERE id=" +
-        response["id"];
-      conn.query(sql, function (err, result) {
-        if (err) throw err;
-        console.log("Genre updated");
-      });
-    }
-    if (response["date"] !== result[0]["date"]) {
-      var sql =
-        "UPDATE movies SET date =" +
-        response["date"] +
-        " WHERE id=" +
-        response["id"];
-      conn.query(sql, function (err, result) {
-        if (err) throw err;
-        console.log("Release date updated");
-      });
-    }
-    if (response["rating"] !== result[0]["rating"]) {
-      var sql =
-        "UPDATE movies SET rating =" +
-        response["rating"] +
-        " WHERE id=" +
-        response["id"];
-      conn.query(sql, function (err, result) {
-        if (err) throw err;
-        console.log("Record updated");
-      });
-    }
-  }),
-    res.redirect("http://localhost:3000/");
-});
 
 // Create an endpoint called /create that responds with nothing but updates the database
 app.post("/create", urlencodedParser, (req, res) => {
   var response = {
-    name: req.body.name,
-    genre: req.body.genre,
-    date: req.body.date,
-    rating: req.body.rating,
+    character: req.body.character,
   };
 
   var sql =
