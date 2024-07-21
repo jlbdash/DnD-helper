@@ -1,5 +1,5 @@
 import express from "express";
-import mysql from 'mysql';
+import mysql from "mysql";
 import { con, conn } from "./server-operator.js";
 import bodyParser from "body-parser";
 
@@ -9,13 +9,12 @@ const app = express();
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-
 // Database for Users, Characters
 con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 
-  con.query("CREATE DATABASE if not exists test", function (err, result) {
+  con.query("CREATE DATABASE if not exists test", function (err) {
     if (err) throw err;
     console.log("Database created");
   });
@@ -31,23 +30,14 @@ conn.connect(function (err) {
     if (err) throw err;
     console.log("Table created");
   });
-});
 
-
-// Database for Users, Characters
-con.connect(function (err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
-
-//Table for Characters
-conn.connect(function (err) {
-  if (err) throw err;
-  console.log("Connected!");
-  var sql =
+  // Database for Users, Characters
+  var sql2 =
     "CREATE TABLE IF NOT EXISTS characters (username VARCHAR(60) PRIMARY KEY, 'character name' VARCHAR(25), 'character class' VARCHAR(80), 'class level' VARCHAR(15), 'character race' VARCHAR(25)";
-  conn.query(sql, function (err, result) {
-    if (err) throw err;
+  conn.query(sql2, function (err) {
+    if (err) {
+      throw err;
+    }
     console.log("Table created");
   });
 });
@@ -61,7 +51,6 @@ app.get("/read", (req, res) => {
     res.send(result);
   });
 });
-
 
 // Create an endpoint called /create that responds with nothing but updates the database
 app.post("/create", urlencodedParser, (req, res) => {
