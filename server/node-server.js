@@ -1,6 +1,5 @@
 import express from "express";
-import mysql from "mysql";
-import { con, conn } from "server-operator";
+import { con, conn } from "./server-operator.js";
 
 const port = 4000;
 
