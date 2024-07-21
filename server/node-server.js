@@ -25,19 +25,17 @@ conn.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
   var sql =
-    "CREATE TABLE IF NOT EXISTS users (id INT(6) unsigned AUTO_INCREMENT PRIMARY KEY, username VARCHAR(60), 'character name' VARCHAR(25)";
+    "CREATE TABLE IF NOT EXISTS users (id INT(6) unsigned AUTO_INCREMENT PRIMARY KEY, username VARCHAR(60), character_name VARCHAR(25))";
   conn.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Table created");
   });
 
-  // Database for Users, Characters
+  // Table for Characters
   var sql2 =
-    "CREATE TABLE IF NOT EXISTS characters (username VARCHAR(60) PRIMARY KEY, 'character name' VARCHAR(25), 'character class' VARCHAR(80), 'class level' VARCHAR(15), 'character race' VARCHAR(25)";
+    "CREATE TABLE IF NOT EXISTS characters (username VARCHAR(60) PRIMARY KEY, character_name VARCHAR(25), character_class VARCHAR(80), class_level VARCHAR(15), character_race VARCHAR(25))";
   conn.query(sql2, function (err) {
-    if (err) {
-      throw err;
-    }
+    if (err) throw err;
     console.log("Table created");
   });
 });
