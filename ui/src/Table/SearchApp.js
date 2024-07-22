@@ -7,7 +7,7 @@ import { ProductTable } from './ProductTable.js';
 export default function SearchApp() {
   const [searchText, setSearchText] = useState("");
   const [isAlive, setisAlive] = useState(false);
-  const characters = isAlive;
+  const characters = [];
 
   for (let i = 0; i < Files.length; i++) {
     characters.push(Files[i]);

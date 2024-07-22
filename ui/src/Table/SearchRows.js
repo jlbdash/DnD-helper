@@ -18,21 +18,24 @@ export function ProductCategoryRow({ user }) {
     let classes = [];
     let rows = [];
   
+    //is character alive?
     const characterName = character.alive ? (
       character.name
     ) : (
       <div style={{ color: "red" }}>{character.name}</div>
     );
   
+    //is character multiclassed?
     for (let i of multiClass) {
       let combo = [];
       for (let m in i) {
+        console.log(i[m]);
         combo += i[m];
-        if (m === "multi") {
+        if (m === "className") {
           combo += ": ";
         }
       }
-      classes.push(<td key={character.name + i["multi"]}>{combo}</td>);
+      classes.push(<td key={character.name + i["className"]}>{combo}</td>);
     }
   
     let i = 0;

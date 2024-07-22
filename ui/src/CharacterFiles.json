@@ -1,0 +1,67 @@
+[
+  {
+    "username": "Spinach",
+    "character": [
+      {
+        "id": 1,
+        "name": "Blok",
+        "class": [
+          {
+            "className": "Cleric",
+            "classLevel": 4
+          }
+        ],
+        "race": "Fire",
+        "alive": true
+      },
+      {
+        "id": 2,
+        "name": "Triss",
+        "class": [
+          {
+            "className": "Warlock",
+            "classLevel": 4
+          },
+          {
+            "className": "Palidin",
+            "classLevel": 2
+          }
+        ],
+        "race": "Water",
+        "alive": false
+      },
+      {
+        "id": 3,
+        "name": "Sesmic",
+        "class": [
+          {
+            "className": "Paladin",
+            "classLevel": 6
+          }
+        ],
+        "race": "Earth",
+        "alive": true
+      }
+    ]
+  },
+  {
+    "username": "Parsley",
+    "character": [
+      {
+        "id": 1,
+        "name": "Cloud",
+        "class": [
+          {
+            "className": "Druid",
+            "classLevel": 4
+          },{
+            "className": "Barb",
+            "classLevel": 2
+          }
+        ],
+        "race": "Flower",
+        "alive": false
+      }
+    ]
+  }
+]
