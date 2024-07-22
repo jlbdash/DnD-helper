@@ -2,8 +2,10 @@ import express from "express";
 import mysql from "mysql";
 import { conn } from "./server-operator.js";
 import bodyParser from "body-parser";
-const fs = require('fs');
-
+import CreateCharacter from "../Addition/CreateCharacter.js";
+import fs from "fs";
+const path = "../CharacterFiles.json";
+const change = CreateCharacter["file"];
 const port = 4000;
 
 const app = express();
@@ -73,8 +75,8 @@ app.listen(port, () =>
   console.log("Server is running on port 4000 and ready to accept requests! ")
 );
 
-
-fs.open('CharacterFiles.json', 'w', function(err, data) {
+// updating JSON character file
+fs.writeFile(path, change, function (err) {
   if (err) throw err;
-  console.log(data);
+  console.log("Replaced");
 });

@@ -7,10 +7,10 @@ import { ProductTable } from './ProductTable.js';
 export default function SearchApp() {
   const [searchText, setSearchText] = useState("");
   const [isAlive, setisAlive] = useState(false);
-  const products = [];
+  const characters = isAlive;
 
   for (let i = 0; i < Files.length; i++) {
-    products.push(Files[i]);
+    characters.push(Files[i]);
   }
   return (
     <div className="listInfo">
@@ -21,7 +21,7 @@ export default function SearchApp() {
         onisAliveChange={setisAlive}
       />
       <ProductTable
-        products={products}
+        characters={characters}
         isAlive={isAlive}
         searchText={searchText}
       />

@@ -3,9 +3,9 @@ import {ProductRow, ProductCategoryRow} from './SearchRows.js';
 import "./TableStyles.css";
 
 // creates the static list of food
-export function ProductTable({ products, isAlive, searchText }) {
+export function ProductTable({ characters, isAlive, searchText }) {
   const count = null;
-  let characterList = products;
+  let characterList = characters;
   let rows = [];
   characterList.forEach((user) => {
     const charrie = user.character;

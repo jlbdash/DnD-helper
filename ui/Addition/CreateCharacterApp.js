@@ -6,6 +6,7 @@ import { FormSection } from "./FormSection.js";
 export default function CreateCharacter() {
   const [isMulticlassed, setIsMulticlassed] = useState(false);
   const [character, setCharacter] = useState({});
+  const [file, setFile] = useState([]);
   let fileLoad = JSON.parse(JSON.stringify(fFiles));
   let check = Object.entries(character).length;
 
@@ -32,6 +33,7 @@ export default function CreateCharacter() {
         isMulticlassed={isMulticlassed}
         onisMulticlassedChange={setIsMulticlassed}
         setCharacter={setCharacter}
+        setFile={setFile}
       />
     </div>
   );
