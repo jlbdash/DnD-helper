@@ -7,8 +7,8 @@ export const classPlanner = async (classNumber, setIsClass) => {
     let m = document.getElementById(`cClass${x + 1}`).value;
     let n = document.getElementById(`cLevel${x + 1}`).value;
     const combo = {
-      multi: m,
-      levels: n
+      className: m,
+      classLevel: n
     };
     classes.push(combo);
     x++;

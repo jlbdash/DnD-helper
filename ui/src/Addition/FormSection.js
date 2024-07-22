@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import fFiles from "../CharacterFiles.json";
 import { Classes } from "./FormSectionClass.js";
 import { classPlanner } from "./ClassPlanner.js";
 import "./FormStyles.css";
@@ -17,19 +18,52 @@ const options = (
   </>
 );
 
-const submitter = async () => {
-  fetch('http://localhost:4000/submit/');
-  window.location.reload();
+function submitter(character) {
+  let fileLoad = JSON.parse(JSON.stringify(fFiles));
+  let check = Object.entries(character).length;
+
+  if (check !== 0) {
+    let x = 0;
+    while (x <= 2) {
+      console.log(x);
+      if (x > fileLoad.length - 1) {
+        fileLoad.push(character);
+        break;
+      } else if (character.username === fileLoad[x].username) {
+        let len = fileLoad[x].character.length;
+        character.character[0].id = len + 1;
+        fileLoad[x].character.push(character.character[0]);
+        break;
+      } else {
+        x++;
+      }
+    }
+  } else {
+    fileLoad.push(character);
+  }
+  fetch("http://localhost:4000/write", {
+    method: "post",
+    body: JSON.stringify(fileLoad),
+    header:{
+      'Content-type': 'applications/x-www-form-urlencoded',
+    }
+  });
 }
 
+// const onSubmit = (file) => {
+//   fetch("http://localhost:4000/write", {
+//     method: "post",
+//     body: JSON.stringify(file),
+//     header:{
+//       'Content-type': 'applications/x-www-form-urlencoded',
+//     }
+//   });
+// }
 
 // creates the form for Character Creation
-export function FormSection({
-  isMulticlassed,
-  onisMulticlassedChange,
-  setCharacter,
-}) {
+export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
   const [classNumber, setClassNumber] = useState(1);
+  const [character, setCharacter] = useState({});
   const [isUser, setIsUser] = useState("");
   const [isName, setIsName] = useState("");
   const [isClass, setIsClass] = useState([]);
@@ -39,26 +73,12 @@ export function FormSection({
     <form
       name="characterCreation"
       onSubmit={(e) => {
-        classPlanner(classNumber, setIsClass);
-        setCharacter({
-          username: isUser,
-          character: [
-            {
-              id: 1,
-              name: isName,
-              class: isClass,
-              race: isRace,
-              alive: true,
-            },
-          ],
-        });
-        submitter;
         e.preventDefault();
-        console.log(isClass);
+        submitter(character);
       }}
     >
       <label>
-        {"Username: "} 
+        {"Username: "}
         <input
           type="text"
           required
@@ -123,9 +143,26 @@ export function FormSection({
         ></input>
       </label>
       <br />
-      <input type="submit" id="submit" value="Submit"></input>
+      <input
+        type="submit"
+        id="submit"
+        value="Submit"
+        onClick={() => {
+          classPlanner(classNumber, setIsClass);
+          setCharacter({
+            username: isUser,
+            character: [
+              {
+                id: 1,
+                name: isName,
+                class: isClass,
+                race: isRace,
+                alive: true,
+              },
+            ],
+          });}}
+      ></input>
     </form>
   );
-
   return <>{section}</>;
 }
