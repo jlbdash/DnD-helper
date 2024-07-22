@@ -2,10 +2,10 @@ import express from "express";
 import mysql from "mysql";
 import { conn } from "./server-operator.js";
 import bodyParser from "body-parser";
-import CreateCharacter from "../Addition/CreateCharacter.js";
+import { file } from "../Addition/CreateCharacter.js";
 import fs from "fs";
 const path = "../CharacterFiles.json";
-const change = CreateCharacter["file"];
+const change = file;
 const port = 4000;
 
 const app = express();

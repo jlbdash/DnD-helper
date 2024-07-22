@@ -29,7 +29,6 @@ export function ProductCategoryRow({ user }) {
     for (let i of multiClass) {
       let combo = [];
       for (let m in i) {
-        console.log(i[m]);
         combo += i[m];
         if (m === "className") {
           combo += ": ";

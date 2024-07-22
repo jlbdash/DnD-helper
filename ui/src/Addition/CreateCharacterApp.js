@@ -18,13 +18,11 @@ export default function CreateCharacter() {
         fileLoad[x].character.push(character.character[0]);
         break;
       }
-    }
-    if (character.username in fileLoad) {
+       else {
         fileLoad.push(character);
+      }
     }
-
   }
-
   console.log(fileLoad);
 
   return (
