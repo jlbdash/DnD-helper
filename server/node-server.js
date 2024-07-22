@@ -2,6 +2,7 @@ import express from "express";
 import mysql from "mysql";
 import { conn } from "./server-operator.js";
 import bodyParser from "body-parser";
+const fs = require('fs');
 
 const port = 4000;
 
@@ -26,18 +27,18 @@ app.post("/create", urlencodedParser, (req, res) => {
   };
 
   var sql =
-    'SELECT Count(*) FROM movies WHERE name = "' + response["name"] + '" ';
+    'SELECT Count(*) FROM character WHERE name = "' + response["name"] + '" ';
 
   function insert() {
     var sql2 =
-      'INSERT INTO movies (id, name, genre, date,rating) VALUES ("NULL","' +
-      response["name"] +
+      'INSERT INTO character (id, name, genre, date,rating) VALUES ("NULL","' +
+      response["cName"] +
       '","' +
-      response["genre"] +
+      response["cClass"] +
       '",' +
-      response["date"] +
+      response["cLevel"] +
       "," +
-      response["rating"] +
+      response["cRace"] +
       ")";
 
     conn.query(sql2, function (err, result) {
@@ -59,9 +60,9 @@ app.post("/create", urlencodedParser, (req, res) => {
   });
 });
 
-// Create an endpoint called /movies/{ID} that deletes a movie entry
+// Create an endpoint called /character/{ID} that deletes a movie entry
 app.get("/delete/:id", (req, res) => {
-  var sql = "DELETE FROM movies WHERE `id` = " + req.params.id;
+  var sql = "DELETE FROM character WHERE `id` = " + req.params.id;
   conn.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Entry Deleted");
@@ -69,5 +70,11 @@ app.get("/delete/:id", (req, res) => {
 });
 
 app.listen(port, () =>
-  console.log("Server is running on port 4000 and ready to accept requests!")
+  console.log("Server is running on port 4000 and ready to accept requests! ")
 );
+
+
+fs.open('CharacterFiles.json', 'w', function(err, data) {
+  if (err) throw err;
+  console.log(data);
+});

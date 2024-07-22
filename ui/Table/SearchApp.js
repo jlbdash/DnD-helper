@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./TableStyles.css";
-import Files from "./CharacterFiles.json";
+import Files from "../CharacterFiles.json";
 import SearchButton from './Search.js';
 import { ProductTable } from './ProductTable.js';
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./FormStyles.css";
-import fFiles from "../Table/CharacterFiles.json";
+import fFiles from "../CharacterFiles.json";
 import { FormSection } from "./FormSection.js";
 
 export default function CreateCharacter() {
