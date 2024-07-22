@@ -24,7 +24,7 @@ function submitter(character) {
 
   if (check !== 0) {
     let x = 0;
-    while (x <= 2) {
+    while (x <= check) {
       console.log(x);
       if (x > fileLoad.length - 1) {
         fileLoad.push(character);
@@ -41,6 +41,7 @@ function submitter(character) {
   } else {
     fileLoad.push(character);
   }
+
   fetch("http://localhost:4000/write", {
     method: "post",
     body: JSON.stringify(fileLoad),
@@ -48,6 +49,7 @@ function submitter(character) {
       "Content-type": "applications/x-www-form-urlencoded",
     },
   });
+  console.log(fileLoad);
 }
 
 // const onSubmit = (file) => {
@@ -66,7 +68,6 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
   const [character, setCharacter] = useState({});
   const [isUser, setIsUser] = useState("");
   const [isName, setIsName] = useState("");
-  const [isClass, setIsClass] = useState([]);
   const [isRace, setIsRace] = useState("");
 
   let section = (
@@ -74,7 +75,6 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
       name="characterCreation"
       onSubmit={(e) => {
         e.preventDefault();
-
         submitter(character);
       }}
     >
@@ -149,22 +149,11 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
         id="submit"
         value="Submit"
         onClick={() => {
-          classPlanner(classNumber, setIsClass);
-          setCharacter({
-            username: isUser,
-            character: [
-              {
-                id: 1,
-                name: isName,
-                class: isClass,
-                race: isRace,
-                alive: true,
-              },
-            ],
-          });
+          classPlanner(classNumber, setCharacter, isUser, isName, isRace);
         }}
       ></input>
     </form>
   );
+
   return <>{section}</>;
 }

@@ -3,7 +3,7 @@ import mysql from "mysql";
 import { conn } from "./server-operator.js";
 import bodyParser from "body-parser";
 import fs from "fs";
-const path = "./ui/src/CharacterFiles.json";
+const path = "CharacterFiles.json";
 const port = 4000;
 
 const app = express();
@@ -54,20 +54,14 @@ app.post("/create", urlencodedParser, (req, res) => {
 app.listen(port, () =>
   console.log("Server is running on port 4000 and ready to accept requests! ")
 );
-
+var file;
 // updating JSON character file
 app.post("/write", urlencodedParser, (req, res) => {
-  var file = req.body;
+  file = JSON.stringify(req.body);
   console.log(file);
-  // fs.writeFile(path, file, function (err) {
-  //   if (err) throw err;
-  //   console.log("Replaced");
-  // });
 });
+// fs.writeFile(path, file, function (err) {
+//   if (err) throw err;
+//   console.log("Replaced");
+// });
 
-// const onSubmit = (file) => {
-//   fetch("http://localhost:4000/write", {
-//     method: "post",
-//     body: JSON.stringify(file),
-//   });
-// }
