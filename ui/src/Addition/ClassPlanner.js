@@ -1,6 +1,6 @@
 
 // gives the compiled class array
-export const classPlanner = async (classNumber, setIsClass) => {
+export const classPlanner = (classNumber, setIsClass) => {
   let x = 0;
   let classes = []
   while (x < classNumber) {

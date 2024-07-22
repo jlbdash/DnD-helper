@@ -44,9 +44,9 @@ function submitter(character) {
   fetch("http://localhost:4000/write", {
     method: "post",
     body: JSON.stringify(fileLoad),
-    header:{
-      'Content-type': 'applications/x-www-form-urlencoded',
-    }
+    header: {
+      "Content-type": "applications/x-www-form-urlencoded",
+    },
   });
 }
 
@@ -74,6 +74,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
       name="characterCreation"
       onSubmit={(e) => {
         e.preventDefault();
+
         submitter(character);
       }}
     >
@@ -160,7 +161,8 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
                 alive: true,
               },
             ],
-          });}}
+          });
+        }}
       ></input>
     </form>
   );
