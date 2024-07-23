@@ -19,13 +19,12 @@ const options = (
 );
 
 function submitter(character) {
-  let fileLoad = JSON.parse(JSON.stringify(fFiles));
+  let fileLoad = fFiles;
   let check = Object.entries(character).length;
 
   if (check !== 0) {
     let x = 0;
     while (x <= check) {
-      console.log(x);
       if (x > fileLoad.length - 1) {
         fileLoad.push(character);
         break;
@@ -41,26 +40,18 @@ function submitter(character) {
   } else {
     fileLoad.push(character);
   }
+fileLoad = JSON.stringify(fileLoad);
 
   fetch("http://localhost:4000/write", {
-    method: "post",
-    body: JSON.stringify(fileLoad),
-    header: {
-      "Content-type": "applications/x-www-form-urlencoded",
+    method: "POST",
+    body: (fileLoad),
+    headers: {
+      Accept: 'application/json',
     },
   });
   console.log(fileLoad);
 }
 
-// const onSubmit = (file) => {
-//   fetch("http://localhost:4000/write", {
-//     method: "post",
-//     body: JSON.stringify(file),
-//     header:{
-//       'Content-type': 'applications/x-www-form-urlencoded',
-//     }
-//   });
-// }
 
 // creates the form for Character Creation
 export function FormSection({ isMulticlassed, onisMulticlassedChange }) {

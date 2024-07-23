@@ -1,12 +1,14 @@
 import express from "express";
+import cors from "cors";
 import mysql from "mysql";
 import { conn } from "./server-operator.js";
 import bodyParser from "body-parser";
 import fs from "fs";
-const path = "CharacterFiles.json";
+const path = "../ui/src/CharacterFiles.json";
 const port = 4000;
 
 const app = express();
+app.use(cors());
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
@@ -51,17 +53,17 @@ app.post("/create", urlencodedParser, (req, res) => {
   }
 });
 
+// making sure the port is free
 app.listen(port, () =>
   console.log("Server is running on port 4000 and ready to accept requests! ")
 );
-var file;
+
 // updating JSON character file
 app.post("/write", urlencodedParser, (req, res) => {
-  file = JSON.stringify(req.body);
-  console.log(file);
+  console.log(typeof(req));
+fs.writeFile(path, req, function (err) {
+  if (err) throw err;
+  console.log("Replaced");
 });
-// fs.writeFile(path, file, function (err) {
-//   if (err) throw err;
-//   console.log("Replaced");
-// });
 
+});

@@ -21,10 +21,6 @@
           {
             "className": "Warlock",
             "classLevel": 4
-          },
-          {
-            "className": "Palidin",
-            "classLevel": 2
           }
         ],
         "race": "Water",
