@@ -40,7 +40,7 @@ export function ProductCategoryRow({ user }) {
     let i = 0;
     const start = rows.push(
       <tr key={character.id+"-"+i}>
-        <td rowSpan={count} key={character.name}> {characterName}</td>
+        <td rowSpan={count} key={character.name+character.id}> {characterName}</td>
         {classes[i]}
         <td key={character.race} rowSpan={count}>
           {character.race}
