@@ -45,11 +45,8 @@ fileLoad = JSON.stringify(fileLoad);
   fetch("http://localhost:4000/write", {
     method: "POST",
     body: (fileLoad),
-    headers: {
-      Accept: 'application/json',
-    },
   });
-  console.log(fileLoad);
+  console.log(typeof(fileLoad));
 }
 
 

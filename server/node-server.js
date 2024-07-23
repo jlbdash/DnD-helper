@@ -59,7 +59,7 @@ app.listen(port, () =>
 );
 
 // updating JSON character file
-app.post("/write", urlencodedParser, (req, res) => {
+app.post("/write", (req, res) => {
   console.log(typeof(req));
 fs.writeFile(path, req, function (err) {
   if (err) throw err;
