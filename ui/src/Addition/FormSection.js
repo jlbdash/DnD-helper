@@ -48,7 +48,6 @@ function submitter(character) {
       body: fileLoad,
       headers: { "Content-Type": "application/json" },
     });
-    console.log(fileLoad);
   }
 }
 

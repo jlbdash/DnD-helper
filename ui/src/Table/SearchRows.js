@@ -48,16 +48,17 @@ export function ProductCategoryRow({ user }) {
       </tr>
     );
   
+    let l =0;
+    console.log(count);
     if (count > 1) {
-      while (i < count - 1) {
-        start;
-        i++;
-      }
+      while (l < count - 1) {
+        l++;
         rows.push(
-          <tr key={character.id+"-"+i}>
-            {classes[i]}
+          <tr key={character.id+"-"+l}>
+            {classes[l]}
           </tr>
         );
+      }
     } else {
       start;
     }
