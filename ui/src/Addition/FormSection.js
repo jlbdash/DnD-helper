@@ -20,7 +20,7 @@ const options = (
 
 function submitter(character) {
   let fileLoad = fFiles;
-  let check = Object.entries(character).length;
+  let check = fFiles.length;
 
   if (check !== 0) {
     let x = 0;
