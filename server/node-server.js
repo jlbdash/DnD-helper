@@ -10,6 +10,7 @@ const port = 4000;
 const app = express();
 app.use(cors());
 
+var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 // Create an endpoint called /read that responds with a list of characters
@@ -59,9 +60,9 @@ app.listen(port, () =>
 );
 
 // updating JSON character file
-app.post("/write", (req, res) => {
-  console.log(typeof(req));
-fs.writeFile(path, req, function (err) {
+app.post("/write", jsonParser, (req, res) => {
+  var file = JSON.stringify(req.body);
+fs.writeFile(path, file, function (err) {
   if (err) throw err;
   console.log("Replaced");
 });

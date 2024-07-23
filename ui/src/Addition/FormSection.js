@@ -40,15 +40,17 @@ function submitter(character) {
   } else {
     fileLoad.push(character);
   }
-fileLoad = JSON.stringify(fileLoad);
 
-  fetch("http://localhost:4000/write", {
-    method: "POST",
-    body: (fileLoad),
-  });
-  console.log(typeof(fileLoad));
+  fileLoad = JSON.stringify(fileLoad);
+  if (fileLoad !== fFiles) {
+    fetch("http://localhost:4000/write", {
+      method: "POST",
+      body: fileLoad,
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log(fileLoad);
+  }
 }
-
 
 // creates the form for Character Creation
 export function FormSection({ isMulticlassed, onisMulticlassedChange }) {

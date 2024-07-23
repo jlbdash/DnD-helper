@@ -5,36 +5,21 @@
       {
         "id": 1,
         "name": "Blok",
-        "class": [
-          {
-            "className": "Cleric",
-            "classLevel": 4
-          }
-        ],
+        "class": [{ "className": "Cleric", "classLevel": 4 }],
         "race": "Fire",
         "alive": true
       },
       {
         "id": 2,
         "name": "Triss",
-        "class": [
-          {
-            "className": "Warlock",
-            "classLevel": 4
-          }
-        ],
+        "class": [{ "className": "Warlock", "classLevel": 4 }],
         "race": "Water",
         "alive": false
       },
       {
         "id": 3,
         "name": "Sesmic",
-        "class": [
-          {
-            "className": "Paladin",
-            "classLevel": 6
-          }
-        ],
+        "class": [{ "className": "Paladin", "classLevel": 6 }],
         "race": "Earth",
         "alive": true
       }
@@ -47,16 +32,23 @@
         "id": 1,
         "name": "Cloud",
         "class": [
-          {
-            "className": "Druid",
-            "classLevel": 4
-          },{
-            "className": "Barb",
-            "classLevel": 2
-          }
+          { "className": "Druid", "classLevel": 4 },
+          { "className": "Barb", "classLevel": 2 }
         ],
         "race": "Flower",
         "alive": false
+      }
+    ]
+  },
+  {
+    "username": "Opea",
+    "character": [
+      {
+        "id": 1,
+        "name": "Fire",
+        "class": [{ "className": "Fire", "classLevel": "6" }],
+        "race": "Fire",
+        "alive": true
       }
     ]
   }
