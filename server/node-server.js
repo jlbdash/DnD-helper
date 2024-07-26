@@ -62,9 +62,8 @@ app.listen(port, () =>
 // updating JSON character file
 app.post("/write", jsonParser, (req, res) => {
   var file = JSON.stringify(req.body);
-fs.writeFile(path, file, function (err) {
-  if (err) throw err;
-  console.log("Replaced");
-});
-
+  fs.writeFile(path, file, function (err) {
+    if (err) throw err;
+    console.log("Replaced");
+  });
 });

@@ -12,3 +12,4 @@ export var con = mysql.createConnection({
     user: "user",
     password: "password"
 });
+ 
