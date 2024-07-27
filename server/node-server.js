@@ -66,4 +66,20 @@ app.post("/write", jsonParser, (req, res) => {
     if (err) throw err;
     console.log("Replaced");
   });
+
+  var sql =
+    'SELECT Count(*) FROM character WHERE name = "' + response["name"] + '" ';
+
+  function insert() {
+    var sql2 =
+      'INSERT INTO character (id, name, genre, date, rating) VALUES ("NULL","' +
+      response["cName"] +
+      '","' +
+      response["cClass"] +
+      '",' +
+      response["cLevel"] +
+      "," +
+      response["cRace"] +
+      ")";
+  }
 });
