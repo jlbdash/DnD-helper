@@ -53,6 +53,7 @@ app.post("/create", urlencodedParser, (req, res) => {
   }
 });
 
+// start here
 // making sure the port is free
 app.listen(port, () =>
   console.log("Server is running on port 4000 and ready to accept requests! ")
@@ -87,43 +88,49 @@ app.post("/push", urlencodedParser, (req, res) => {
     }
   });
 
-  if (!found) {
-    var sql = "INSERT INTO users (id, username, character_id ) VALUES (?,?,?)";
+  //statement for user table
+  var user_name = req.body.username;
+  var sql = conn.query(
+    "INSERT INTO users (id, username) VALUES (" + id + "," + user_name + ")"
+  );
 
-    conn.query(sql, function (err, result) {
-      if (err) throw err;
-      else {
-        console.log("User Entry Created");
-      }
-    });
-  } else {
-    var sql = "INSERT INTO users (id, username) VALUES (?,?,?)";
+  var user_name = req.body.username;
+  conn.query(sql, function (err, result) {
+    if (err) throw err;
+    else {
+      console.log("User Entry Accepted");
+    }
+  });
 
-    conn.query(sql, function (err, result) {
-      if (err) throw err;
-      else {
-        console.log("User Entry Created");
-      }
-    });
-  }
-
-  var sql2 =
-    "INSERT INTO character (user, character_name, character_class, class_level, class_race, isAlive) VALUES (" +
-    response["username"] +
-    ',"' +
-    response["cName"] +
-    '","' +
-    response["cClass"] +
-    '",' +
-    response["cLevel"] +
-    "," +
-    response["cRace"] +
-    ")";
-
+  //statement for character table
+  var charId = id;
+  var charName = req.body.username;
+  var charClass = req.body.character.name;
+  var charLevel = req.body.character.level;
+  var charRace = req.body.character.race;
+  var alive = 1;
+  var sql2 = prepare(
+    "INSERT INTO character (id, user, character_name, character_class, class_level, class_race, isAlive) VALUES (" +
+      charId +
+      "," +
+      user_name +
+      "," +
+      charName +
+      "," +
+      charClass +
+      "," +
+      charLevel +
+      "," +
+      charRace +
+      "," +
+      alive +
+      ")"
+  );
   conn.query(sql2, function (err, result) {
     if (err) throw err;
     else {
-      console.log("Character Entry Created");
+      console.log("Character Entry Accepted");
     }
   });
+
 });
