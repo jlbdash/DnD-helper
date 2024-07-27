@@ -72,14 +72,11 @@ app.post("/write", jsonParser, (req, res) => {
 });
 
 // endpoint for updating database
-app.post("/push", urlencodedParser, (req, res) => {
-  var response = {
-    character: req.body.character,
-  };
+app.post("/push", jsonParser, (req, res) => {
+  console.log(req.body['username']);
 
   // total count of characters
   var finding = "SELECT Count(*) FROM characters";
-
   // count for character id
   var id = conn.query(finding, function (err, result) {
     if (err) throw err;
@@ -89,12 +86,10 @@ app.post("/push", urlencodedParser, (req, res) => {
   });
 
   //statement for user table
-  var user_name = req.body.username;
-  var sql = conn.query(
+  var user_name = req.body['username'];
+  var sql = (
     "INSERT INTO users (id, username) VALUES (" + id + "," + user_name + ")"
   );
-
-  var user_name = req.body.username;
   conn.query(sql, function (err, result) {
     if (err) throw err;
     else {
@@ -102,35 +97,35 @@ app.post("/push", urlencodedParser, (req, res) => {
     }
   });
 
-  //statement for character table
-  var charId = id;
-  var charName = req.body.username;
-  var charClass = req.body.character.name;
-  var charLevel = req.body.character.level;
-  var charRace = req.body.character.race;
-  var alive = 1;
-  var sql2 = prepare(
-    "INSERT INTO character (id, user, character_name, character_class, class_level, class_race, isAlive) VALUES (" +
-      charId +
-      "," +
-      user_name +
-      "," +
-      charName +
-      "," +
-      charClass +
-      "," +
-      charLevel +
-      "," +
-      charRace +
-      "," +
-      alive +
-      ")"
-  );
-  conn.query(sql2, function (err, result) {
-    if (err) throw err;
-    else {
-      console.log("Character Entry Accepted");
-    }
-  });
+  // //statement for character table
+  // var charId = id;
+  // var charName = req.body.username;
+  // var charClass = req.body.character.name;
+  // var charLevel = req.body.character.level;
+  // var charRace = req.body.character.race;
+  // var alive = 1;
+  // var sql2 = (
+  //   "INSERT INTO character (id, user, character_name, character_class, class_level, class_race, isAlive) VALUES (" +
+  //     charId +
+  //     "," +
+  //     user_name +
+  //     "," +
+  //     charName +
+  //     "," +
+  //     charClass +
+  //     "," +
+  //     charLevel +
+  //     "," +
+  //     charRace +
+  //     "," +
+  //     alive +
+  //     ")"
+  // );
+  // conn.query(sql2, function (err, result) {
+  //   if (err) throw err;
+  //   else {
+  //     console.log("Character Entry Accepted");
+  //   }
+  // });
 
 });

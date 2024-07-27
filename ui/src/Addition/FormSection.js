@@ -50,7 +50,7 @@ function submitter(character) {
     // });
     fetch("http://localhost:4000/push", {
       method: "POST",
-      body: fileLoad,
+      body: JSON.stringify(character),
       headers: { "Content-Type": "application/json" },
     });
   }
