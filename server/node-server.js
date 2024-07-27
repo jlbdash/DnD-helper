@@ -62,24 +62,42 @@ app.listen(port, () =>
 // updating JSON character file
 app.post("/write", jsonParser, (req, res) => {
   var file = JSON.stringify(req.body);
+console.log(req.body);
   fs.writeFile(path, file, function (err) {
     if (err) throw err;
     console.log("Replaced");
   });
 
   var sql =
-    'SELECT Count(*) FROM character WHERE name = "' + response["name"] + '" ';
+    'INSERT INTO users (id, username, character_name) VALUES ("NULL","' +
+    response["username"] +
+    ',"' +
+    response["cName"] +
+    '",)"';
+  conn.query(sql, function (err, result) {
+    if (err) throw err;
+    else {
+      console.log("User Entry Created");
+    }
+  });
 
-  function insert() {
-    var sql2 =
-      'INSERT INTO character (id, name, genre, date, rating) VALUES ("NULL","' +
-      response["cName"] +
-      '","' +
-      response["cClass"] +
-      '",' +
-      response["cLevel"] +
-      "," +
-      response["cRace"] +
-      ")";
-  }
+  var sql2 =
+    "INSERT INTO character (username, character_name, character_class, class_level, class_race) VALUES (" +
+    response["username"] +
+    ',"' +
+    response["cName"] +
+    '","' +
+    response["cClass"] +
+    '",' +
+    response["cLevel"] +
+    "," +
+    response["cRace"] +
+    ")";
+
+  conn.query(sql2, function (err, result) {
+    if (err) throw err;
+    else {
+      console.log("Character Entry Created");
+    }
+  });
 });

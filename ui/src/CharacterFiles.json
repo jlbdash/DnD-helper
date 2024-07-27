@@ -79,5 +79,17 @@
         "alive": true
       }
     ]
+  },
+  {
+    "username": "Opa",
+    "character": [
+      {
+        "id": 1,
+        "name": "Flower",
+        "class": [{ "className": "Bloom", "classLevel": "7" }],
+        "race": "Glore",
+        "alive": true
+      }
+    ]
   }
 ]
