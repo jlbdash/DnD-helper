@@ -73,36 +73,41 @@ app.post("/write", jsonParser, (req, res) => {
 
 // endpoint for updating database
 app.post("/push", jsonParser, (req, res) => {
-  console.log(req.body['username']);
+  const character = req.body['character'][0];
+  console.log(req.body);
+  console.log(character.class[0]['className']);
 
   // total count of characters
   var finding = "SELECT Count(*) FROM characters";
   // count for character id
-  var id = conn.query(finding, function (err, result) {
+  var finding = conn.query("SELECT Count(*) FROM characters", function (err, result) {
     if (err) throw err;
     else {
-      result = result[0]["Count(*)"] + 1;
+      console.log(result[0]["Count(*)"]);
+      result = result[0]["Count(*)"];
     }
   });
+  var id = finding.result + 1;
+  console.log(id);
 
-  //statement for user table
-  var user_name = req.body['username'];
-  var sql = (
-    "INSERT INTO users (id, username) VALUES (" + id + "," + user_name + ")"
-  );
-  conn.query(sql, function (err, result) {
-    if (err) throw err;
-    else {
-      console.log("User Entry Accepted");
-    }
-  });
+  // //statement for user table
+  // var user_name = req.body['username'];
+  // var sql = (
+  //   "INSERT INTO users (id, username) VALUES (" + id + "," + user_name + ")"
+  // );
+  // conn.query(sql, function (err, result) {
+  //   if (err) throw err;
+  //   else {
+  //     console.log("User Entry Accepted");
+  //   }
+  // });
 
   // //statement for character table
   // var charId = id;
-  // var charName = req.body.username;
-  // var charClass = req.body.character.name;
-  // var charLevel = req.body.character.level;
-  // var charRace = req.body.character.race;
+  // var charName = character.name;
+  // var charClass = character.class[0]['className'];
+  // var charLevel = character.class[0]['classLevel'];
+  // var charRace = character.race;
   // var alive = 1;
   // var sql2 = (
   //   "INSERT INTO character (id, user, character_name, character_class, class_level, class_race, isAlive) VALUES (" +
