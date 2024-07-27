@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import mysql from "mysql";
 import { conn } from "./server-operator.js";
 import bodyParser from "body-parser";
 import fs from "fs";
@@ -59,30 +58,53 @@ app.listen(port, () =>
   console.log("Server is running on port 4000 and ready to accept requests! ")
 );
 
-// updating JSON character file
+// endpoint for updating JSON character file
 app.post("/write", jsonParser, (req, res) => {
   var file = JSON.stringify(req.body);
-console.log(req.body);
+  console.log(file.username);
+
+  // rewrite character file JSON
   fs.writeFile(path, file, function (err) {
     if (err) throw err;
     console.log("Replaced");
   });
 
-  var sql =
-    'INSERT INTO users (id, username, character_name) VALUES ("NULL","' +
-    response["username"] +
-    ',"' +
-    response["cName"] +
-    '",)"';
-  conn.query(sql, function (err, result) {
+  var found = conn.query(finding, function (err, result) {
     if (err) throw err;
     else {
-      console.log("User Entry Created");
+      console.log("Username found");
     }
   });
 
+  var id = conn.query(finding, function (err, result) {
+    if (err) throw err;
+    else {
+      console.log("Id created");
+    }
+  });
+
+  if (!found) {
+    var sql = "INSERT INTO users (id, username, character_id ) VALUES (?,?,?)";
+
+    conn.query(sql, function (err, result) {
+      if (err) throw err;
+      else {
+        console.log("User Entry Created");
+      }
+    });
+  } else {
+    var sql = "INSERT INTO users (id, username, character_id) VALUES (?,?,?)";
+
+    conn.query(sql, function (err, result) {
+      if (err) throw err;
+      else {
+        console.log("User Entry Created");
+      }
+    });
+  }
+
   var sql2 =
-    "INSERT INTO character (username, character_name, character_class, class_level, class_race) VALUES (" +
+    "INSERT INTO character (id, character_name, character_class, class_level, class_race, isAlive) VALUES (" +
     response["username"] +
     ',"' +
     response["cName"] +

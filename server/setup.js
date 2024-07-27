@@ -24,7 +24,7 @@ con.connect(function (err) {
   
     // Table for Characters
     var sql2 =
-      "CREATE TABLE IF NOT EXISTS characters (id int(6) NOT NULL PRIMARY KEY, character_name VARCHAR(25), character_class VARCHAR(80), class_level VARCHAR(15), character_race VARCHAR(25), FOREIGN KEY (id) REFERENCES users(character_id))";
+      "CREATE TABLE IF NOT EXISTS characters (id int(6) NOT NULL PRIMARY KEY, character_name VARCHAR(25), character_class VARCHAR(80), class_level VARCHAR(15), character_race VARCHAR(25), isAlive BOOL, FOREIGN KEY (id) REFERENCES users(character_id))";
     conn.query(sql2, function (err) {
       if (err) throw err;
       console.log("Table created");
