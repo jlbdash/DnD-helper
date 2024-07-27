@@ -61,27 +61,32 @@ app.listen(port, () =>
 // endpoint for updating JSON character file
 app.post("/write", jsonParser, (req, res) => {
   var file = JSON.stringify(req.body);
-  console.log(file.username);
+  console.log(req.body[0].username);
 
   // rewrite character file JSON
   fs.writeFile(path, file, function (err) {
     if (err) throw err;
     console.log("Replaced");
   });
+});
 
-  var found = conn.query(finding, function (err, result) {
-    if (err) throw err;
-    else {
-      console.log("Username found");
-    }
-  });
+// endpoint for updating database
+app.post("/create", urlencodedParser, (req, res) => {
+  var response = {
+    character: req.body.character,
+  };
 
-  var id = conn.query(finding, function (err, result) {
-    if (err) throw err;
-    else {
-      console.log("Id created");
-    }
-  });
+  var finding = "SELECT Count(*) FROM characters";
+
+  // count for character id
+  var id =
+    conn.query(finding, function (err, result) {
+      if (err) throw err;
+      else {
+        console.log("Id created");
+      }
+    }) + 1;
+  console.log(id);
 
   if (!found) {
     var sql = "INSERT INTO users (id, username, character_id ) VALUES (?,?,?)";
