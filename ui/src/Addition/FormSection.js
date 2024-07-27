@@ -43,7 +43,12 @@ function submitter(character) {
 
   fileLoad = JSON.stringify(fileLoad);
   if (fileLoad !== fFiles) {
-    fetch("http://localhost:4000/write", {
+    // fetch("http://localhost:4000/write", {
+    //   method: "POST",
+    //   body: fileLoad,
+    //   headers: { "Content-Type": "application/json" },
+    // });
+    fetch("http://localhost:4000/push", {
       method: "POST",
       body: fileLoad,
       headers: { "Content-Type": "application/json" },

@@ -71,22 +71,21 @@ app.post("/write", jsonParser, (req, res) => {
 });
 
 // endpoint for updating database
-app.post("/create", urlencodedParser, (req, res) => {
+app.post("/push", urlencodedParser, (req, res) => {
   var response = {
     character: req.body.character,
   };
 
+  // total count of characters
   var finding = "SELECT Count(*) FROM characters";
 
   // count for character id
-  var id =
-    conn.query(finding, function (err, result) {
-      if (err) throw err;
-      else {
-        console.log("Id created");
-      }
-    }) + 1;
-  console.log(id);
+  var id = conn.query(finding, function (err, result) {
+    if (err) throw err;
+    else {
+      result = result[0]["Count(*)"] + 1;
+    }
+  });
 
   if (!found) {
     var sql = "INSERT INTO users (id, username, character_id ) VALUES (?,?,?)";
@@ -98,7 +97,7 @@ app.post("/create", urlencodedParser, (req, res) => {
       }
     });
   } else {
-    var sql = "INSERT INTO users (id, username, character_id) VALUES (?,?,?)";
+    var sql = "INSERT INTO users (id, username) VALUES (?,?,?)";
 
     conn.query(sql, function (err, result) {
       if (err) throw err;
@@ -109,7 +108,7 @@ app.post("/create", urlencodedParser, (req, res) => {
   }
 
   var sql2 =
-    "INSERT INTO character (id, character_name, character_class, class_level, class_race, isAlive) VALUES (" +
+    "INSERT INTO character (user, character_name, character_class, class_level, class_race, isAlive) VALUES (" +
     response["username"] +
     ',"' +
     response["cName"] +
