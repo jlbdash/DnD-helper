@@ -118,6 +118,7 @@ app.post("/push", jsonParser, (req, res) => {
             var charClass = charClasses[index]["className"];
             var charLevel = charClasses[index]["classLevel"];
             if (result[index]["character_class"] !== charClass) {
+              // no class there
               var sql3 =
                 "INSERT INTO classes (id, character_id, character_class, class_level) VALUES ( NULL, " +
                 charID +
@@ -127,6 +128,7 @@ app.post("/push", jsonParser, (req, res) => {
                 charLevel +
                 ")";
             } else {
+              // if there is a class already
               var sql3 =
                 "UPDATE classes SET character_class='" +
                 charClass +
