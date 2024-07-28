@@ -7,4 +7,5 @@ To start app:
 
 To set up and start server:
 - navigate to server
-- run: npm setup, then, npm start
+- run: npm start
+- For the database: npm run setup

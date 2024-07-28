@@ -12,47 +12,6 @@ app.use(cors());
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-// Create an endpoint called /read that responds with a list of characters
-app.get("/reader", (req, res) => {
-  var sql = "SELECT * FROM characters, users";
-  const list = conn.query(sql, function (err, result) {
-    if (err) throw err;
-    console.log("Selected");
-    res.send(result);
-  });
-});
-
-// Create an endpoint called /create that responds with nothing but updates the database
-app.post("/create", urlencodedParser, (req, res) => {
-  var response = {
-    character: req.body.character,
-  };
-
-  var sql =
-    'SELECT Count(*) FROM character WHERE name = "' + response["name"] + '" ';
-
-  function insert() {
-    var sql2 =
-      'INSERT INTO character (id, name, genre, date,rating) VALUES ("NULL","' +
-      response["cName"] +
-      '","' +
-      response["cClass"] +
-      '",' +
-      response["cLevel"] +
-      "," +
-      response["cRace"] +
-      ")";
-
-    conn.query(sql2, function (err, result) {
-      if (err) throw err;
-      else {
-        console.log("Entry Created");
-        res.redirect("http://localhost:3000/");
-      }
-    });
-  }
-});
-
 // start here
 // making sure the port is free
 app.listen(port, () =>
@@ -73,64 +32,98 @@ app.post("/write", jsonParser, (req, res) => {
 
 // endpoint for updating database
 app.post("/push", jsonParser, (req, res) => {
-  const character = req.body['character'][0];
-  console.log(req.body);
-  console.log(character.class[0]['className']);
+  const character = req.body["character"][0];
+  var user_name = req.body["username"];
 
-  // total count of characters
-  var finding = "SELECT Count(*) FROM characters";
-  // count for character id
-  var finding = conn.query("SELECT Count(*) FROM characters", function (err, result) {
-    if (err) throw err;
-    else {
-      console.log(result[0]["Count(*)"]);
-      result = result[0]["Count(*)"];
+  // check for user id
+  var findUserID = conn.query(
+    "SELECT COUNT(id) FROM users WHERE username='" + user_name + "'",
+    (err, result) => {
+      if (err) throw err;
+      let res = result[0]['COUNT(id)'];
+      return res;
     }
-  });
-  var id = finding.result + 1;
-  console.log(id);
+  );
+  
+  //statement for user table
+  if (!findUserID) {
+    var sql =
+      "INSERT INTO users (id, username) VALUES ( NULL, '" + user_name + "')";
+    conn.query(sql, function (err, result) {
+      if (err) throw err;
+      else {
+        console.log("User Entry Accepted");
+      }
+    });
+  } else {
+    console.log("User Already There");
+  }
 
-  // //statement for user table
-  // var user_name = req.body['username'];
-  // var sql = (
-  //   "INSERT INTO users (id, username) VALUES (" + id + "," + user_name + ")"
-  // );
-  // conn.query(sql, function (err, result) {
-  //   if (err) throw err;
-  //   else {
-  //     console.log("User Entry Accepted");
-  //   }
-  // });
+  //statement for character table
+  // check to see if there is a duplicate character
+  var findCharacter = conn.query(
+    "SELECT COUNT(character_name) FROM characters WHERE username='" +
+      user_name +
+      "'",
+    function (err, result) {
+      if (err) throw err;
+      let res = result[0]['COUNT(character_name)'];
+      return res;
+    }
+  );
 
-  // //statement for character table
-  // var charId = id;
-  // var charName = character.name;
-  // var charClass = character.class[0]['className'];
-  // var charLevel = character.class[0]['classLevel'];
-  // var charRace = character.race;
-  // var alive = 1;
-  // var sql2 = (
-  //   "INSERT INTO character (id, user, character_name, character_class, class_level, class_race, isAlive) VALUES (" +
-  //     charId +
-  //     "," +
-  //     user_name +
-  //     "," +
-  //     charName +
-  //     "," +
-  //     charClass +
-  //     "," +
-  //     charLevel +
-  //     "," +
-  //     charRace +
-  //     "," +
-  //     alive +
-  //     ")"
-  // );
-  // conn.query(sql2, function (err, result) {
-  //   if (err) throw err;
-  //   else {
-  //     console.log("Character Entry Accepted");
-  //   }
-  // });
+  if (!findCharacter) {
+    var charName = character.name;
+    var charRace = character.race;
+    var sql2 =
+      "INSERT INTO characters (id, username, character_name, character_race, isAlive) VALUES ( NULL, '" +
+      user_name +
+      "', '" +
+      charName +
+      "', '" +
+      charRace +
+      "', 1)";
 
+    conn.query(sql2, function (err, result) {
+      if (err) throw err;
+      else {
+        console.log("Character Entry Accepted");
+      }
+    });
+  } else {
+    console.log("Make another character");
+  }
+
+  //statement for classes table
+  // finding character id
+  var charId = conn.query(
+    "SELECT id FROM characters WHERE character_name='" + charName + "';",
+    function (err, result) {
+      if (err) throw err;
+      console.log("id", result);
+      let res = result[0]['id'];
+      return res;
+    }
+  );
+
+  character.class.forEach(repeater);
+  function repeater(multi) {
+    //in case of multiclassing, classes are inserted multiple times
+    var charClass = multi["className"];
+    var charLevel = multi["classLevel"];
+    var sql3 =
+      "INSERT INTO classes (id, character_id, character_class, class_level) VALUES ( NULL, " +
+      charId +
+      ", '" +
+      charClass +
+      "', " +
+      charLevel +
+      ")";
+    conn.query(sql3, function (err, result) {
+      if (err) throw err;
+      else {
+        console.log("Class Entry Accepted");
+      }
+    });
+  }
 });

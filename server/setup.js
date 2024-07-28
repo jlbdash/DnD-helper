@@ -32,7 +32,7 @@ conn.connect(function (err) {
 
   // Table for Characters
   var sql3 =
-    "CREATE TABLE IF NOT EXISTS characters (id int(6) NOT NULL PRIMARY KEY, username VARCHAR(60), character_name VARCHAR(25), character_race VARCHAR(25), isAlive BOOL, FOREIGN KEY (username) REFERENCES users(username))";
+    "CREATE TABLE IF NOT EXISTS characters (id int(6) AUTO_INCREMENT PRIMARY KEY, username VARCHAR(60), character_name VARCHAR(25), character_race VARCHAR(25), isAlive BOOL, FOREIGN KEY (username) REFERENCES users(username))";
   conn.query(sql3, function (err) {
     if (err) throw err;
     console.log("Table characters created");
