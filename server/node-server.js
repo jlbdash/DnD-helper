@@ -33,6 +33,9 @@ app.post("/write", jsonParser, (req, res) => {
 // endpoint for updating database
 app.post("/push", jsonParser, (req, res) => {
   const character = req.body["character"][0];
+  const charClass = character.class;
+  const charName = character.name;
+  const charRace = character.race;
   var user_name = req.body["username"];
 
   // check for user id
@@ -46,7 +49,7 @@ app.post("/push", jsonParser, (req, res) => {
   );
 
   //statement for user table
-  if (!findUserID) {
+  if (findUserID === 0) {
     var sql =
       "INSERT INTO users (id, username) VALUES ( NULL, '" + user_name + "')";
     conn.query(sql, function (err, result) {
@@ -62,44 +65,32 @@ app.post("/push", jsonParser, (req, res) => {
   //statement for character table
   // check to see if there is a duplicate character
   var findCharacter = conn.query(
-    "SELECT COUNT(character_name) FROM characters WHERE username='" +
+    "SELECT COUNT(*) FROM characters WHERE username='" +
       user_name +
+      "' AND character_name='" +
+      charName +
       "'",
-    function (err, result) {
+    function (err, result, fields) {
       if (err) throw err;
-      let res = result[0]["COUNT(character_name)"];
+      console.log("character", result[0]["COUNT(*)"]);
+      let res = result[0]["COUNT(*)"];
       return res;
     }
   );
+
   // finding character id
   var charId = conn.query(
-    "SELECT id FROM characters WHERE character_name='" + charName + "';",
+    "SELECT id FROM characters WHERE character_name='" + charName + "'",
     function (err, result) {
       if (err) throw err;
-      console.log("id", result);
-      let res = result[0]["id"];
+      console.log("id", result[0]['id']);
+      let res = result[0]['id'];
       return res;
     }
   );
 
-  function repeater(multi) {
-    //in case of multiclassing, classes are inserted multiple times
-    var charClass = multi["className"];
-    var charLevel = multi["classLevel"];
-    var sql3 =
-      "INSERT INTO classes (id, character_id, character_class, class_level) VALUES ( NULL, " +
-      charId +
-      ", '" +
-      charClass +
-      "', " +
-      charLevel +
-      ")";
-  }
-
   // insert character into characters and classes tables
-  if (!findCharacter) {
-    var charName = character.name;
-    var charRace = character.race;
+  if (findCharacter === 0) {
     var sql2 =
       "INSERT INTO characters (id, username, character_name, character_race, isAlive) VALUES ( NULL, '" +
       user_name +
@@ -117,6 +108,23 @@ app.post("/push", jsonParser, (req, res) => {
       }
     });
 
+    //in case of multiclassing, classes are inserted multiple times
+    charClass.forEach(repeater);
+    
+    // function for updating database endpoint - classes table
+    function repeater(index, array) {
+      console.log("multi", index, array);
+      var charClass = index["className"];
+      var charLevel = index["classLevel"];
+      var sql3 =
+        "INSERT INTO classes (id, character_id, character_class, class_level) VALUES ( NULL, " +
+        charId +
+        ", '" +
+        charClass +
+        "', " +
+        charLevel +
+        ")";
+
       //Classes insert
       conn.query(sql3, function (err, result) {
         if (err) throw err;
@@ -124,8 +132,8 @@ app.post("/push", jsonParser, (req, res) => {
           console.log("Class Entry Accepted");
         }
       });
+    }
 
-      character.class.forEach(repeater);
   } else {
     console.log("Make another character");
   }
