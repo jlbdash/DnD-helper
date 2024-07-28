@@ -40,11 +40,11 @@ app.post("/push", jsonParser, (req, res) => {
     "SELECT COUNT(id) FROM users WHERE username='" + user_name + "'",
     (err, result) => {
       if (err) throw err;
-      let res = result[0]['COUNT(id)'];
+      let res = result[0]["COUNT(id)"];
       return res;
     }
   );
-  
+
   //statement for user table
   if (!findUserID) {
     var sql =
@@ -67,46 +67,21 @@ app.post("/push", jsonParser, (req, res) => {
       "'",
     function (err, result) {
       if (err) throw err;
-      let res = result[0]['COUNT(character_name)'];
+      let res = result[0]["COUNT(character_name)"];
       return res;
     }
   );
-
-  if (!findCharacter) {
-    var charName = character.name;
-    var charRace = character.race;
-    var sql2 =
-      "INSERT INTO characters (id, username, character_name, character_race, isAlive) VALUES ( NULL, '" +
-      user_name +
-      "', '" +
-      charName +
-      "', '" +
-      charRace +
-      "', 1)";
-
-    conn.query(sql2, function (err, result) {
-      if (err) throw err;
-      else {
-        console.log("Character Entry Accepted");
-      }
-    });
-  } else {
-    console.log("Make another character");
-  }
-
-  //statement for classes table
   // finding character id
   var charId = conn.query(
     "SELECT id FROM characters WHERE character_name='" + charName + "';",
     function (err, result) {
       if (err) throw err;
       console.log("id", result);
-      let res = result[0]['id'];
+      let res = result[0]["id"];
       return res;
     }
   );
 
-  character.class.forEach(repeater);
   function repeater(multi) {
     //in case of multiclassing, classes are inserted multiple times
     var charClass = multi["className"];
@@ -119,11 +94,39 @@ app.post("/push", jsonParser, (req, res) => {
       "', " +
       charLevel +
       ")";
-    conn.query(sql3, function (err, result) {
+  }
+
+  // insert character into characters and classes tables
+  if (!findCharacter) {
+    var charName = character.name;
+    var charRace = character.race;
+    var sql2 =
+      "INSERT INTO characters (id, username, character_name, character_race, isAlive) VALUES ( NULL, '" +
+      user_name +
+      "', '" +
+      charName +
+      "', '" +
+      charRace +
+      "', 1)";
+
+    //Character insert
+    conn.query(sql2, function (err, result) {
       if (err) throw err;
       else {
-        console.log("Class Entry Accepted");
+        console.log("Character Entry Accepted");
       }
     });
+
+      //Classes insert
+      conn.query(sql3, function (err, result) {
+        if (err) throw err;
+        else {
+          console.log("Class Entry Accepted");
+        }
+      });
+
+      character.class.forEach(repeater);
+  } else {
+    console.log("Make another character");
   }
 });
