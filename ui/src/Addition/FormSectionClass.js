@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./FormStyles.css";
 
+var levelCount = 0;
 // class name and level for one row
 const Row = (number) => (
   <>
@@ -33,6 +34,10 @@ export const Classes = ({ classNumber }) => {
   let x = 1;
   while (x < classNumber) {
     classInput.push(<Row key={x+1} number={x+1} />);
+    levelCount+=x;
+    if (levelCount>20){
+      
+    }
     x++;
   }
   return classInput;
