@@ -31,8 +31,8 @@ export function ProductTable({ characters, isAlive, searchText }) {
   return (
     <>
       <table style={{ width: '100%' }}>
-        <thead>
-          <tr ƒ>
+        <thead key={'header'}>
+          <tr key={'rowheader'}>
             <th key={'header1'} style={{ width: '20%' }}> Character </th>
             <th key={'header2'} style={{ width: '50%' }}> Class</th>
             <th key={'header3'}style={{ width: '30%' }}> Race</th>

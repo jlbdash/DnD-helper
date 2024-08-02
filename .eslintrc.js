@@ -1,10 +1,6 @@
 'use strict';
 
 module.exports = {
-  env: {
-    es6: true,
-    commonjs: true,
-  },
   rules: {
     //using strict mode all the time
     'strict': ['error', 'global'],

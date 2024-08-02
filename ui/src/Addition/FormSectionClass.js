@@ -1,27 +1,25 @@
-'use strict';
+import React from 'react';
+import './FormStyles.css';
 
-import React from "react";
-import "./FormStyles.css";
-
-var levelCount = 0;
+const levelCount = 0;
 // class name and level for one row
 const Row = (number) => (
   <>
     <label>
-      {"Class:"}
+      {'Class:'}
       <input
-        type="text"
+        type='text'
         id={`cClass${number.number}`}
         name={`cClass${number.number}`}
         onChange={(e) => e.target.value}
-        placeholder="Character Class"
+        placeholder='Character Class'
       ></input>
       <input
-        type="number"
+        type='number'
         id={`cLevel${number.number}`}
         name={`cLevel${number.number}`}
-        min="1"
-        max="20"
+        min='1'
+        max='20'
         onChange={(e) => e.target.value}
       ></input>
     </label>
