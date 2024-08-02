@@ -38,7 +38,7 @@ export const Classes = ({ classNumber }) => {
     classInput.push(<Row key={x+1} number={x+1} />);
     levelCount+=x;
     if (levelCount>20){
-      
+      return error;
     }
     x++;
   }
