@@ -1,12 +1,10 @@
-'use strict';
-
 import React from 'react';
 
 // Row User Header
 export function ProductCategoryRow({ user }) {
     return (
       <tr key={user.username}>
-        <td className="categoryStyle" colSpan="3">
+        <td className='categoryStyle' colSpan='3'>
           {user.username}
         </td>
       </tr>
@@ -16,15 +14,15 @@ export function ProductCategoryRow({ user }) {
   // Row Character Info
   export function ProductRow({ character }) {
     const multiClass = character.class;
-    let count = character.class.length;
-    let classes = [];
-    let rows = [];
+    const count = character.class.length;
+    const classes = [];
+    const rows = [];
   
     //is character alive?
     const characterName = character.alive ? (
       character.name
     ) : (
-      <div style={{ color: "red" }}>{character.name}</div>
+      <div style={{ color: 'red' }}>{character.name}</div>
     );
   
     //is character multiclassed?
@@ -32,16 +30,16 @@ export function ProductCategoryRow({ user }) {
       let combo = [];
       for (let m in i) {
         combo += i[m];
-        if (m === "className") {
-          combo += ": ";
+        if (m === 'className') {
+          combo += ': ';
         }
       }
-      classes.push(<td key={character.name + i["className"]}>{combo}</td>);
+      classes.push(<td key={character.name + i['className']}>{combo}</td>);
     }
   
-    let i = 0;
+    const i = 0;
     const start = rows.push(
-      <tr key={character.id+"-"+i}>
+      <tr key={character.id+'-'+i}>
         <td rowSpan={count} key={character.name+character.id}> {characterName}</td>
         {classes[i]}
         <td key={character.race} rowSpan={count}>
@@ -56,7 +54,7 @@ export function ProductCategoryRow({ user }) {
       while (l < count - 1) {
         l++;
         rows.push(
-          <tr key={character.id+"-"+l}>
+          <tr key={character.id+'-'+l}>
             {classes[l]}
           </tr>
         );

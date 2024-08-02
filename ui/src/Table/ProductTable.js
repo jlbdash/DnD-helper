@@ -1,14 +1,11 @@
-'use strict';
-
-import React from "react";
+import React from 'react';
 import {ProductRow, ProductCategoryRow} from './SearchRows.js';
-import "./TableStyles.css";
+import './TableStyles.css';
 
 // creates the static list of food
 export function ProductTable({ characters, isAlive, searchText }) {
-  const count = null;
-  let characterList = characters;
-  let rows = [];
+  const characterList = characters;
+  const rows = [];
   characterList.forEach((user) => {
     const charrie = user.character;
 
@@ -33,12 +30,12 @@ export function ProductTable({ characters, isAlive, searchText }) {
 
   return (
     <>
-      <table style={{ width: "100%" }}>
+      <table style={{ width: '100%' }}>
         <thead>
-          <tr key={'header'}>
-            <th key={'header1'} style={{ width: "20%" }}> Character </th>
-            <th key={'header2'} style={{ width: "50%" }}> Class</th>
-            <th key={'header3'}style={{ width: "30%" }}> Race</th>
+          <tr ƒ>
+            <th key={'header1'} style={{ width: '20%' }}> Character </th>
+            <th key={'header2'} style={{ width: '50%' }}> Class</th>
+            <th key={'header3'}style={{ width: '30%' }}> Race</th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>

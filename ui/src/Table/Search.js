@@ -1,7 +1,5 @@
-'use strict';
-
-import React from "react";
-import "./TableStyles.css";
+import React from 'react';
+import './TableStyles.css';
 
 export default function SearchButton({
     isAlive,
@@ -13,18 +11,18 @@ export default function SearchButton({
       <>
         <form>
           <input
-            type="text"
+            type='text'
             value={searchText}
-            placeholder="Search..."
+            placeholder='Search...'
             onChange={(e) => onSearchTextChange(e.target.value)}
           />
           <br />
           <label>
             <input
-              type="checkbox"
+              type='checkbox'
               checked={isAlive}
               onChange={(e) => onisAliveChange(e.target.checked)}
-            />{" "}
+            />{' '}
             Only show alive characters
           </label>
         </form>
