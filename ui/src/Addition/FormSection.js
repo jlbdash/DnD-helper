@@ -1,22 +1,22 @@
 'use strict';
 
-import React, { useState } from "react";
-import fFiles from "../CharacterFiles.json";
-import { Classes } from "./FormSectionClass.js";
-import { classPlanner } from "./ClassPlanner.js";
-import "./FormStyles.css";
+import React, { useState } from 'react';
+import fFiles from '../CharacterFiles.json';
+import { Classes } from './FormSectionClass.js';
+import { classPlanner } from './ClassPlanner.js';
+import './FormStyles.css';
 
 // options for the selection of multiclassing
 const options = (
   <>
-    <option defaultValue="0">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
+    <option defaultValue='0'>1</option>
+    <option value='2'>2</option>
+    <option value='3'>3</option>
+    <option value='4'>4</option>
+    <option value='5'>5</option>
+    <option value='6'>6</option>
+    <option value='7'>7</option>
+    <option value='8'>8</option>
   </>
 );
 
@@ -45,15 +45,15 @@ function submitter(character) {
 
   fileLoad = JSON.stringify(fileLoad);
   if (fileLoad !== fFiles) {
-    // fetch("http://localhost:4000/write", {
-    //   method: "POST",
+    // fetch('http://localhost:4000/write', {
+    //   method: 'POST',
     //   body: fileLoad,
-    //   headers: { "Content-Type": "application/json" },
+    //   headers: { 'Content-Type': 'application/json' },
     // });
-    fetch("http://localhost:4000/push", {
-      method: "POST",
+    fetch('http://localhost:4000/push', {
+      method: 'POST',
       body: JSON.stringify(character),
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
     });
   }
 }
@@ -62,60 +62,60 @@ function submitter(character) {
 export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
   const [classNumber, setClassNumber] = useState(1);
   const [character, setCharacter] = useState({});
-  const [isUser, setIsUser] = useState("");
-  const [isName, setIsName] = useState("");
-  const [isRace, setIsRace] = useState("");
+  const [isUser, setIsUser] = useState('');
+  const [isName, setIsName] = useState('');
+  const [isRace, setIsRace] = useState('');
 
   let section = (
     <form
-      name="characterCreation"
+      name='characterCreation'
       onSubmit={(e) => {
         e.preventDefault();
         submitter(character);
       }}
     >
       <label>
-        {"Username: "}
+        {'Username: '}
         <input
-          type="text"
+          type='text'
           required
           value={isUser}
           onChange={(e) => setIsUser(e.target.value)}
-          placeholder="Username"
+          placeholder='Username'
         ></input>
-      </label>{" "}
+      </label>{' '}
       <br />
       <label>
-        {"Character Name:"}
+        {'Character Name:'}
         <input
-          type="text"
+          type='text'
           required
           value={isName}
           onChange={(e) => setIsName(e.target.value)}
-          placeholder="Character Name"
+          placeholder='Character Name'
         ></input>
       </label>
       <br />
       <label>
-        {"Multiclassing:"}
+        {'Multiclassing:'}
         <input
-          type="checkbox"
+          type='checkbox'
           checked={isMulticlassed}
           onChange={(e) => {
             onisMulticlassedChange(e.target.checked);
             setClassNumber(1);
           }}
         ></input>
-      </label>{" "}
-      &nbsp;{" "}
+      </label>{' '}
+      &nbsp;{' '}
       {isMulticlassed && (
         <label>
-          {"Add Classes: "}
+          {'Add Classes: '}
           <span>
             <select
-              id="add"
+              id='add'
               required
-              name="add"
+              name='add'
               disabled={!isMulticlassed}
               onChange={(e) => {
                 setClassNumber(e.target.value);
@@ -130,20 +130,20 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
       <Classes classNumber={classNumber} />
       <br />
       <label>
-        {"Race:"}
+        {'Race:'}
         <input
-          type="text"
+          type='text'
           required
           value={isRace}
           onChange={(e) => setIsRace(e.target.value)}
-          placeholder="Character Race"
+          placeholder='Character Race'
         ></input>
       </label>
       <br />
       <input
-        type="submit"
-        id="submit"
-        value="Submit"
+        type='submit'
+        id='submit'
+        value='Submit'
         onClick={() => {
           classPlanner(classNumber, setCharacter, isUser, isName, isRace);
         }}
