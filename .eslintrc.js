@@ -1,30 +1,36 @@
-"use strict";
+'use strict';
 
 module.exports = {
   env: {
-    ES6: true,
+    es6: true,
+    commonJS: true,
   },
   rules: {
     //using strict mode all the time
-    strict: ["error", "global"],
+    'strict': ['error', 'global'],
     // not wanting to use var, just const and let
-    "no-var": "error",
+    'no-var': 'error',
     // prefer const to let (unchanging)
-    "prefer-cont": "error",
+    'prefer-cont': 'error',
     // one variable at a time
-    "one-var": ["error", "never"],
+    'one-var': ['error', 'never'],
     // camel case preferred
-    camelcase: "error",
+    'camelcase': 'error',
     // weed out unused variables
-    "no-unused-vars": "error",
+    'no-unused-vars': 'error',
     // can see all variables easier
-    "no-multi-assign": "error",
+    'no-multi-assign': 'error',
     // preferred single quotes first
-    quotes: ["error", "single"],
+    'quotes': ['error', 'single'],
     // concise and no unexpected outcome for arrays and objects
-    "no-array-constructor": "error",
-    "no-new-object": "error",
+    'no-array-constructor': 'error',
+    'no-new-object': 'error',
     // quotes where needed
-    "quote-props": ["error", "as-needed"],
+    'quote-props': ['error', 'as-needed'],
+    // no using "new" constructors for type casting
+    'no-new-wrappers': 'error',
+    // remove unnecessary boolean negations
+    'no-extra-boolean-cast': 'error',
+
   },
 };
