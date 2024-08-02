@@ -1,3 +1,5 @@
+'use strict';
+
 import React, { useState } from "react";
 import "./TableStyles.css";
 import Files from "../CharacterFiles.json";

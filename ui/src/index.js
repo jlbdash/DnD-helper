@@ -1,3 +1,5 @@
+'use strict';
+
 import React, { StrictMode } from "react";
 import "./overAllStyle.css";
 import { createRoot } from "react-dom/client";

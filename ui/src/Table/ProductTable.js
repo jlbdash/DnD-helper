@@ -1,3 +1,5 @@
+'use strict';
+
 import React from "react";
 import {ProductRow, ProductCategoryRow} from './SearchRows.js';
 import "./TableStyles.css";
