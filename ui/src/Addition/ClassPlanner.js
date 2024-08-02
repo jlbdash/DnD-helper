@@ -18,7 +18,7 @@ export const classPlanner = (
     classes.push(combo);
     x++;
   }
-//sets the character for the state
+  //sets the character for the state
   setCharacter({
     username: isUser,
     character: [

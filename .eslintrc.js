@@ -3,7 +3,6 @@
 module.exports = {
     env:{
         ES6: true,
-        commonJS: true,
     },
     rules: {
         //using strict mode all the time
