@@ -1,3 +1,5 @@
+"use strict";
+
 import { con, conn } from "./server-operator.js";
 
 // Database for Users, Characters

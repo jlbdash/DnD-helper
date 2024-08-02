@@ -1,3 +1,5 @@
+'use strict';
+
 // gives the compiled class array
 export const classPlanner = (
   classNumber,

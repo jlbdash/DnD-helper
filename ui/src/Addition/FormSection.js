@@ -1,3 +1,5 @@
+'use strict';
+
 import React, { useState } from "react";
 import fFiles from "../CharacterFiles.json";
 import { Classes } from "./FormSectionClass.js";

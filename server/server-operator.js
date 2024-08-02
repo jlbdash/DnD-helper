@@ -1,3 +1,5 @@
+'use strict';
+
 import mysql from 'mysql';
 
 export var conn = mysql.createConnection({
