@@ -33,5 +33,10 @@ module.exports = {
     'no-extra-boolean-cast': 'error',
     // comparison with swtiched normalicy
     'yoda': 'error',
+    // triple equalities wanted
+    'eqeqeq': 'error',
+    // no complex ternary statement 
+    'no-unneeded-ternary': 'error',
+    'no-nested-ternary': 'error',
   },
 };
