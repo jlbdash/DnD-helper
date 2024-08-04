@@ -103,7 +103,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
       &nbsp;{' '}
       {isMulticlassed && (
         <label>
-          {'Add Classes: '}
+          {'Add Classes: '} &nbsp;
           <span>
             <select
               id='add'

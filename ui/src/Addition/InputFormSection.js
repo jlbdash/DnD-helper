@@ -3,7 +3,7 @@ import './FormStyles.css';
 export const Input = ({ label, type, value, setValue, placeholder }) => {
   return (
     <label>
-      <span> {label}</span>
+      <span > {label}</span>
       <input
         type={type}
         required

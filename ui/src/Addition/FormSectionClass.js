@@ -1,7 +1,7 @@
 import React from 'react';
 import './FormStyles.css';
 
-const levelCount = 0;
+let levelCount = 0;
 // class name and level for one row
 const Row = (number) => (
   <>
