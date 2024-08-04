@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import fFiles from '../CharacterFiles.json';
-import { Classes } from './FormSectionClass.js';
+import { Classes } from './ClassFormSection.js';
 import { classPlanner } from './ClassPlanner.js';
+import { Input } from './InputFormSection.js';
 import './FormStyles.css';
 
 // options for the selection of multiclassing
@@ -72,28 +73,29 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
         submitter(character);
       }}
     >
-      <label>
-        {'Username: '}
-        <input
-          type='text'
-          required
-          value={isUser}
-          onChange={(e) => setIsUser(e.target.value)}
-          placeholder='Username'
-        ></input>
-      </label>{' '}
+      <Input
+        label='Username: '
+        type='text'
+        value={isUser}
+        setValue={setIsUser}
+        placeholder='Username'
+      />
       <br />
-      <label>
-        {'Character Name:'}
-        <input
-          type='text'
-          required
-          value={isName}
-          onChange={(e) => setIsName(e.target.value)}
-          placeholder='Character Name'
-        ></input>
-      </label>
+      <Input
+        label='Character Name: '
+        type='text'
+        value={isName}
+        setValue={setIsName}
+        placeholder='Character Name'
+      />
       <br />
+      <Input
+        label='Multiclassing: '
+        type='checkbox'
+        value={isMulticlassed}
+        setValue={onisMulticlassedChange}
+        placeholder='Multiclassing'
+      />
       <label>
         {'Multiclassing:'}
         <input
@@ -127,16 +129,13 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
       <br />
       <Classes classNumber={classNumber} />
       <br />
-      <label>
-        {'Race:'}
-        <input
-          type='text'
-          required
-          value={isRace}
-          onChange={(e) => setIsRace(e.target.value)}
-          placeholder='Character Race'
-        ></input>
-      </label>
+      <Input
+        label='Race: '
+        type='text'
+        value={isRace}
+        setValue={setIsRace}
+        placeholder='Character Race'
+      />
       <br />
       <input
         type='submit'
