@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import fFiles from '../CharacterFiles.json';
-import { Classes } from './ClassFormSection.js';
+import { Classes } from './FormSectionClass.js';
 import { classPlanner } from './ClassPlanner.js';
 import { Input } from './InputFormSection.js';
 import './FormStyles.css';
@@ -89,13 +89,6 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
         placeholder='Character Name'
       />
       <br />
-      <Input
-        label='Multiclassing: '
-        type='checkbox'
-        value={isMulticlassed}
-        setValue={onisMulticlassedChange}
-        placeholder='Multiclassing'
-      />
       <label>
         {'Multiclassing:'}
         <input

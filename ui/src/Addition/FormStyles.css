@@ -13,10 +13,12 @@ form {
   margin: 10px;
 }
 label {
-  padding: 12px 5px;
+  display: flex;
+  padding: 3px 5px 0 5px ;
+  justify-content: end;
 }
 input{
-  height: 22px;
+  margin-left: 20px;
 }
 input[type=number], #add {
   width:50px;

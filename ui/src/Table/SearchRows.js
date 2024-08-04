@@ -49,7 +49,6 @@ export function ProductCategoryRow({ user }) {
     );
   
     let l =0;
-    console.log(count);
     if (count > 1) {
       while (l < count - 1) {
         l++;
