@@ -3,9 +3,10 @@ import fFiles from '../CharacterFiles.json';
 import { Classes } from './FormSectionClass.js';
 import { classPlanner } from './ClassPlanner.js';
 import { Input } from './InputFormSection.js';
-import { userValidation, nameValidation, classValidation, levelValidation, raceValidation} from './FormValidation.js';
+import { userValidation} from './FormValidation.js';
 import './FormStyles.css';
 
+//, nameValidation, classValidation, levelValidation, raceValidation}
 // options for the selection of multiclassing
 const options = (
   <>
@@ -70,6 +71,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
       }}
     >
       <Input
+        validation= {userValidation}
         label='Username: '
         type='text'
         value={isUser}

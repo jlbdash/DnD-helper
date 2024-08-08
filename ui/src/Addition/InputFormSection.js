@@ -1,8 +1,7 @@
 import './FormStyles.css';
-import { userValidation, nameValidation, classValidation, levelValidation, raceValidation} from './FormValidation.js';
 
 // Input component
-export const Input = ({ label, type, value, setValue, placeholder }) => {
+export const Input = ({ validation, label, type, value, setValue, placeholder }) => {
   return (
     <label>
       <span> {label}</span>
@@ -12,8 +11,9 @@ export const Input = ({ label, type, value, setValue, placeholder }) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
-      ></input><br />
-  <InputError message={message}/>
+      ></input>
+      <br />
+      <InputError message={validation} />
     </label>
   );
 };
@@ -24,5 +24,5 @@ const InputError = ({ message }) => {
     <div className='flex items-center gap-1 px-2 font-semibold text-red-500 bg-red-100 rounded-md'>
       {message}
     </div>
-  )
+  );
 };
