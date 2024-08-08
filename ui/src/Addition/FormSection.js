@@ -3,6 +3,7 @@ import fFiles from '../CharacterFiles.json';
 import { Classes } from './FormSectionClass.js';
 import { classPlanner } from './ClassPlanner.js';
 import { Input } from './InputFormSection.js';
+import { userValidation, nameValidation, classValidation, levelValidation, raceValidation} from 'FormValidation.js';
 import './FormStyles.css';
 
 // options for the selection of multiclassing
@@ -44,11 +45,6 @@ function submitter(character) {
 
   fileLoad = JSON.stringify(fileLoad);
   if (fileLoad !== fFiles) {
-    // fetch('http://localhost:4000/write', {
-    //   method: 'POST',
-    //   body: fileLoad,
-    //   headers: { 'Content-Type': 'application/json' },
-    // });
     fetch('http://localhost:4000/push', {
       method: 'POST',
       body: JSON.stringify(character),
