@@ -1,3 +1,5 @@
+//Validations for Input for Addition Character Form
+
 const userValidation = {
   label: 'Username: ',
   name: 'user',
