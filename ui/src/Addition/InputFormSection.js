@@ -1,5 +1,5 @@
-import "./FormStyles.css";
-import { userValidation, nameValidation, classValidation, levelValidation, raceValidation} from 'FormValidation.js';
+import './FormStyles.css';
+import { userValidation, nameValidation, classValidation, levelValidation, raceValidation} from './FormValidation.js';
 
 // Input component
 export const Input = ({ label, type, value, setValue, placeholder }) => {
@@ -21,7 +21,7 @@ export const Input = ({ label, type, value, setValue, placeholder }) => {
 //Error component
 const InputError = ({ message }) => {
   return (
-    <div className="flex items-center gap-1 px-2 font-semibold text-red-500 bg-red-100 rounded-md">
+    <div className='flex items-center gap-1 px-2 font-semibold text-red-500 bg-red-100 rounded-md'>
       {message}
     </div>
   )
