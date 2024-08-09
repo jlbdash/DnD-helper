@@ -1,7 +1,7 @@
 //Validations for Input for Addition Character Form
 
-export const userValidation = {
-  validation: {
+const userValidation = {
+  name: 'user',
     required: {
       value: true,
       message: 'required',
@@ -10,10 +10,9 @@ export const userValidation = {
       value: 6,
       message: 'min 6 characters',
     },
-  },
 };
 
-// export const nameValidation = {
+// const nameValidation = {
 //     label: 'Character Name: ',
 //     name: 'name',
 //     type: 'text',
@@ -32,7 +31,7 @@ export const userValidation = {
 //     },
 //   };
 
-//  export const classValidation = {
+//   const classValidation = {
 //     label: 'Add Classes: ',
 //     name: 'class',
 //     type: 'text',
@@ -51,7 +50,7 @@ export const userValidation = {
 //     },
 //   };
   
-//   export const levelValidation = {
+//   const levelValidation = {
 //     label: 'level',
 //     name: 'level',
 //     type: 'number',
@@ -70,7 +69,7 @@ export const userValidation = {
 //     },
 //   };
   
-//   export const raceValidation = {
+//   const raceValidation = {
 //     label: 'race',
 //     name: 'race',
 //     type: 'text',

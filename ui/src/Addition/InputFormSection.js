@@ -1,7 +1,16 @@
 import './FormStyles.css';
+import { findInputError } from './findInputError';
 
 // Input component
-export const Input = ({ validation, label, type, value, setValue, placeholder }) => {
+export const Input = ({
+  validation,
+  label,
+  type,
+  value,
+  setValue,
+  placeholder,
+}) => {
+  const inputErrors = findInputError(error, name);
   return (
     <label>
       <span> {label}</span>
@@ -13,16 +22,16 @@ export const Input = ({ validation, label, type, value, setValue, placeholder })
         placeholder={placeholder}
       ></input>
       <br />
-      <InputError message={validation} />
+      <InputError message={inputErrors.error.message} />
     </label>
   );
 };
 
 //Error component
-const InputError = ({ message }) => {
+const InputError = (message) => {
   return (
-    <div className='flex items-center gap-1 px-2 font-semibold text-red-500 bg-red-100 rounded-md'>
-      {message}
+    <div>
+      {console.log(message)}
     </div>
   );
 };
