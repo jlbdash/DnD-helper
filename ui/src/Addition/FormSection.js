@@ -4,6 +4,7 @@ import { Classes } from './FormSectionClass.js';
 import { classPlanner } from './ClassPlanner.js';
 import { Input } from './InputFormSection.js';
 import { userValidation } from './FormValidation.js';
+import { FormProvider } from 'react-hook-form';
 import './FormStyles.css';
 
 //, nameValidation, classValidation, levelValidation, raceValidation}
@@ -63,80 +64,82 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
   const [isRace, setIsRace] = useState('');
 
   let section = (
-    <form
-      name='characterCreation'
-      onSubmit={(e) => {
-        e.preventDefault();
-        submitter(character);
-      }}
-    >
-      <Input
-        validation= {userValidation}
-        label='Username: '
-        type='text'
-        value={isUser}
-        setValue={setIsUser}
-        placeholder='Username'
-      />
-      <br />
-      <Input
-        label='Character Name: '
-        type='text'
-        value={isName}
-        setValue={setIsName}
-        placeholder='Character Name'
-      />
-      <br />
-      <label>
-        {'Multiclassing:'}
+    <FormProvider {...methods}>
+      <form
+        name='characterCreation'
+        onSubmit={(e) => {
+          e.preventDefault();
+          submitter(character);
+        }}
+      >
+        <Input
+          validation={userValidation.va}
+          label='Username: '
+          type='text'
+          value={isUser}
+          setValue={setIsUser}
+          placeholder='Username'
+        />
+        <br />
+        <Input
+          label='Character Name: '
+          type='text'
+          value={isName}
+          setValue={setIsName}
+          placeholder='Character Name'
+        />
+        <br />
+        <label>
+          {'Multiclassing:'}
+          <input
+            type='checkbox'
+            checked={isMulticlassed}
+            onChange={(e) => {
+              onisMulticlassedChange(e.target.checked);
+              setClassNumber(1);
+            }}
+          ></input>
+        </label>{' '}
+        &nbsp;{' '}
+        {isMulticlassed && (
+          <label>
+            {'Add Classes: '} &nbsp;
+            <span>
+              <select
+                id='add'
+                required
+                name='add'
+                disabled={!isMulticlassed}
+                onChange={(e) => {
+                  setClassNumber(e.target.value);
+                }}
+              >
+                {options}
+              </select>
+            </span>
+          </label>
+        )}
+        <br />
+        <Classes classNumber={classNumber} />
+        <br />
+        <Input
+          label='Race: '
+          type='text'
+          value={isRace}
+          setValue={setIsRace}
+          placeholder='Character Race'
+        />
+        <br />
         <input
-          type='checkbox'
-          checked={isMulticlassed}
-          onChange={(e) => {
-            onisMulticlassedChange(e.target.checked);
-            setClassNumber(1);
+          type='submit'
+          id='submit'
+          value='Submit'
+          onClick={() => {
+            classPlanner(classNumber, setCharacter, isUser, isName, isRace);
           }}
         ></input>
-      </label>{' '}
-      &nbsp;{' '}
-      {isMulticlassed && (
-        <label>
-          {'Add Classes: '} &nbsp;
-          <span>
-            <select
-              id='add'
-              required
-              name='add'
-              disabled={!isMulticlassed}
-              onChange={(e) => {
-                setClassNumber(e.target.value);
-              }}
-            >
-              {options}
-            </select>
-          </span>
-        </label>
-      )}
-      <br />
-      <Classes classNumber={classNumber} />
-      <br />
-      <Input
-        label='Race: '
-        type='text'
-        value={isRace}
-        setValue={setIsRace}
-        placeholder='Character Race'
-      />
-      <br />
-      <input
-        type='submit'
-        id='submit'
-        value='Submit'
-        onClick={() => {
-          classPlanner(classNumber, setCharacter, isUser, isName, isRace);
-        }}
-      ></input>
-    </form>
+      </form>
+    </FormProvider>
   );
 
   return <>{section}</>;

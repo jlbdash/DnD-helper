@@ -2,6 +2,7 @@
 
 const userValidation = {
   name: 'user',
+  validation: {
     required: {
       value: true,
       message: 'required',
@@ -10,6 +11,7 @@ const userValidation = {
       value: 6,
       message: 'min 6 characters',
     },
+  },
 };
 
 // const nameValidation = {
@@ -49,7 +51,7 @@ const userValidation = {
 //       },
 //     },
 //   };
-  
+
 //   const levelValidation = {
 //     label: 'level',
 //     name: 'level',
@@ -68,7 +70,7 @@ const userValidation = {
 //       },
 //     },
 //   };
-  
+
 //   const raceValidation = {
 //     label: 'race',
 //     name: 'race',
@@ -87,4 +89,3 @@ const userValidation = {
 //       },
 //     },
 //   };
-
