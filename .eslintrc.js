@@ -3,7 +3,6 @@
 module.exports = {
   env: {
     es6: true,
-    requireConfigFile: false,
   },
   rules: {
     //using strict mode all the time

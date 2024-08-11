@@ -1,5 +1,6 @@
 import './FormStyles.css';
 import { findInputError } from './findInputError';
+import { useFormContext } from 'react-hook-form';
 
 // Input component
 export const Input = ({
@@ -10,7 +11,13 @@ export const Input = ({
   setValue,
   placeholder,
 }) => {
-  const inputErrors = findInputError(error, name);
+
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+  const inputErrors = findInputError(errors, label);
+
   return (
     <label>
       <span> {label}</span>
@@ -20,18 +27,15 @@ export const Input = ({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
+        {... register(value, validation)}
       ></input>
       <br />
-      <InputError message={inputErrors.error.message} />
+      {isInvalid && <InputError message={inputErrors.error.message} key={inputErrors.error.message} />}
     </label>
   );
 };
 
 //Error component
 const InputError = (message) => {
-  return (
-    <div>
-      {console.log(message)}
-    </div>
-  );
+  return <div>{console.log(message)}</div>;
 };
