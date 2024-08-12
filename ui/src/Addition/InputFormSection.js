@@ -17,6 +17,7 @@ export const Input = ({
     register,
     formState: { errors },
   } = useFormContext();
+  
   const inputErrors = findInputError(errors, label);
   const isInvalid = isFormInvalid (inputErrors);
 
@@ -29,7 +30,7 @@ export const Input = ({
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder={placeholder}
-        {... register(value, validation)}
+        {... register(label, {validation})}
       ></input>
       <br />
       {isInvalid && <InputError message={inputErrors.error.message} key={inputErrors.error.message} />}

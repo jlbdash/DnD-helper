@@ -1,7 +1,6 @@
 //Validations for Input for Addition Character Form
 
 const userValidation = {
-  name: 'user',
   validation: {
     required: {
       value: true,
