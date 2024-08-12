@@ -3,8 +3,6 @@ import fFiles from '../CharacterFiles.json';
 import { Classes } from './FormSectionClass.js';
 import { classPlanner } from './ClassPlanner.js';
 import { Input } from './InputFormSection.js';
-import { userValidation } from './FormValidation.js';
-import { FormProvider } from 'react-hook-form';
 import './FormStyles.css';
 
 //, nameValidation, classValidation, levelValidation, raceValidation}
@@ -64,7 +62,6 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
   const [isRace, setIsRace] = useState('');
 
   let section = (
-    <FormProvider {...methods}>
       <form
         name='characterCreation'
         onSubmit={(e) => {
@@ -73,7 +70,6 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
         }}
       >
         <Input
-          validation={userValidation.va}
           label='Username: '
           type='text'
           value={isUser}
@@ -139,7 +135,6 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
           }}
         ></input>
       </form>
-    </FormProvider>
   );
 
   return <>{section}</>;
