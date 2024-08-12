@@ -1,6 +1,7 @@
 import './FormStyles.css';
 import { findInputError } from './findInputError';
 import { useFormContext } from 'react-hook-form';
+import { isFormInvalid } from './isFormInvalid';
 
 // Input component
 export const Input = ({
@@ -17,6 +18,7 @@ export const Input = ({
     formState: { errors },
   } = useFormContext();
   const inputErrors = findInputError(errors, label);
+  const isInvalid = isFormInvalid (inputErrors);
 
   return (
     <label>

@@ -63,6 +63,8 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
   const [isName, setIsName] = useState('');
   const [isRace, setIsRace] = useState('');
 
+  const methods=useForm();
+
   let section = (
     <FormProvider {...methods}>
       <form
@@ -71,9 +73,10 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
           e.preventDefault();
           submitter(character);
         }}
+        noValidate
       >
         <Input
-          validation={userValidation.va}
+          validation={userValidation.validation}
           label='Username: '
           type='text'
           value={isUser}
