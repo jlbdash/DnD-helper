@@ -4,7 +4,7 @@ import { Classes } from './FormSectionClass.js';
 import { classPlanner } from './ClassPlanner.js';
 import { Input } from './InputFormSection.js';
 import { userValidation } from './FormValidation.js';
-import { FormProvider } from 'react-hook-form';
+import { FormProvider, useForm } from 'react-hook-form';
 import './FormStyles.css';
 
 //, nameValidation, classValidation, levelValidation, raceValidation}
@@ -76,7 +76,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
         noValidate
       >
         <Input
-          validation={userValidation.validation}
+          validation={userValidation}
           label='Username: '
           type='text'
           value={isUser}

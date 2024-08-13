@@ -12,9 +12,6 @@ body {
 form {
   margin: 10px;
 }
-span{
-  width: 130px;
-}
 label {
   display: flex;
   padding: 0 5px ;
