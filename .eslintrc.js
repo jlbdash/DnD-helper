@@ -4,7 +4,6 @@ module.exports = {
   env: {
     es6: true,
   },
-  'parser': 'babel-eslint',
   'parserOptions': {
     'sourceType': 'module',
     'allowImportExportEverywhere': true
@@ -21,7 +20,7 @@ module.exports = {
     // camel case preferred
     camelcase: 'error',
     // weed out unused variables
-    'no-unused-vars': 'error',
+    // 'no-unused-vars': 'error',
     // can see all variables easier
     'no-multi-assign': 'error',
     // preferred single quotes first

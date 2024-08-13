@@ -1,6 +1,6 @@
 import './FormStyles.css';
 import { findInputError } from './findInputError';
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, useForm } from 'react-hook-form';
 import { isFormInvalid } from './isFormInvalid';
 
 // Input component
