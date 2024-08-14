@@ -5,35 +5,42 @@ import { isFormInvalid } from './isFormInvalid';
 
 // Input component
 export const Input = ({
-  validation,
   label,
+  name,
   type,
+  id,
+  validation,
+  placeholder,
   value,
   setValue,
-  placeholder,
 }) => {
-
   const {
     register,
     formState: { errors },
   } = useFormContext();
-  
+
   const inputErrors = findInputError(errors, label);
-  const isInvalid = isFormInvalid (inputErrors);
+  const isInvalid = isFormInvalid(inputErrors);
 
   return (
-    <label>
+    <label key={id}>
       {label}
       <input
         type={type}
-        required
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        required
         placeholder={placeholder}
-        {... register(label, {validation})}
-      ></input>
+        {...register(name, validation, {
+          onChange: (e) => setValue(e.target.value),
+        })}
+      />
       <br />
-      {isInvalid && <InputError message={inputErrors.error.message} key={inputErrors.error.message} />}
+      {isInvalid && (
+        <InputError
+          message={inputErrors.error.message}
+          key={inputErrors.error.message}
+        />
+      )}
     </label>
   );
 };

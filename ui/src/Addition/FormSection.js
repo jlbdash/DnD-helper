@@ -63,7 +63,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
   const [isName, setIsName] = useState('');
   const [isRace, setIsRace] = useState('');
 
-  const methods=useForm();
+  const methods = useForm();
 
   let section = (
     <FormProvider {...methods}>
@@ -75,14 +75,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
         }}
         noValidate
       >
-        <Input
-          validation={userValidation}
-          label='Username: '
-          type='text'
-          value={isUser}
-          setValue={setIsUser}
-          placeholder='Username'
-        />
+        <Input value={isUser} setValue={setIsUser} {...userValidation} />
         <br />
         <Input
           label='Character Name: '
