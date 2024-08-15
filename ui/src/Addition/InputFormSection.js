@@ -26,12 +26,10 @@ export const Input = ({
     <label key={id}>
       {label}
       <input
-        type={type}
         value={value}
         required
-        placeholder={placeholder}
-        {...register(name, validation, {
-          onChange: (e) => setValue(e.target.value),
+        {...register(validation, {
+          onChange: (e) => console.log(e.target.value),
         })}
       />
       <br />
