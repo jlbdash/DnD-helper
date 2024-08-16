@@ -4,7 +4,6 @@ import './FormStyles.css';
 let levelCount = 0;
 // class name and level for one row
 const Row = (number) => (
-  <>
     <label>
       {'Class:'}
       <input
@@ -23,8 +22,6 @@ const Row = (number) => (
         onChange={(e) => e.target.value}
       ></input>
     </label>
-    <br />
-  </>
 );
 
 // counter for number of different class rows

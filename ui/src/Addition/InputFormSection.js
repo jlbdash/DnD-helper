@@ -26,11 +26,11 @@ export const Input = ({
     <label key={id}>
       {label}
       <input
+        type={type}
         value={value}
+        onChange={(e) => setValue(e.target.value)}
         required
-        {...register(validation, {
-          onChange: (e) => console.log(e.target.value),
-        })}
+        {...register('username', validation)}
       />
       <br />
       {isInvalid && (

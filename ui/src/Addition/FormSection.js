@@ -75,8 +75,9 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
         }}
         noValidate
       >
-        <Input value={isUser} setValue={setIsUser} {...userValidation} />
-        <br />
+        <Input 
+          value={isUser}
+          setValue={setIsUser} {...userValidation} />
         <Input
           label="Character Name: "
           type="text"
@@ -84,8 +85,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
           setValue={setIsName}
           placeholder="Character Name"
         />
-        <br />
-        <label>
+        <label style={{display: 'inline'}}>
           {'Multiclassing:'}
           <input
             type="checkbox"
@@ -95,10 +95,10 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
               setClassNumber(1);
             }}
           ></input>
-        </label>{' '}
-        &nbsp;{' '}
+        </label>
+        &nbsp;
         {isMulticlassed && (
-          <label>
+          <label style={{display: 'inline'}}>
             {'Add Classes: '} &nbsp;
             <span>
               <select
@@ -115,9 +115,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
             </span>
           </label>
         )}
-        <br />
         <Classes classNumber={classNumber} />
-        <br />
         <Input
           label="Race: "
           type="text"

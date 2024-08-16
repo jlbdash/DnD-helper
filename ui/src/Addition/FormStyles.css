@@ -14,7 +14,8 @@ form {
 }
 label {
   display: flex;
-  padding: 0 5px ;
+  padding: 5px ;
+  align-items: baseline;
 }
 input{
   margin-left: 20px;
