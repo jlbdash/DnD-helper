@@ -65,6 +65,12 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
 
   const methods = useForm();
 
+  const onSubmit = methods.handleSubmit((data) => {
+    console.log(data);
+    methods.reset();
+    setSuccess(true);
+  });
+
   let section = (
     <FormProvider {...methods}>
       <form
@@ -74,10 +80,16 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
           submitter(character);
         }}
         noValidate
+        autoComplete="off"
       >
-        <Input 
+        <Input
+          label="Username: "
+          type="text"
+          placeholder="Username"
           value={isUser}
-          setValue={setIsUser} {...userValidation} />
+          setValue={setIsUser}
+          {...userValidation}
+        />
         <Input
           label="Character Name: "
           type="text"
@@ -85,7 +97,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
           setValue={setIsName}
           placeholder="Character Name"
         />
-        <label style={{display: 'inline'}}>
+        <label style={{ display: 'inline' }}>
           {'Multiclassing:'}
           <input
             type="checkbox"
@@ -98,7 +110,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
         </label>
         &nbsp;
         {isMulticlassed && (
-          <label style={{display: 'inline'}}>
+          <label style={{ display: 'inline' }}>
             {'Add Classes: '} &nbsp;
             <span>
               <select
@@ -130,6 +142,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
           value="Submit"
           onClick={() => {
             classPlanner(classNumber, setCharacter, isUser, isName, isRace);
+            onSubmit();
           }}
         ></input>
       </form>

@@ -22,15 +22,17 @@ export const Input = ({
   const inputErrors = findInputError(errors, label);
   const isInvalid = isFormInvalid(inputErrors);
 
+  console.log(errors);
   return (
     <label key={id}>
       {label}
       <input
-        type={type}
+        name={name}
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        required
-        {...register('username', validation)}
+        type={type}
+        placeholder={placeholder}
+        {...register(label, validation)}
       />
       <br />
       {isInvalid && (
