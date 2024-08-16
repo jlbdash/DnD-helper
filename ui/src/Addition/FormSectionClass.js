@@ -1,5 +1,4 @@
 import React from 'react';
-import './FormStyles.css';
 
 let levelCount = 0;
 // class name and level for one row

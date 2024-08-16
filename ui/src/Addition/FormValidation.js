@@ -1,11 +1,6 @@
 //Validations for Input for Addition Character Form
 
 const userValidation = {
-  label: 'Username: ',
-  name: 'username',
-  type: 'text',
-  id: 'username',
-  placeholder: 'Username...',
   validation: {
     required: {
       value: true,
@@ -16,6 +11,7 @@ const userValidation = {
       message: 'min 6 characters',
     },
   },
+  onChange: (e) => setInputText(e.target.value),
 };
 
 // const nameValidation = {

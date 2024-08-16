@@ -12,14 +12,17 @@ body {
 form {
   margin: 10px;
 }
+
 label {
   display: flex;
   padding: 5px ;
   align-items: baseline;
 }
-input{
-  margin-left: 20px;
-}
+
 input[type=number], #add {
   width:50px;
+}
+
+.spacedType {
+  align-content: space-between;
 }

@@ -65,10 +65,9 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
 
   const methods = useForm();
 
-  const onSubmit = methods.handleSubmit((data) => {
+  const onClick = methods.handleSubmit((data) => {
     console.log(data);
     methods.reset();
-    setSuccess(true);
   });
 
   let section = (
@@ -86,15 +85,15 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
           label="Username: "
           type="text"
           placeholder="Username"
-          value={isUser}
-          setValue={setIsUser}
-          {...userValidation}
+          inputText={isUser}
+          setInputText={setIsUser}
+          validation = {{...userValidation}}
         />
         <Input
           label="Character Name: "
           type="text"
-          value={isName}
-          setValue={setIsName}
+          inputText={isName}
+          setInputText={setIsName}
           placeholder="Character Name"
         />
         <label style={{ display: 'inline' }}>
@@ -142,7 +141,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
           value="Submit"
           onClick={() => {
             classPlanner(classNumber, setCharacter, isUser, isName, isRace);
-            onSubmit();
+            onClick();
           }}
         ></input>
       </form>

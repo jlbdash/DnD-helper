@@ -1,6 +1,5 @@
 import React from 'react';
 import {ProductRow, ProductCategoryRow} from './SearchRows.js';
-import './TableStyles.css';
 
 // creates the static list of food
 export function ProductTable({ characters, isAlive, searchText }) {

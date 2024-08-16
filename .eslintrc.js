@@ -4,7 +4,6 @@ module.exports = {
   env: {
     es6: true,
   },
-  parser: "@babel/eslint-parser",
   parserOptions: {
     sourceType: "module",
     allowImportExportEverywhere: true,

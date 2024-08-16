@@ -1,4 +1,3 @@
-import './FormStyles.css';
 import { findInputError } from './findInputError';
 import { useFormContext } from 'react-hook-form';
 import { isFormInvalid } from './isFormInvalid';
@@ -6,13 +5,11 @@ import { isFormInvalid } from './isFormInvalid';
 // Input component
 export const Input = ({
   label,
-  name,
   type,
-  id,
-  validation,
   placeholder,
-  value,
-  setValue,
+  inputText,
+  setInputText,
+  validation,
 }) => {
   const {
     register,
@@ -24,24 +21,21 @@ export const Input = ({
 
   console.log(errors);
   return (
-    <label key={id}>
-      {label}
+    <>
+      <div className="spacedType">
+        <label key={label}>{label}</label>
+        {isInvalid && <InputError message={inputErrors.error.message} />}
+      </div>
       <input
-        name={name}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        id={label}
+        value={inputText}
         type={type}
+        onChange={(e) => setInputText(e.target.value)}
         placeholder={placeholder}
         {...register(label, validation)}
       />
       <br />
-      {isInvalid && (
-        <InputError
-          message={inputErrors.error.message}
-          key={inputErrors.error.message}
-        />
-      )}
-    </label>
+    </>
   );
 };
 
