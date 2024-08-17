@@ -13,13 +13,17 @@ form {
   margin: 10px;
 }
 
-label {
+#characterCreation label {
   display: flex;
-  padding: 5px ;
+  padding: 10px 0px 3px 0px;
   align-items: baseline;
 }
 
-input[type=number], #add {
+#characterCreation input {
+  margin: 5px;
+}
+
+#characterCreation input[type=number], #add {
   width:50px;
 }
 

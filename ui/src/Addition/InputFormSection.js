@@ -1,45 +1,26 @@
-import { findInputError } from './findInputError';
-import { useFormContext } from 'react-hook-form';
-import { isFormInvalid } from './isFormInvalid';
-
 // Input component
 export const Input = ({
   label,
   type,
   placeholder,
   inputText,
-  setInputText,
-  validation,
+  setInputText
 }) => {
-  const {
-    register,
-    formState: { errors },
-  } = useFormContext();
-
-  const inputErrors = findInputError(errors, label);
-  const isInvalid = isFormInvalid(inputErrors);
-
-  console.log(errors);
   return (
     <>
-      <div className="spacedType">
-        <label key={label}>{label}</label>
-        {isInvalid && <InputError message={inputErrors.error.message} />}
-      </div>
-      <input
-        id={label}
-        value={inputText}
-        type={type}
-        onChange={(e) => setInputText(e.target.value)}
-        placeholder={placeholder}
-        {...register(label, validation)}
-      />
-      <br />
+      <label key={label}>
+        <div className="spacedspacedType">
+          {label}
+        </div>
+      </label>
+        <input
+          id={label}
+          type={type}
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          placeholder={placeholder}
+          required
+        />
     </>
   );
-};
-
-//Error component
-const InputError = (message) => {
-  return <div>{console.log(message)}</div>;
 };

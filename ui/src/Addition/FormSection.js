@@ -3,8 +3,6 @@ import fFiles from '../CharacterFiles.json';
 import { Classes } from './FormSectionClass.js';
 import { classPlanner } from './ClassPlanner.js';
 import { Input } from './InputFormSection.js';
-import { userValidation } from './FormValidation.js';
-import { FormProvider, useForm } from 'react-hook-form';
 import './FormStyles.css';
 
 //, nameValidation, classValidation, levelValidation, raceValidation}
@@ -63,22 +61,14 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
   const [isName, setIsName] = useState('');
   const [isRace, setIsRace] = useState('');
 
-  const methods = useForm();
-
-  const onClick = methods.handleSubmit((data) => {
-    console.log(data);
-    methods.reset();
-  });
-
   let section = (
-    <FormProvider {...methods}>
       <form
-        name="characterCreation"
+        id="characterCreation"
         onSubmit={(e) => {
+          (e) => setInputText(e.target.value)
           e.preventDefault();
           submitter(character);
         }}
-        noValidate
         autoComplete="off"
       >
         <Input
@@ -87,7 +77,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
           placeholder="Username"
           inputText={isUser}
           setInputText={setIsUser}
-          validation = {{...userValidation}}
+          required
         />
         <Input
           label="Character Name: "
@@ -96,6 +86,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
           setInputText={setIsName}
           placeholder="Character Name"
         />
+        <br />
         <label style={{ display: 'inline' }}>
           {'Multiclassing:'}
           <input
@@ -141,11 +132,9 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
           value="Submit"
           onClick={() => {
             classPlanner(classNumber, setCharacter, isUser, isName, isRace);
-            onClick();
           }}
         ></input>
       </form>
-    </FormProvider>
   );
 
   return <>{section}</>;
