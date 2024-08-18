@@ -7,38 +7,40 @@ export const Input = ({
   setInputText,
 }) => {
   let errorMsg = '';
-  const error = document.getElementById('error');
+  const error = document.getElementById({label});
 
-  function InvalidMsg(inputText) {
+  function InvalidMsg() {
     if (error.validity.valueMissing) {
-      error.setCustomValidity('Required');
-    } else if (inputText) {
-      error.setCustomValidity('');
+      errorMsg = 'Required';
+    } else if (error.validity.patternMismatch) {
+      errorMsg = 'Only letters, numbers and - ';
     } else {
-      error.setCustomValidity('');
+      errorMsg = '';
     }
 
     return true;
   }
 
-  InvalidMsg(inputText);
-
   return (
     <>
-      <label key={label}>
-        <div className='spacedspacedType'>
+      <label key={placeholder}>
+        <div className="spacedspacedType">
           {label}
-          <span id='error'>{errorMsg}</span>
+          <span id="error">{errorMsg}</span>
         </div>
       </label>
       <input
-        id={label}
+        id={placeholder}
         type={type}
         value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
+        onChange={(e) => {
+          setInputText(e.target.value);
+          InvalidMsg(e.target.value);
+        }}
         placeholder={placeholder}
         message={error}
         required
+        pattern="/[^A-Za-z0-9-`-~äöüæẞßáéíóúñçâêîôûàèù]{1,}/i"
       />
     </>
   );

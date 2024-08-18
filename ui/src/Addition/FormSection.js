@@ -53,6 +53,8 @@ function submitter(character) {
   }
 }
 
+
+
 // creates the form for Character Creation
 export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
   const [classNumber, setClassNumber] = useState(1);
@@ -72,7 +74,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
         autoComplete="off"
       >
         <Input
-          label="Username: "
+          label="Username"
           type="text"
           placeholder="Username"
           inputText={isUser}
