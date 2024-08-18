@@ -40,7 +40,7 @@ export const Input = ({
         placeholder={placeholder}
         message={error}
         required
-        pattern="/[^A-Za-z0-9-`-~äöüæẞßáéíóúñçâêîôûàèù]{1,}/i"
+        pattern="[^A-Za-z0-9-`-~äöüæẞßáéíóúñçâêîôûàèù]{1,}"
       />
     </>
   );
