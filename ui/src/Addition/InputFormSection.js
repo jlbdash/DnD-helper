@@ -5,28 +5,15 @@ export const Input = ({
   placeholder,
   inputText,
   setInputText,
+  validation
 }) => {
-  let errorMsg = '';
-  const error = document.getElementById({label});
-
-  function InvalidMsg() {
-    if (error.validity.valueMissing) {
-      errorMsg = 'Required';
-    } else if (error.validity.patternMismatch) {
-      errorMsg = 'Only letters, numbers and - ';
-    } else {
-      errorMsg = '';
-    }
-
-    return true;
-  }
-
+  
   return (
     <>
       <label key={placeholder}>
         <div className="spacedspacedType">
           {label}
-          <span id="error">{errorMsg}</span>
+          <span id="error"></span>
         </div>
       </label>
       <input
@@ -35,12 +22,10 @@ export const Input = ({
         value={inputText}
         onChange={(e) => {
           setInputText(e.target.value);
-          InvalidMsg(e.target.value);
+          validation(e.target.value);
         }}
         placeholder={placeholder}
-        message={error}
         required
-        pattern="[^A-Za-z0-9-`-~äöüæẞßáéíóúñçâêîôûàèù]{1,}"
       />
     </>
   );

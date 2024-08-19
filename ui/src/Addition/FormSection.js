@@ -4,6 +4,7 @@ import { Classes } from './FormSectionClass.js';
 import { classPlanner } from './ClassPlanner.js';
 import { Input } from './InputFormSection.js';
 import './FormStyles.css';
+import { nameValidation } from '../Validations/validations.js';
 
 //, nameValidation, classValidation, levelValidation, raceValidation}
 // options for the selection of multiclassing
@@ -72,14 +73,16 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
           submitter(character);
         }}
         autoComplete="off"
+        method='post'
       >
         <Input
-          label="Username"
+          label="Username: "
           type="text"
           placeholder="Username"
           inputText={isUser}
           setInputText={setIsUser}
           required
+          validation={nameValidation}
         />
         <Input
           label="Character Name: "
