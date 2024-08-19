@@ -73,7 +73,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
           submitter(character);
         }}
         autoComplete="off"
-        method='post'
+        method='POST'
       >
         <Input
           label="Username: "
