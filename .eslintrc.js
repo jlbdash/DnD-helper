@@ -4,7 +4,6 @@ module.exports = {
   env: {
     es6: true,
   },
-  parser: '@babel/eslint-parser',
   parserOptions: {
     sourceType: 'module',
     allowImportExportEverywhere: true,
@@ -25,7 +24,7 @@ module.exports = {
     // can see all variables easier
     'no-multi-assign': 'error',
     // preferred single quotes first
-    quotes: ['error', 'prefer-single'],
+    quotes: ['error', 'single', { "avoidEscape": true }],
     // concise and no unexpected outcome for arrays and objects
     'no-array-constructor': 'error',
     'no-new-object': 'error',

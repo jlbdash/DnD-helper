@@ -1,4 +1,3 @@
-
 // Input component
 export const Input = ({
   label,
@@ -6,16 +5,13 @@ export const Input = ({
   placeholder,
   inputText,
   setInputText,
-  validation
+  validation,
 }) => {
-  
   return (
     <>
-      <label key={placeholder}>
-        <div className="spacedspacedType">
-          {label}
-          <span id="error"></span>
-        </div>
+      <label className="spacedType" key={placeholder}>
+        {label}
+        <div id="error" className="error"></div>
       </label>
       <input
         id={placeholder}

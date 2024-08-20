@@ -28,5 +28,10 @@ form {
 }
 
 .spacedType {
-  align-content: space-between;
+  justify-content: space-between;
+}
+.error{
+  font-size: .7em;
+  color: red;
+
 }
