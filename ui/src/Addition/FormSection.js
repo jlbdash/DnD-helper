@@ -129,11 +129,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
       )}
       <Classes
         classNumber={classNumber}
-        label="Class: "
-        type="text"
-        placeholder="Character Class"
         required
-        validation={classValidation}
       />
       <Input
         label="Race: "

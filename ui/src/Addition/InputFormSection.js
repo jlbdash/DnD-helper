@@ -11,7 +11,7 @@ export const Input = ({
     <>
       <label className="spacedType" key={placeholder}>
         {label}
-        <div id="error" className="error"></div>
+        <div id={'error'+placeholder} className="error"></div>
       </label>
       <input
         id={placeholder}
@@ -19,7 +19,7 @@ export const Input = ({
         value={inputText}
         onChange={(e) => {
           setInputText(e.target.value);
-          validation(e.target.value);
+          validation(e.target.value, placeholder);
         }}
         placeholder={placeholder}
         required

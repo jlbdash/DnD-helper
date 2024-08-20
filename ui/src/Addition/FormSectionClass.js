@@ -1,51 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { classValidation } from '../Validations/validations';
 
-let levelCount = 0;
 // class name and level for one row
-const Row = (number,
-  label,
-  placeholder,
-  validation) => (
-  <>
-    <label className="spacedType" key={placeholder}>
-      {label.label}
-      <div id="error" className="error"></div>
-    </label>
-    <input
-      type="text"
-      id={`cClass${number.number}`}
-      name={`cClass${number.number}`}
-      onChange={(e) => e.target.value}
-      placeholder="Character Class"
-      required
-      validation={validation}
-    ></input>
-    <input
-      type="number"
-      id={`cLevel${number.number}`}
-      name={`cLevel${number.number}`}
-      min="1"
-      max="20"
-      onChange={(e) => e.target.value}
-    ></input>
-  </>
-);
+
 
 // counter for number of different class rows
-export const Classes = ({...props}) => {
-  const {classNumber, 
-  label, 
-  validation} = props;
-  const classInput = [<Row key={1} number={1} label={label} validation={validation} />];
+export const Classes = ({ classNumber }) => {
+  
+  let levelCounter = [];
+  let levelCount = 0;
+  const error = document.getElementById('errorCharacter Class');
+  const Row = (number) => {
+    return (
+      <>
+        <label className="spacedType">
+          <div>{'Class: '}</div>
+          <div id="errorC" className="error"></div>
+        </label>
+        <input
+          type="text"
+          id={`cClass${number.number}`}
+          name={`cClass${number.number}`}
+          onChange={(e) => classValidation(e.target.value)}
+          placeholder="Character Class"
+          required
+        ></input>
+        <input
+          type="number"
+          id={`cLevel${number.number}`}
+          name={`cLevel${number.number}`}
+          min="1"
+          max="20"
+          onChange={(e) => levelCounter.push(e.target.value)}
+        ></input>
+      </>
+    );
+  };
+
+  const classInput = [<Row key={1} number={1} start />];
+
 
   let x = 1;
   while (x < classNumber) {
-    classInput.push(<Row key={x + 1} number={x + 1} label={label} validation={validation}/>);
-    levelCount += x;
-    if (levelCount > 20) {
-      return error;
-    }
+    classInput.push(<Row key={x + 1} number={x + 1}/>);
     x++;
+  }
+
+  levelCounter.forEach(counter => {
+      levelCount += counter;
+    });
+  if (levelCount > 20) {
+    console.log(levelCount);
+    error.innerHTML = 'Levels must add to 20';
   }
   return classInput;
 };
