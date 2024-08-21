@@ -4,7 +4,7 @@ let invalidityMessage = '';
 
 export function usernameValidation(str, id) {
   // create message and patterns
-  const error = document.getElementById('error'+id);
+  const error = document.getElementById('error' + id);
   const illegalCharacters = str.match(
     /[^aA-Za-z0-9-`_äëïöüæẞßáéíóúñçâêîôûàèù]/g
   );
@@ -24,7 +24,7 @@ export function usernameValidation(str, id) {
 
 export function nameValidation(str, id) {
   // create message and patterns
-  const error = document.getElementById('error'+id);
+  const error = document.getElementById('error' + id);
   const illegalCharacters = str.match(
     /[^aA-Za-z0-9-`!?_äëïöüæẞßáéíóúñçâêîôûàèù\s]/g
   );
@@ -43,9 +43,9 @@ export function nameValidation(str, id) {
   error.innerHTML = invalidityMessage;
 }
 
-export function classValidation(str) {
+export function classValidation(str, id) {
   // create message and patterns
-  const error = document.getElementById('errorC');
+  const error = document.getElementById(`errorC${id}`);
   const illegalCharacters = str.match(/[^a-zA-Z0-9]/g);
 
   // create checks
@@ -61,9 +61,26 @@ export function classValidation(str) {
   error.innerHTML = invalidityMessage;
 }
 
+export function levelValidation(busy) {
+  // create message and patterns
+  let levelCounter = 0;
+
+  busy.forEach((counter) => {
+    levelCounter += Number(counter);
+  });
+
+  // create checks
+  if (levelCounter > 20) {
+    invalidityMessage = 'Levels must add to 20';
+  } else {
+    invalidityMessage = '';
+  }
+  document.getElementById('errorCL').innerHTML = invalidityMessage;
+}
+
 export function raceValidation(str, id) {
   // create message and patterns
-  const error = document.getElementById('error'+id);
+  const error = document.getElementById('error' + id);
   const illegalCharacters = str.match(/[^a-zA-Z0-9]/g);
 
   // create checks

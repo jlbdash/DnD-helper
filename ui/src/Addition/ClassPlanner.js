@@ -8,6 +8,7 @@ export const classPlanner = (
 ) => {
   let x = 0;
   let classes = [];
+
   while (x < classNumber) {
     let m = document.getElementById(`cClass${x + 1}`).value;
     let n = document.getElementById(`cLevel${x + 1}`).value;
@@ -18,6 +19,7 @@ export const classPlanner = (
     classes.push(combo);
     x++;
   }
+
   //sets the character for the state
   setCharacter({
     username: isUser,
