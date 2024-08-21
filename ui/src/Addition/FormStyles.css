@@ -12,16 +12,26 @@ body {
 form {
   margin: 10px;
 }
-span{
-  width: 130px;
-}
-label {
+
+#characterCreation label {
   display: flex;
-  padding: 0 5px ;
+  padding: 10px 0px 3px 0px;
+  align-items: baseline;
 }
-input{
-  margin-left: 20px;
+
+#characterCreation input {
+  margin: 5px;
 }
-input[type=number], #add {
+
+#characterCreation input[type=number], #add {
   width:50px;
+}
+
+.spacedType {
+  justify-content: space-between;
+}
+.error{
+  font-size: .7em;
+  color: red;
+
 }

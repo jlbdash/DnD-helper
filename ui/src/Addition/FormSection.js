@@ -4,19 +4,25 @@ import { Classes } from './FormSectionClass.js';
 import { classPlanner } from './ClassPlanner.js';
 import { Input } from './InputFormSection.js';
 import './FormStyles.css';
+import {
+  usernameValidation,
+  nameValidation,
+  classValidation,
+  raceValidation,
+} from '../Validations/validations.js';
 
 //, nameValidation, classValidation, levelValidation, raceValidation}
 // options for the selection of multiclassing
 const options = (
   <>
-    <option defaultValue='0'>1</option>
-    <option value='2'>2</option>
-    <option value='3'>3</option>
-    <option value='4'>4</option>
-    <option value='5'>5</option>
-    <option value='6'>6</option>
-    <option value='7'>7</option>
-    <option value='8'>8</option>
+    <option defaultValue="0">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
   </>
 );
 
@@ -62,79 +68,88 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
   const [isRace, setIsRace] = useState('');
 
   let section = (
-      <form
-        name='characterCreation'
-        onSubmit={(e) => {
-          e.preventDefault();
-          submitter(character);
-        }}
-      >
-        <Input
-          label='Username: '
-          type='text'
-          value={isUser}
-          setValue={setIsUser}
-          placeholder='Username'
-        />
-        <br />
-        <Input
-          label='Character Name: '
-          type='text'
-          value={isName}
-          setValue={setIsName}
-          placeholder='Character Name'
-        />
-        <br />
-        <label>
-          {'Multiclassing:'}
-          <input
-            type='checkbox'
-            checked={isMulticlassed}
-            onChange={(e) => {
-              onisMulticlassedChange(e.target.checked);
-              setClassNumber(1);
-            }}
-          ></input>
-        </label>{' '}
-        &nbsp;{' '}
-        {isMulticlassed && (
-          <label>
-            {'Add Classes: '} &nbsp;
-            <span>
-              <select
-                id='add'
-                required
-                name='add'
-                disabled={!isMulticlassed}
-                onChange={(e) => {
-                  setClassNumber(e.target.value);
-                }}
-              >
-                {options}
-              </select>
-            </span>
-          </label>
-        )}
-        <br />
-        <Classes classNumber={classNumber} />
-        <br />
-        <Input
-          label='Race: '
-          type='text'
-          value={isRace}
-          setValue={setIsRace}
-          placeholder='Character Race'
-        />
-        <br />
+    <form
+      id="characterCreation"
+      onSubmit={(e) => {
+        (e) => setInputText(e.target.value);
+        e.preventDefault();
+        submitter(character);
+      }}
+      autoComplete="off"
+      method="POST"
+    >
+      <Input
+        label="Username: "
+        type="text"
+        placeholder="Username"
+        inputText={isUser}
+        setInputText={setIsUser}
+        required
+        validation={usernameValidation}
+      />
+      <Input
+        label="Character Name: "
+        type="text"
+        placeholder="Character Name"
+        inputText={isName}
+        setInputText={setIsName}
+        required
+        validation={nameValidation}
+      />
+      <br />
+      <label style={{ display: 'inline' }}>
+        {'Multiclassing:'}
         <input
-          type='submit'
-          id='submit'
-          value='Submit'
-          onClick={() => {
-            classPlanner(classNumber, setCharacter, isUser, isName, isRace);
+          type="checkbox"
+          checked={isMulticlassed}
+          onChange={(e) => {
+            onisMulticlassedChange(e.target.checked);
+            setClassNumber(1);
           }}
         ></input>
-      </form>
+      </label>
+      &nbsp;
+      {isMulticlassed && (
+        <label style={{ display: 'inline' }}>
+          {'Add Classes: '} &nbsp;
+          <span>
+            <select
+              id="add"
+              required
+              name="add"
+              disabled={!isMulticlassed}
+              onChange={(e) => {
+                setClassNumber(e.target.value);
+              }}
+            >
+              {options}
+            </select>
+          </span>
+        </label>
+      )}
+      <Classes
+        classNumber={classNumber}
+        required
+      />
+      <Input
+        label="Race: "
+        type="text"
+        placeholder="Character Race"
+        inputText={isRace}
+        setInputText={setIsRace}
+        required
+        validation={raceValidation}
+      />
+      <br />
+      <input
+        type="submit"
+        id="submit"
+        value="Submit"
+        onClick={() => {
+          classPlanner(classNumber, setCharacter, isUser, isName, isRace);
+        }}
+      ></input>
+    </form>
   );
 
   return <>{section}</>;

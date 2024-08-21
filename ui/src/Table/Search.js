@@ -1,5 +1,4 @@
 import React from 'react';
-import './TableStyles.css';
 
 export default function SearchButton({
     isAlive,

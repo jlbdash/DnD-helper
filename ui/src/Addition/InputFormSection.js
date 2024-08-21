@@ -1,23 +1,32 @@
+
 import './FormStyles.css';
 
 // Input component
 export const Input = ({
   label,
   type,
-  value,
-  setValue,
   placeholder,
+  inputText,
+  setInputText,
+  validation,
 }) => {
   return (
-    <label>
-      <span> {label}</span>
+    <>
+      <label className="spacedType" key={placeholder}>
+        {label}
+        <div id={'error'+placeholder} className="error"></div>
+      </label>
       <input
+        id={placeholder}
         type={type}
-        required
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        value={inputText}
+        onChange={(e) => {
+          setInputText(e.target.value);
+          validation(e.target.value, placeholder);
+        }}
         placeholder={placeholder}
-      ></input>
-    </label>
+        required
+      />
+    </>
   );
 };
