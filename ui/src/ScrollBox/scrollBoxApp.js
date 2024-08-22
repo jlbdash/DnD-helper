@@ -1,9 +1,12 @@
 import React from 'react';
 import { movement } from './scrollingMischief.js';
+import { scrollInfo } from './scrollInfo.js';
 
 export default function ScrollBoxApp() {
-  { movement }
-  
+  {
+    movement;
+  }
+
   const scrollBar = (
     <div className="">
       <h1>Monster Search</h1>
@@ -13,5 +16,9 @@ export default function ScrollBoxApp() {
     </div>
   );
 
-  return scrollBar ;
+  return (
+    <>
+      {scrollBar} <br /> {scrollInfo}
+    </>
+  );
 }
