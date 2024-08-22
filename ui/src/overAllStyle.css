@@ -8,6 +8,29 @@ body {
   padding: 0;
 }
 
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #d5c9c9;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li button {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li button:hover:not(.active) {background-color: grey;}
+
+ul.topnav li button.active {background-color: lightseagreen;}
+
+
 #root > div {
   display: flex;
   flex-direction: row;

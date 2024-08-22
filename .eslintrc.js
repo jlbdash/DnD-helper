@@ -4,10 +4,19 @@ module.exports = {
   env: {
     es6: true,
   },
-  parser: '@babel/es-lint-parser',
   parserOptions: {
     sourceType: 'module',
     allowImportExportEverywhere: true,
+  },
+  parser: "@babel/eslint-parser",
+  parserOptions: {
+    requireConfigFile: false,
+    babelOptions: {
+      babelrc: false,
+      configFile: false,
+      // your babel options
+      presets: ["@babel/preset-env"],
+    },
   },
   rules: {
     //using strict mode all the time

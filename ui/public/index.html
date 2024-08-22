@@ -4,11 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script src='navControls.js'></script>
   </head>
   <body>
+    <nav>
+      <ul class="topnav">
+        <li><button id="navHome" class="active" onclick="handleOnClick(id)"><strong>ADD AND SEARCH</strong></button></li>
+        <li><button id="navAdd" onclick="handleOnClick()">Add a Character</button></li>
+        <li><button id="navList" onclick="handleOnClick()">Character List</button></li>
+        <li><button id="navSearch" onclick="handleOnClick()">Search for...</button></li>
+      </ul>
+    </nav>
     <!-- Loads the React application using the DOM-->
     <div style="padding-left: 50px">
-      <h1>Add and Search</h1>
     </div>
     <container-flex>
       <div id="root"></div>
