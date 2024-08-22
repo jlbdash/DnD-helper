@@ -7,7 +7,6 @@ import './FormStyles.css';
 import {
   usernameValidation,
   nameValidation,
-  classValidation,
   raceValidation,
 } from '../Validations/validations.js';
 

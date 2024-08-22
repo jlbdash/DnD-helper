@@ -6,7 +6,7 @@ export default function CreateCharacter() {
   const [isMulticlassed, setIsMulticlassed] = useState(false);
 
   return (
-    <div className='listInfo'>
+    <div className='listInfoAdd'>
       <FormSection
         isMulticlassed={isMulticlassed}
         onisMulticlassedChange={setIsMulticlassed}
