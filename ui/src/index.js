@@ -1,43 +1,27 @@
-
 import React, { StrictMode } from 'react';
 import './overAllStyle.css';
 import { createRoot } from 'react-dom/client';
-import SearchApp from './Table/SearchApp.js';
-import CreateCharacter from './Addition/CreateCharacterApp.js';
-import ScrollBoxApp from './ScrollBox/scrollBoxApp.js';
-import { changing } from './changer.js';
+import Navie from './nav.js';
 
-// loads the Game component with React
+// loads the page component with React
 const root = createRoot(document.getElementById('root'));
-let drop = document.getElementById('container');
-
-console.log(document.getElementById('navHome').className);
-if (document.getElementById('navHome').className === 'active') {
-  drop.innerHTML = <br />;
-} else if (document.getElementById('navAdd').className === 'active') {
-  drop.innerHTML = <CreateCharacter />;
-} else if (document.getElementById('navList').className === 'active') {
-  drop.innerHTML = <SearchApp />;
-} else {
-  drop.innerHTML = <ScrollBoxApp />;
-}
 
 root.render(
-  <div style={{ display: 'flex' }}>
+  <div style={{ display: 'grid' }}>
     <StrictMode>
-      {
-        <div id='container' className="spaced">
-          {/* <CreateCharacter />
+        <Navie />
         <br />
-        <div>
-          <ScrollBoxApp className="inactive" />
+        <div id="container"></div>
+        {/* <div id="buttonAdd" className="inactive">
+          <CreateCharacter />
         </div>
-      </div>
-      <div style={{ width: '50px' }}></div>
-      <div className="spaced, inactive">
-        <SearchApp /> */}
+        <div id="buttonList" className="inactive">
+          <ScrollBoxApp />
         </div>
-      }
+        <div id="buttonSearch" className="spaced, inactive">
+          <SearchApp />
+        </div> */}
+        <h2>Start Your Quest</h2>
     </StrictMode>
   </div>
 );

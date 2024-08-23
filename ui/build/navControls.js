@@ -1,3 +1,5 @@
+'use strict';
+
 function handleOnClick(id) {
   //remove active from all
 
@@ -11,7 +13,7 @@ function handleOnClick(id) {
 
   // click active on
   const classNamer = document.getElementById(id);
-  if (classNamer.className == 'active') {
+  if (classNamer.className === 'active') {
     classNamer.className = '';
   } else {
     classNamer.className = 'active';

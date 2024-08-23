@@ -2,17 +2,18 @@ import SearchApp from './Table/SearchApp.js';
 import CreateCharacter from './Addition/CreateCharacterApp.js';
 import ScrollBoxApp from './ScrollBox/scrollBoxApp.js';
 
-export function changing() {
-  const drop = document.getElementById('container').innerHTML;
+export function changing(activeID) {
+  let switcher = document.getElementById('container');
 
-  console.log(document.getElementById('navHome').className);
-  if (document.getElementById('navHome').className === 'active') {
-    return <br />;
-  } else if (document.getElementById('navAdd').className === 'active') {
-    return (drop = <CreateCharacter />);
-  } else if (document.getElementById('navList').className === 'active') {
-    return (drop = <SearchApp />);
-  } else {
-    return (drop = <ScrollBoxApp />);
+  switch (activeID) {
+    case 'navAdd':
+      return switcher = <CreateCharacter />;
+    case 'navList':
+      return switcher = <SearchApp />;
+    case 'navSearch':
+      return switcher = <ScrollBoxApp />;
+
+    default:
+      return switcher = <h2>Start Your Quest</h2>;
   }
 }
