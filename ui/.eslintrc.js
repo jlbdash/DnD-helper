@@ -8,14 +8,14 @@ module.exports = {
     sourceType: 'module',
     allowImportExportEverywhere: true,
   },
-  parser: "@babel/eslint-parser",
+  parser: '@babel/eslint-parser',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     requireConfigFile: false,
     babelOptions: {
       babelrc: false,
       configFile: false,
-      // your babel options
-      presets: ["@babel/preset-env"],
+      presets: ['@babel/preset-env'],
     },
   },
   rules: {
@@ -34,7 +34,7 @@ module.exports = {
     // can see all variables easier
     'no-multi-assign': 'error',
     // preferred single quotes first
-    quotes: ['error', 'single', { "avoidEscape": true }],
+    quotes: ['error', 'single', { avoidEscape: true }],
     // concise and no unexpected outcome for arrays and objects
     'no-array-constructor': 'error',
     'no-new-object': 'error',

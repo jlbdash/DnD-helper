@@ -16,7 +16,9 @@ ul.topnav {
   background-color: #d5c9c9;
 }
 
-ul.topnav li {float: left;}
+ul.topnav li {
+  float: left;
+}
 
 ul.topnav li button {
   display: block;
@@ -26,10 +28,27 @@ ul.topnav li button {
   text-decoration: none;
 }
 
-ul.topnav li button:hover:not(.active) {background-color: grey;}
+ul.topnav li button:hover:not(.active) {
+  background-color: grey;
+}
 
-ul.topnav li button.active {background-color: lightseagreen;}
+ul.topnav li button.active {
+  background-color: lightseagreen;
+}
 
+.active {
+  visibility: visible;
+}
+.inactive {
+  visibility: collapse;
+}
+
+button {
+  background: transparent;
+  border: none;
+  border-right: 1px grey solid;
+  border-left: 1px grey solid;
+}
 
 #root > div {
   display: flex;

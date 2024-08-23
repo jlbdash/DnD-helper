@@ -1,8 +1,19 @@
-export function handleOnClick(id){
-    const className = document.getElementById(id).class;
-    if (className === "active"){
-        className.remove("active");
-    } else {
-        className.add("active")
-    }
+function handleOnClick(id) {
+  //remove active from all
+
+  const activeClass = document.getElementsByClassName('active');
+  const len = activeClass.length;
+  let x = 0;
+  if (x < len) {
+    document.getElementById(activeClass[x]['id']).className = '';
+    x++;
+  }
+
+  // click active on
+  const classNamer = document.getElementById(id);
+  if (classNamer.className == 'active') {
+    classNamer.className = '';
+  } else {
+    classNamer.className = 'active';
+  }
 }

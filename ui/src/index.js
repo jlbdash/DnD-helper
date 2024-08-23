@@ -7,18 +7,35 @@ import ScrollBoxApp from './ScrollBox/scrollBoxApp.js';
 
 // loads the Game component with React
 const root = createRoot(document.getElementById('root'));
+
+async function Changing() {
+  console.log(document.getElementById('navHome').className);
+  if (document.getElementById('navHome').className === 'active') {
+    return <br />;
+  } else if (document.getElementById('navAdd').className === 'active') {
+    return <CreateCharacter />;
+  } else if (document.getElementById('navList').className === 'active') {
+    return <SearchApp />;
+  } else {
+    return <ScrollBoxApp />;
+  }
+}
+
 root.render(
   <div style={{ display: 'flex' }}>
     <StrictMode>
-      <div className='spaced'>
-        <CreateCharacter /> 
+      {Changing()}
+      {/* <div className="spaced">
+        <CreateCharacter />
         <br />
-      <ScrollBoxApp />
+        <div>
+          <ScrollBoxApp className="inactive" />
+        </div>
       </div>
       <div style={{ width: '50px' }}></div>
-      <div className='spaced'>
+      <div className="spaced, inactive">
         <SearchApp />
-      </div>
+      </div> */}
     </StrictMode>
   </div>
 );
