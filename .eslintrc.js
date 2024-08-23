@@ -4,20 +4,6 @@ module.exports = {
   env: {
     es6: true,
   },
-  parserOptions: {
-    sourceType: 'module',
-    allowImportExportEverywhere: true,
-  },
-  parser: '@babel/eslint-parser',
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    requireConfigFile: false,
-    babelOptions: {
-      babelrc: false,
-      configFile: false,
-      presets: ['@babel/preset-env'],
-    },
-  },
   rules: {
     //using strict mode all the time
     strict: ['error', 'global'],
