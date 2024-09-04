@@ -69,9 +69,8 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
   let section = (
     <form
       id="characterCreation"
-      onSubmit={(e) => {
-        (e) => setInputText(e.target.value);
-        e.preventDefault();
+      onSubmit={() => {
+        (e) => e.preventDefault();
         submitter(character);
       }}
       autoComplete="off"
@@ -126,10 +125,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
           </span>
         </label>
       )}
-      <Classes
-        classNumber={classNumber}
-        required
-      />
+      <Classes classNumber={classNumber} required />
       <Input
         label="Race: "
         type="text"

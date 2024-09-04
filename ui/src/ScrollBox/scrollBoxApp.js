@@ -8,10 +8,10 @@ export default function ScrollBoxApp() {
   }
 
   const scrollBar = (
-    <div className="">
-      <h1>Monster Search</h1>
+    <div className="monster">
+      <h2>Monster Search</h2>
       <input type="text" id="monsterInput" placeholder="Enter a monster name" />
-      <button id="searchButton">Search</button>
+      <button type='submit' id="searchButton" > Search </button>
       <div id="monsterResult" class="monster-result"></div>
     </div>
   );

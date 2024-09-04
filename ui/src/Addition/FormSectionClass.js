@@ -6,7 +6,7 @@ import { classValidation, levelValidation } from '../Validations/validations';
 // counter for number of different class rows
 export const Classes = ({ classNumber }) => {
   let busy = Array(8);
-  const error = document.getElementById('errorCharacter Class');
+  // const error = document.getElementById('errorCharacter Class');
   const Row = (number) => {
     let num = number.number - 1;
     return (
