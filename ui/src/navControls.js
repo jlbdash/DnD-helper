@@ -1,11 +1,11 @@
-
 import SearchApp from './Table/SearchApp.js';
 import CreateCharacter from './Addition/CreateCharacterApp.js';
 import ScrollBoxApp from './ScrollBox/scrollBoxApp.js';
+
 export function handleOnClick(id) {
   //remove active from all
 
-  const activeClass = document.getElementsByClassName('active');
+  let activeClass = document.getElementsByClassName('active');
   const len = activeClass.length;
   let x = 0;
   if (x < len) {
@@ -14,7 +14,7 @@ export function handleOnClick(id) {
   }
 
   // click active on
-  const classNamer = document.getElementById(id);
+  let classNamer = document.getElementById(id);
   if (classNamer.className === 'active') {
     classNamer.className = '';
   } else {
@@ -25,7 +25,7 @@ export function handleOnClick(id) {
 
   switch (id) {
     case 'navAdd':
-      switcher = <CreateCharacter />;
+      switcher.innerHTML = <CreateCharacter />;
       break;
     case 'navList':
       switcher= `${<SearchApp />}`;

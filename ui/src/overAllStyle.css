@@ -29,6 +29,13 @@ ul.topnav li button {
   text-decoration: none;
 }
 
+.active {
+  visibility: visible;
+}
+.inactive {
+  visibility: collapse;
+}
+
 ul.topnav li button:hover:not(.active) {
   background-color: grey;
 }
@@ -37,9 +44,6 @@ ul.topnav li button.active {
   background-color: lightseagreen;
 }
 
-.active {
-  visibility: visible;
-}
 
 button {
   background: transparent;

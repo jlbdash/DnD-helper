@@ -9,9 +9,9 @@ const root = createRoot(document.getElementById('root'));
 root.render(
   <div style={{ display: 'grid' }}>
     <StrictMode>
-        <Navie />
-        <br />
-        <div id="container"></div>
+      <Navie />
+      <br />
+      <div id="container">
         {/* <div id="buttonAdd" className="inactive">
           <CreateCharacter />
         </div>
@@ -22,6 +22,7 @@ root.render(
           <SearchApp />
         </div> */}
         <h2>Start Your Quest</h2>
+      </div>
     </StrictMode>
   </div>
 );

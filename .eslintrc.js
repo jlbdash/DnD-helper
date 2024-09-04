@@ -10,6 +10,10 @@ module.exports = {
   parserOptions: {
     sourceType: "module",
   },
+  plugins: [
+    // "@babel/eslint-parser",
+    "import",
+  ],
   rules: {
     //using strict mode all the time
     strict: ['error', 'global'],
