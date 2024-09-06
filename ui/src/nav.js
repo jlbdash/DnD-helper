@@ -6,12 +6,12 @@ export default function Navie() {
     const activeClass = document.getElementsByClassName('active');
     let switcher = document.getElementById(`container${id}`);
     let classNamer = document.getElementById(id);
-    
+    console.log(id);
+
     for (let x = 0; x < activeClass.length; x++) {
-      if (activeClass[x]['localName'] === 'button') {
+      if ( activeClass[x]['localName'] === 'button') {
         // click active off
         document.getElementById(activeClass[x]['id']).className = '';
-
         // click active on
         classNamer.className = 'active';
       } else {
