@@ -51,7 +51,7 @@ button {
   padding: 5px;
 }
 
-.monster input{
+.monster input {
   padding: 5px 10px;
   width: 250px;
 }
@@ -66,7 +66,8 @@ container-flex {
   padding: 10px;
 }
 
-h2{
+h2,
+h3 {
   border: 0px;
   margin: 0px;
   padding: 0px;
@@ -74,4 +75,37 @@ h2{
 
 #container {
   padding: 0 20px;
+}
+
+.monster-result {
+  margin: 3px 10px;
+  padding: 10px;
+  border: 1px solid #483b3b;
+  border-radius: 4px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  min-height: 250px;
+}
+p {
+  border: 0px;
+  margin: 5px 10px;
+  padding: 0px;
+}
+
+img {
+  display: flex;
+  padding: 10px 0px;
+  float: right;
+  height: 150px;
+}
+
+.flex-api-image {
+  display: flex;
+  flex-direction:row;
+  justify-content: flex-end;
+}
+.flex-api-text {
+  display: flex;
+  flex-direction: column;
 }

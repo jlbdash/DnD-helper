@@ -1,27 +1,23 @@
 import React from 'react';
-import { movement } from './scrollingMischief.js';
-import { scrollInfo } from './scrollInfo.js';
+// import { movement } from './scrollingMischief.js';
+import {searchMonster } from './apiInfo.js';
 
 export default function ScrollBoxApp() {
-  {
-    movement;
-  }
-
   const scrollBar = (
     <div className="monster">
       <h2>Monster Search</h2>
       <input type="text" id="monsterInput" placeholder="Enter a monster name" />
-      <button type="submit" id="searchButton">
+      <button type="submit" id="searchButton" onClick={searchMonster}>
         {' '}
         Search{' '}
       </button>
-      <div id="monsterResult" class="monster-result"></div>
+      <div id="monsterResult"></div>
     </div>
   );
 
   return (
     <>
-      {scrollBar} <br /> {scrollInfo}
+      {scrollBar}
     </>
   );
 }
