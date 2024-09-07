@@ -4,15 +4,13 @@ module.exports = {
   env: {
     es6: true,
   },
-  extends: [
-    "eslint:recommended",
-  ],
+  extends: ['eslint:recommended'],
   parserOptions: {
-    sourceType: "module",
+    sourceType: 'module',
   },
   plugins: [
     // "@babel/eslint-parser",
-    "import",
+    'import',
   ],
   rules: {
     //using strict mode all the time
@@ -26,11 +24,15 @@ module.exports = {
     // camel case preferred
     camelcase: 'error',
     // weed out unused variables
-    // 'no-unused-vars': 'error',
+    'no-unused-vars': 'off',
     // can see all variables easier
     'no-multi-assign': 'error',
     // preferred single quotes first
-    quotes: ['error', 'single', { avoidEscape: true }],
+    quotes: [
+      'error',
+      'single',
+      { allowTemplateLiterals: true, avoidEscape: true },
+    ],
     // concise and no unexpected outcome for arrays and objects
     'no-array-constructor': 'error',
     'no-new-object': 'error',
