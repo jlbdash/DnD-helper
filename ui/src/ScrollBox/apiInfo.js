@@ -6,11 +6,11 @@ export function searchMonster() {
 
   const monsterName = monsterInput.value.toLowerCase();
 
+  monsterResult.innerHTML = '';
   if (monsterName) {
     axios
       .get(`https://www.dnd5eapi.co/api/monsters`)
       .then((response) => {
-        monsterResult.innerHTML = '';
         const monsters = response.data.results;
         const matchedMonster = monsters.filter((e) =>
           e['name'].toLowerCase().includes(monsterName)
@@ -35,27 +35,61 @@ function createMonster(matchedMonster) {
     axios
       .get(`https://www.dnd5eapi.co${monster.url}`)
       .then((monsterResponse) => {
+        // gather the info
         let stats = monsterResponse.data;
         let image = `https://www.dnd5eapi.co${stats.image}`;
         console.log(stats);
+
+        //image or no
         if (!stats.image) {
           image =
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSb5KvnxoJPp-dQsyBcjbwnegRPIgKvuuEBNQ&s';
         }
+
+        const actions = stats.actions;
+        console.log(actions);
+        let attacks = ``;
+        for (let x = 0; x < actions.length; x++) {
+          if (actions[x].name === 'Multiattack') {
+            attacks += `<p>
+                <strong>Multiattack</strong> <br />
+                <strong>Description:</strong> ${actions[x].desc} <br />
+            </p>`;
+          } else {
+            attacks += `<p>
+                <strong>Attack:</strong> ${actions[x].name} <br />
+                <strong>To Hit:</strong> ${actions[x].attack_bonus} <br />
+                <strong>Description:</strong> ${actions[x].desc} <br />
+             </p>`;
+          }
+        }
+
+        // else if (actions[x].includes('dc')) {
+        //     attacks += `<p>
+        //         <strong>Attack:</strong> ${actions[x].name} <br />
+        //         <strong>Save DC:</strong> ${actions[x].dc.dc_value} <br />
+        //         <strong>Description:</strong> ${actions[x].desc} <br />
+        //      </p>`;
+        //   } 
+
+        //add it to the list
         monsterResult.innerHTML += `
         <div class="monster-result">
         <div class='flex-api-text'>
             <h3>${stats.name}</h3>
             <p>
-                <strong>Index:</strong> ${stats.index} </br >
-                <strong>Type:</strong> ${stats.type} </br >
-                <strong>Size:</strong> ${stats.size} </br >
+                <strong>Index:</strong> ${stats.index} <br />
+                <strong>Type:</strong> ${stats.type} <br />
+                <strong>Challenge Rating:</strong> ${stats.challenge_rating} <br /><br />
+
+                <strong>Size:</strong> ${stats.size} <br /><br />
+
+                <strong>Armor Class:</strong> ${stats.armor_class['0'].value} <br />
+                <strong>Hit Points:</strong> ${stats.hit_points} <br />
             </p>
         </div>
         <div class='flex-api-text'>
-            <p>
-                <strong>Armor Class:</strong> ${stats.armor_class['0'].value} 
-            </p>
+            ${attacks}
         </div>
         <div class='flex-api-text'> </div>
         <div class='flex-api-image'>
