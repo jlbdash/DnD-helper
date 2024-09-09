@@ -56,11 +56,24 @@ function createMonster(matchedMonster) {
                 <strong>Description:</strong> ${actions[x].desc} <br />
             </p>`;
           } else {
-            attacks += `<p>
+            if (actions[x].attack_bonus) {
+              attacks += `<p>
                 <strong>Attack:</strong> ${actions[x].name} <br />
                 <strong>To Hit:</strong> ${actions[x].attack_bonus} <br />
                 <strong>Description:</strong> ${actions[x].desc} <br />
              </p>`;
+            } else if (actions[x].dc) {
+                attacks += `<p>
+                  <strong>Attack:</strong> ${actions[x].name} <br />
+                  <strong>Save DC:</strong> ${actions[x].dc.dc_type.name} ${actions[x].dc.dc_value} <br />
+                  <strong>Description:</strong> ${actions[x].desc} <br />
+               </p>`;
+              } else {
+              attacks += `<p>
+                <strong>Attack:</strong> ${actions[x].name} <br />
+                <strong>Description:</strong> ${actions[x].desc} <br />
+             </p>`;
+            }
           }
         }
 
@@ -70,7 +83,7 @@ function createMonster(matchedMonster) {
         //         <strong>Save DC:</strong> ${actions[x].dc.dc_value} <br />
         //         <strong>Description:</strong> ${actions[x].desc} <br />
         //      </p>`;
-        //   } 
+        //   }
 
         //add it to the list
         monsterResult.innerHTML += `
@@ -91,7 +104,6 @@ function createMonster(matchedMonster) {
         <div class='flex-api-text'>
             ${attacks}
         </div>
-        <div class='flex-api-text'> </div>
         <div class='flex-api-image'>
             <img src=${image}>
         </div>

@@ -4,7 +4,7 @@
 
 body {
   font-family: sans-serif;
-  margin: 20px;
+  margin: 0px 20px;
   padding: 0;
 }
 
@@ -77,15 +77,19 @@ h3 {
   padding: 0 20px;
 }
 
+#monsterResult{
+  overflow: scroll;
+  height: 80vh;
+  border: 1px solid #483b3b;
+}
 .monster-result {
   margin: 3px 10px;
-  padding: 10px;
-  border: 1px solid #483b3b;
-  border-radius: 4px;
+  padding: 20px;
+  border-bottom: 1px solid #483b3b;
   text-align: left;
   display: flex;
   justify-content: space-between;
-  min-height: 250px;
+  min-height: 85vh;
 }
 p {
   border: 0px;
@@ -95,15 +99,17 @@ p {
 
 img {
   display: flex;
-  padding: 10px 0px;
+  padding: 0px 10px;
   float: right;
-  height: 150px;
+  width: 100%;
 }
 
 .flex-api-image {
   display: flex;
   flex-direction:row;
   justify-content: flex-end;
+  align-items: center;
+  max-width: 25vw;
 }
 .flex-api-text {
   display: flex;
