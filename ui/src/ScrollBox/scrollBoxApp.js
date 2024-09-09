@@ -1,5 +1,4 @@
 import React from 'react';
-// import { movement } from './scrollingMischief.js';
 import {searchMonster } from './apiInfo.js';
 
 export default function ScrollBoxApp() {
@@ -11,7 +10,7 @@ export default function ScrollBoxApp() {
         {' '}
         Search{' '}
       </button>
-      <div id="monsterResult"></div>
+      <section id="monsterResult"></section>
     </div>
   );
 

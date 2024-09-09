@@ -1,25 +1,22 @@
 import './overAllStyle.css';
 
 export default function Navie() {
-  async function handleOnClick(id) {
+  function handleOnClick(id) {
     //remove active from all
+
     const activeClass = document.getElementsByClassName('active');
     let switcher = document.getElementById(`container${id}`);
     let classNamer = document.getElementById(id);
-
-    console.log(id);
-
     for (let x = 0; x < activeClass.length; x++) {
       if (activeClass[x]['localName'] === 'button') {
-        // click active off
+        // click active off for button
         document.getElementById(activeClass[x]['id']).className = '';
-        // click active on
+        // click active on for button
         classNamer.className = 'active';
       } else {
-        // click active off
+        // click active off for tab
         document.getElementById(activeClass[x]['id']).className = 'inactive';
-
-        // click active on
+        // click active on for tab
         switcher.className = 'active';
       }
     }
@@ -30,14 +27,16 @@ export default function Navie() {
       <ul className="topnav">
         <li>
           <button
+            style={{ fontWeight: 'bold' }}
             className="active"
             id="navHome"
             value="navHome"
             onClick={(e) => {
-              handleOnClick(e.target.value);
+              console.log(e.target);
+              handleOnClick(e.target.id);
             }}
           >
-            <strong>ADD AND SEARCH</strong>
+            ADD AND SEARCH
           </button>
         </li>
         <li>
@@ -46,7 +45,7 @@ export default function Navie() {
             id="navAdd"
             value="navAdd"
             onClick={(e) => {
-              handleOnClick(e.target.value);
+              handleOnClick(e.target.id);
             }}
           >
             Add a Character
@@ -58,7 +57,7 @@ export default function Navie() {
             id="navList"
             value="navList"
             onClick={(e) => {
-              handleOnClick(e.target.value);
+              handleOnClick(e.target.id);
             }}
           >
             Character List
@@ -70,7 +69,7 @@ export default function Navie() {
             id="navSearch"
             value="navSearch"
             onClick={(e) => {
-              handleOnClick(e.target.value);
+              handleOnClick(e.target.id);
             }}
           >
             Search for...

@@ -28,10 +28,10 @@ export function handleOnClick(id) {
       switcher.innerHTML = <CreateCharacter />;
       break;
     case 'navList':
-      switcher= `${<SearchApp />}`;
+      switcher.innerHTML= `${<SearchApp />}`;
       break;
     case 'navSearch':
-      switcher = `${<ScrollBoxApp />}`;
+      switcher.innerHTML = `${<ScrollBoxApp />}`;
       break;
     case 'navHome':
       switcher.innerHTML = <h2>Start Your Quest</h2>;

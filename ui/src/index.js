@@ -25,7 +25,7 @@ root.render(
           <SearchApp />
         </div>
         <div id="containernavSearch" className="inactive">
-          <ScrollBoxApp />
+            <ScrollBoxApp />
         </div>
       </div>
     </StrictMode>

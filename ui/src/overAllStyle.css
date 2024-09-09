@@ -32,9 +32,11 @@ ul.topnav li button {
 .active {
   visibility: visible;
 }
+
 .inactive {
   visibility: collapse;
   height: 1px;
+  overflow: hidden;
 }
 
 ul.topnav li button:hover:not(.active) {
@@ -73,14 +75,16 @@ h3 {
   padding: 0px;
 }
 
+
+/* Monster ScrollyTelling Search page */
 #container {
   padding: 0 20px;
 }
 
-#monsterResult{
+#monsterResult {
   overflow: scroll;
   height: 80vh;
-  border: 1px solid #483b3b;
+  /* border: 1px solid #483b3b; */
 }
 .monster-result {
   margin: 3px 10px;
@@ -104,15 +108,41 @@ img {
   width: 100%;
 }
 
+/* ScrollyTelling */
 .flex-api-image {
-  display: flex;
-  flex-direction:row;
-  justify-content: flex-end;
-  align-items: center;
+  float: right;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding: 100px 0 0 10px;
   max-width: 25vw;
 }
+
 .flex-api-text {
   display: flex;
   flex-direction: column;
   max-width: 50vh;
+}
+
+section div {
+  display: inline-block;
+  margin-bottom: 100%;
+}
+
+section div.steps {
+  margin-top: 20%;
+  max-width: 600px;
+}
+div.step {
+  margin-right: 10px;
+  background: #000;
+  color: #fff;
+}
+div.step.active {
+    background: #FF9900;
+    transition: 1s linear all;
+}
+div.step.inactive {
+    background: #FFF;
+    transition: 1s linear all;
 }
