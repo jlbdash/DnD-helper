@@ -8,6 +8,27 @@ body {
   padding: 0;
 }
 
+/* flexing off the bat */
+#root > div {
+  display: flex;
+  flex-direction: row;
+}
+
+/* adjusting all headers */
+h2,
+h3 {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+
+p {
+  border: 0px;
+  margin: 5px 10px;
+  padding: 0px;
+}
+
+/* Navigation bar start */
 ul.topnav {
   list-style-type: none;
   margin: 0;
@@ -53,27 +74,11 @@ button {
   padding: 5px;
 }
 
-.monster input {
-  padding: 5px 10px;
-  width: 250px;
-}
-
-#root > div {
-  display: flex;
-  flex-direction: row;
-}
-
 container-flex {
   margin: 10px;
   padding: 10px;
 }
-
-h2,
-h3 {
-  border: 0px;
-  margin: 0px;
-  padding: 0px;
-}
+/* Navigation bar end */
 
 
 /* Monster ScrollyTelling Search page */
@@ -81,10 +86,14 @@ h3 {
   padding: 0 20px;
 }
 
+#monsterInput {
+  padding: 5px 10px;
+  width: 250px;
+}
+
 #monsterResult {
   overflow: scroll;
   height: 80vh;
-  /* border: 1px solid #483b3b; */
   max-width: 90vw;
 }
 .monster-result {
@@ -96,13 +105,8 @@ h3 {
   justify-content: space-evenly;
   min-height: 85vh;
 }
-p {
-  border: 0px;
-  margin: 5px 10px;
-  padding: 0px;
-}
 
-img {
+#monsterImage {
   display: flex;
   padding: 0px 10px;
   float: right;
