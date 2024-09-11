@@ -16,7 +16,8 @@ body {
 
 /* adjusting all headers */
 h2,
-h3 {
+h3,
+h4 {
   border: 0px;
   margin: 0px;
   padding: 0px;
@@ -80,7 +81,6 @@ container-flex {
 }
 /* Navigation bar end */
 
-
 /* Monster ScrollyTelling Search page */
 #container {
   padding: 0 20px;
@@ -113,7 +113,6 @@ container-flex {
   width: 100%;
 }
 
-/* ScrollyTelling */
 .flex-api-image {
   float: right;
   position: -webkit-sticky;
@@ -128,4 +127,101 @@ container-flex {
   flex-direction: column;
   max-width: 50vh;
   margin-top: 20px;
+}
+/* Button used to open the filter form */
+.open-button {
+  margin-left: 10px;
+}
+
+/* The popup form - hidden by default */
+.filter-form {
+  display: none;
+  background-color: #f1f1f1;
+  padding: 10px 10px;
+  position: fixed;
+  left: 200px;
+  border: 2px solid black;
+  z-index: 9;
+  min-width: 80vw;
+  min-height: 70vh;
+  overflow: scroll;
+}
+#FilterForm input {
+  padding: 3px;
+}
+
+#FilterForm label {
+  padding: 0 5px;
+}
+/* The slider circles */
+.slider{
+  position:relative;
+}
+input[type=range] {
+  -webkit-appearance: none; 
+  appearance: none;
+  width: 98%;
+  height: 2px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  position: absolute;
+  cursor: pointer;  
+}
+input[type=range]:hover {
+  opacity: 1;
+}
+input[type=range]::-moz-range-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #04aa6d;
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #04aa6d;
+  cursor: pointer;
+}
+#crRangeSlider2 {
+  height: 0px;
+  background-color: transparent;
+  z-index: 1;
+}
+/* end of slider circles */
+
+.ruler {
+  display: flex;
+  justify-content: space-around;
+  padding-right: 10px;
+  padding-left: 5px;
+}
+.ruler-pip {
+  width: 1px;
+  height: 7px;
+  color: #ccc;
+  font-size: 0.7em;
+}
+.btn {
+  display: inline-block;
+  border: solid grey;
+  margin: 3px;
+  padding: 3px;
+  width: fit-content;
+  font-size: 0.9em;
+}
+.included {
+  font-weight: bold;
+  color: green;
+}
+.excluded {
+  font-weight: bold;
+  color: red;
 }

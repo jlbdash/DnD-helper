@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { searchMonster } from './apiInfo.js';
-import SearchButton from '../Components/searchButton.js';
+import FilterForm from './filterPop.js';
 
 export default function ScrollBoxApp() {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState([]);
   const [isExact, setIsExact] = useState(false);
+
+  function openForm() {
+    document.getElementById('FilterForm').style.display = 'inline-block';
+  }
+
   const scrollBar = (
     <div className="monster">
       <h2>Monster Search</h2>
@@ -19,9 +24,11 @@ export default function ScrollBoxApp() {
           Search{' '}
         </button>{' '}
         {/* A button to open the popup form */}{' '}
-        <button class="open-button" onclick="openForm()">
-          Open Form
+        <button className="open-button" onClick={openForm}>
+          Filters
         </button>
+        <input type="checkbox" onClick={(e) => setIsExact(true)}></input>
+        {/* The Filter form */ <FilterForm setSearchText={setSearchText} />}
       </div>
       <section id="monsterResult"></section>
     </div>
