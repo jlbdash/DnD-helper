@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 //pips for the range slider
 function pipCalc(measure) {
   let pipMarkers = [];
@@ -27,108 +29,80 @@ function pipNums(measure) {
 // From "Native dual range slider - HTML, CSS & JavaScript" - Predrag Davidovic
 //https://medium.com/@predragdavidovic10/native-dual-range-slider-html-css-javascript-91e778134816
 //Data Sept 10, 2024
-function controlFromSlider(fromSlider, toSlider) {
-    console.log(toSlider);
-  const [from, to] = getParsed(fromSlider, toSlider);
-  fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
-  if (from > to) {
-    fromSlider.value = to;
-  } else {
-    fromSlider.value = from;
-  }
-}
 
-function controlToSlider(fromSlider, toSlider) {
-    console.log(toSlider);
-  const [from, to] = getParsed(fromSlider, toSlider);
-  fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
-  setToggleAccessible(toSlider);
-  if (from <= to) {
-    toSlider.value = to;
-  } else {
-    toSlider.value = from;
-  }
-}
-
-function getParsed(currentFrom, currentTo) {
-    console.log(currentFrom);
-  const from = parseInt(currentFrom.value, 10);
-  const to = parseInt(currentTo.value, 10);
-  return [from, to];
-}
-
-function fillSlider(from, to, sliderColor, rangeColor, controlSlider) {
-    console.log(from);
-    const rangeDistance = to.max-to.min;
-    const fromPosition = from.value - to.min;
-    const toPosition = to.value - to.min;
-    controlSlider.style.background = `linear-gradient(
-      to right,
-      ${sliderColor} 0%,
-      ${sliderColor} ${(fromPosition)/(rangeDistance)*100}%,
-      ${rangeColor} ${((fromPosition)/(rangeDistance))*100}%,
-      ${rangeColor} ${(toPosition)/(rangeDistance)*100}%, 
-      ${sliderColor} ${(toPosition)/(rangeDistance)*100}%, 
-      ${sliderColor} 100%)`;
-}
-
-function setToggleAccessible(currentTarget) {
-    console.log(currentTarget);
-  const toSlider = document.querySelector('#crRangeSlider');
-  if (Number(currentTarget.value) <= 0 ) {
-    toSlider.style.zIndex = 0;
-  } else {
-    toSlider.style.zIndex = 2;
-  }
-}
-
-const fromSlider = document.querySelector('#crRangeSlider2');
-const toSlider = document.querySelector('#crRangeSlider');
-fillSlider(fromSlider, toSlider, '#C6C6C6', '#25daa5', toSlider);
-setToggleAccessible(toSlider);
-console.log(fromSlider);
-fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider);
-toSlider.oninput = () => controlToSlider(fromSlider, toSlider);
-//END 
-
+//END
 
 export function RatingRange(props) {
-  const { crRange, crRange2, setcrRange, setcrRange2 } = props;
-  
-  return (
+  const { slideValue, setSlideValue } = props;
+  const [dynamicTack, setDynamicTack] = useState({
+    marginLeft: 10,
+    width: 10,
+  });
+  console.log(slideValue);
+
+  function handleSlider(e) {
+    if (e.target.id === 'crRangeRight') {
+      if (parseInt(e.target.value) <= parseInt(slideValue.crRangeRight)) {
+        setSlideValue((s) => ({ ...s, [e.target.id]: e.target.value }));
+        setDynamicTack((s) => ({
+          ...s,
+          width: `${parseInt(e.target.value)}%`,
+        }));
+      }
+    } else {
+      if (parseInt(e.target.value) > parseInt(slideValue.crRangeLeft)) {
+        setSlideValue((s) => ({ ...s, [e.target.id]: e.target.value }));
+        setDynamicTack((s) => ({
+          ...s,
+          marginLeft: parseInt(e.target.value) + 4,
+          width: `${parseInt(dynamicTack.width) - parseInt(e.target.value)}%`,
+        }));
+      }
+    }
+  }
+
+  const rating = (
     <label>
       <h4>
         Challenge Rating
-        {`: ${crRange2} to ${crRange}`}
+        {`: ${slideValue.crRangeLeft} to ${slideValue.crRangeRight}`}
       </h4>
       <br />
       <div className="slider">
         <input
           type="range"
-          id="crRangeSlider"
+          id="crRangeRight"
           min="0"
           max="30"
-          value={crRange}
+          value={slideValue.crRangeRight}
           className="slider"
-          onInput={(e) => {
-            setcrRange(e.target.value);
+          onChange={(e) => {
+            handleSlider(e);
+            setSlideValue({ ...slideValue, [e.target.id]: e.target.value });
           }}
         ></input>
         <input
           type="range"
-          id="crRangeSlider2"
+          id="crRangeLeft"
           min="0"
           max="30"
-          value={crRange2}
+          value={slideValue.crRangeLeft}
           className="slider"
-          onInput={(e) => {
-            setcrRange2(e.target.value);
+          onChange={(e) => {
+            handleSlider(e);
+            setSlideValue({ ...slideValue, [e.target.id]: e.target.value });
           }}
         ></input>
+        <div className="slider">
+          <div className="slider__track"></div>
+          {/* <div ref={range} className="slider__range"></div> */}
+        </div>
       </div>
       <br />
       <div className="ruler">{pipCalc(30)}</div>
       <div className="ruler">{pipNums(30)}</div>
     </label>
   );
+
+  return rating;
 }

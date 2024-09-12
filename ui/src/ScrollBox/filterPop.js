@@ -69,16 +69,16 @@ function settingColelction(setSearchText) {
 
 // creates the Filter Form
 export default function FilterForm(setSearchText) {
-  const [crRange, setcrRange] = useState(15);
-  const [crRange2, setcrRange2] = useState(5);
+  const [slideValue,setSlideValue] = React.useState({
+    crRangeRight:30,
+    crRangeLeft:0
+  })
   const filterform = (
     <form id="FilterForm" className="filter-form">
       {/* CR range slider */}
       <RatingRange
-        crRange={crRange}
-        crRange2={crRange2}
-        setcrRange={setcrRange}
-        setcrRange2={setcrRange2}
+        slideValue={slideValue}
+        setSlideValue={setSlideValue}
       />
       <br />
       <br />
