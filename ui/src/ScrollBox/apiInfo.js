@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+// API for DND
+//https://5e-bits.github.io/docs/api/get-monster-by-index
+
 export function searchMonster() {
   const monsterInput = document.getElementById('monsterInput');
   const monsterResult = document.getElementById('monsterResult');
