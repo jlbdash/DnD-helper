@@ -26,13 +26,15 @@ function pipNums(measure) {
   return <>{pipNums}</>;
 }
 
-// From "Native dual range slider - HTML, CSS & JavaScript" - Predrag Davidovic
-//https://medium.com/@predragdavidovic10/native-dual-range-slider-html-css-javascript-91e778134816
-//Data Sept 10, 2024
+// From "Multi range range slider React" - Sandra Lewis
+//https://codesandbox.io/p/sandbox/b9l0g?file=%2Fsrc%2FmultiRangeSlider%2FmultiRangeSlider.css%3A10%2C13
+//Data Sept 13, 2024
 
 export function RatingRange(props) {
   //   const { slideValue, setSlideValue } = props;
   const { crRangeRight, setcrRangeRight, crRangeLeft, setcrRangeLeft } = props;
+  let min = 0;
+  let max = 30;
 
   // refs for state variables
   const crRangeLeftRef = useRef(null);
@@ -40,9 +42,8 @@ export function RatingRange(props) {
   const range = useRef(null);
 
   const getPercent = useCallback(
-    (value) =>
-      Math.round(((value - crRangeLeft) / (crRangeRight - crRangeLeft)) * 100),
-    [crRangeLeftRef, crRangeRightRef]
+    (value) => Math.ceil(((value - min) / (max - min)) * 94),
+    [min, max]
   );
 
   // Set width of the range to decrease from the left side
@@ -53,7 +54,7 @@ export function RatingRange(props) {
 
       if (range.current) {
         range.current.style.left = `${minPercent}%`;
-        range.current.style.width = `${maxPercent - minPercent}%`;
+        range.current.style.width = `${(maxPercent - minPercent)}%`;
       }
     }
   }, [crRangeLeft, getPercent]);
@@ -61,16 +62,16 @@ export function RatingRange(props) {
   // Set width of the range to decrease from the right side
   useEffect(() => {
     if (crRangeLeftRef.current) {
-      const minPercent = getPercent(crRangeLeftRef.current.value);
+      const minPercent = getPercent(+crRangeLeftRef.current.value);
       const maxPercent = getPercent(crRangeRight);
 
       if (range.current) {
-        range.current.style.width = `${maxPercent - minPercent}%`;
+        range.current.style.width = `${(maxPercent - minPercent)}%`;
       }
     }
   }, [crRangeRight, getPercent]);
 
-  console.log(range.current);
+  console.log(crRangeLeftRef.current);
   const rating = (
     <label>
       <h4>
@@ -78,35 +79,38 @@ export function RatingRange(props) {
         {`: ${crRangeLeft} to ${crRangeRight}`}
       </h4>
       <br />
-      <div className="slider__container">
-        <input
-          type="range"
-          id="crRangeRight"
-          min="0"
-          max="30"
-          ref={crRangeRightRef}
-          value={crRangeRight}
-          className={'slider'}
-          onChange={(e) => {
-            setcrRangeRight(e.target.value);
-          }}
-        ></input>
+      <div className="slider">
         <input
           type="range"
           id="crRangeLeft"
-          min="0"
-          max="30"
+          min={min}
+          max={max}
           ref={crRangeLeftRef}
           value={crRangeLeft}
           className="slider"
           onChange={(e) => {
-            setcrRangeLeft(e.target.value);
+            let val = Math.min(e.target.value, crRangeRight);
+            setcrRangeLeft(val);
+            min = crRangeLeft;
           }}
         ></input>
-        <div className="slider">
-          <div className="slider__track"></div>
-          <div ref={range} className="slider__range"></div>
-        </div>
+        <input
+          type="range"
+          id="crRangeRight"
+          min={min}
+          max={max}
+          ref={crRangeRightRef}
+          value={crRangeRight}
+          className="slider"
+          onChange={(e) => {
+            let val = Math.max(e.target.value, crRangeLeft);
+            setcrRangeRight(val);
+            max = crRangeRight;
+          }}
+        ></input>
+
+        <div className="slider__track"></div>
+        <div ref={range} className="slider__range"></div>
       </div>
       <br />
       <div className="ruler">{pipCalc(30)}</div>

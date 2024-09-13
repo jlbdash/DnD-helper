@@ -75,6 +75,10 @@ export default function FilterForm(setSearchText) {
 //     crRangeRight:30,
 //     crRangeLeft:0
 //   })
+const [rangeChanges, setRangeChanges] = useState({
+        crRangeRight:30,
+        crRangeLeft:0
+      })
   const filterform = (
     <form id="FilterForm" className="filter-form">
       {/* CR range slider */}
