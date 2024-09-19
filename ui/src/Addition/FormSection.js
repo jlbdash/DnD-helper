@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import fFiles from '../CharacterFiles.json';
 import { Classes } from './FormSectionClass.js';
 import { classPlanner } from './ClassPlanner.js';
-import { Input } from './InputFormSection.js';
+import { Input } from '../Components/InputFormSection.js';
 import './FormStyles.css';
 import {
   usernameValidation,
@@ -27,35 +27,44 @@ const options = (
 
 function submitter(character) {
   let fileLoad = fFiles;
-  let check = fFiles.length;
-
-  if (check !== 0) {
+  let checkFileLength = fFiles.length;
+  console.log('File check');
+  console.log(character);
+  if (checkFileLength !== 0) {
     let x = 0;
-    while (x <= check) {
-      if (x > fileLoad.length - 1) {
+    while (x <= checkFileLength) {
+      if (x > checkFileLength - 1) {
         fileLoad.push(character);
+        console.log('Before Break 1');
         break;
       } else if (character.username === fileLoad[x].username) {
+        console.log(fileLoad[x]);
         let len = fileLoad[x].character.length;
         character.character[0].id = len + 1;
-        fileLoad[x].character.push(character.character[0]);
+        fileLoad[x].character.push(character.character[1]);
         break;
       } else {
         x++;
       }
     }
   } else {
-    fileLoad.push(character);
+    console.log('Pushed Character');
+    //   fileLoad.push(character);
+    //   fetch('http://localhost:4000/write', {
+    //     method: 'POST',
+    //     body: fileLoad,
+    //     headers: { 'Content-Type': 'application/json' },
+    //   });
   }
 
-  fileLoad = JSON.stringify(fileLoad);
-  if (fileLoad !== fFiles) {
-    fetch('http://localhost:4000/push', {
-      method: 'POST',
-      body: JSON.stringify(character),
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
+  // fileLoad = JSON.stringify(fileLoad);
+  // if (fileLoad !== fFiles) {
+  //   fetch('http://localhost:4000/push', {
+  //     method: 'POST',
+  //     body: JSON.stringify(character),
+  //     headers: { 'Content-Type': 'application/json' },
+  //   });
+  // }
 }
 
 // creates the form for Character Creation
@@ -69,10 +78,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
   let section = (
     <form
       id="characterCreation"
-      onSubmit={() => {
-        (e) => e.preventDefault();
-        submitter(character);
-      }}
+      onsubmit="return false"
       autoComplete="off"
       method="POST"
     >
@@ -140,8 +146,10 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
         type="submit"
         id="submit"
         value="Submit"
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation();
           classPlanner(classNumber, setCharacter, isUser, isName, isRace);
+          submitter(character);
         }}
       ></input>
     </form>

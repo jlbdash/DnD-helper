@@ -6,7 +6,6 @@ import { classValidation, levelValidation } from '../Validations/validations';
 // counter for number of different class rows
 export const Classes = ({ classNumber }) => {
   let busy = Array(8);
-  // const error = document.getElementById('errorCharacter Class');
   const Row = (number) => {
     let num = number.number - 1;
     return (
@@ -14,13 +13,15 @@ export const Classes = ({ classNumber }) => {
         <label className="spacedType">
           <div>{'Class: '}</div>
           <div id={`errorC${number.number}`} className="error"></div>
-          <div id='errorCL' className="error"></div>
+          <div id="errorCL" className="error"></div>
         </label>
         <input
           type="text"
           id={`cClass${number.number}`}
           name={`cClass${number.number}`}
-          onChange={(e) => classValidation(e.target.value, number.number)}
+          onChange={(e) => {
+            classValidation(e.target.value, number.number);
+          }}
           placeholder="Character Class"
           required
         ></input>

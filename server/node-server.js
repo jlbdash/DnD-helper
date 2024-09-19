@@ -23,7 +23,7 @@ app.listen(port, () =>
 // endpoint for updating JSON character file
 app.post('/write', jsonParser, (req, res) => {
   var file = JSON.stringify(req.body);
-  console.log(req.body[0].username);
+  console.log(req.body);
 
   // rewrite character file JSON
   fs.writeFile(path, file, function (err) {
@@ -74,7 +74,6 @@ app.post('/push', jsonParser, (req, res) => {
       '"',
     function (err, result) {
       if (err) throw err;
-      let res = result[0]['COUNT(*)'];
 
       // insert character into characters and classes tables
       if (result[0]['COUNT(*)'] === 0) {
@@ -95,7 +94,7 @@ app.post('/push', jsonParser, (req, res) => {
           }
         });
       } else {
-        console.log('Make another character');
+        console.log('Character Already Created');
       }
     }
   );
@@ -105,7 +104,7 @@ app.post('/push', jsonParser, (req, res) => {
     'SELECT id FROM characters WHERE character_name="' + charName + '"',
     function (err, result) {
       if (err) throw err;
-      let charID = result[0]['id'];
+      let charID = result[0].id;
 
       conn.query(
         'SELECT * FROM classes WHERE character_id="' + charID + '"',
@@ -117,9 +116,9 @@ app.post('/push', jsonParser, (req, res) => {
 
           // function for updating database endpoint - classes table
           function repeater(value, index, array) {
-            var charClass = charClasses[index]['className'];
-            var charLevel = charClasses[index]['classLevel'];
-            if (result[index]['character_class'] !== charClass) {
+            var charClass = value['className'];
+            var charLevel = value['classLevel'];
+            if (result.length < 1) {
               // no class there
               var sql3 =
                 'INSERT INTO classes (id, character_id, character_class, class_level) VALUES ( NULL, ' +
@@ -129,6 +128,7 @@ app.post('/push', jsonParser, (req, res) => {
                 '", ' +
                 charLevel +
                 ')';
+                console.log('Classes Inserted');
             } else {
               // if there is a class already
               var sql3 =
@@ -139,6 +139,7 @@ app.post('/push', jsonParser, (req, res) => {
                 '" WHERE character_id=' +
                 charID +
                 ' ';
+                console.log('Classes Updated');
             }
             //Classes insert
             conn.query(sql3, function (err, result) {
