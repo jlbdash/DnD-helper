@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import fFiles from '../CharacterFiles.json';
 import { Classes } from './FormSectionClass.js';
 import { classPlanner } from './ClassPlanner.js';
@@ -10,7 +10,6 @@ import {
   raceValidation,
 } from '../Validations/validations.js';
 
-//, nameValidation, classValidation, levelValidation, raceValidation}
 // options for the selection of multiclassing
 const options = (
   <>
@@ -25,46 +24,60 @@ const options = (
   </>
 );
 
-function submitter(character) {
+function submitter(newCharacter) {
   let fileLoad = fFiles;
   let checkFileLength = fFiles.length;
   console.log('File check');
-  console.log(character);
+  // if more than one entry, continue; else push character
   if (checkFileLength !== 0) {
     let x = 0;
     while (x <= checkFileLength) {
+      // end of file, no match, push character
       if (x > checkFileLength - 1) {
-        fileLoad.push(character);
+        fileLoad.push(newCharacter);
         console.log('Before Break 1');
         break;
-      } else if (character.username === fileLoad[x].username) {
-        console.log(fileLoad[x]);
+      }
+      // character username match, either update class or add character
+      else if (newCharacter.username === fileLoad[x].username) {
+        console.log('Updating Break');
         let len = fileLoad[x].character.length;
-        character.character[0].id = len + 1;
-        fileLoad[x].character.push(character.character[1]);
+        newCharacter.character[0].id = len + 1;
+        for (let characterX = 0; characterX < len; x++) {
+          if (
+            fileLoad[x].character[characterX]['name'] ===
+            newCharacter.character[0]['name']
+          ) {
+            fileLoad[x].character[characterX]['class'] =
+              newCharacter.character[0]['class'];
+            break;
+          }
+        }
         break;
       } else {
         x++;
       }
     }
   } else {
-    console.log('Pushed Character');
-    //   fileLoad.push(character);
-    //   fetch('http://localhost:4000/write', {
-    //     method: 'POST',
-    //     body: fileLoad,
-    //     headers: { 'Content-Type': 'application/json' },
-    //   });
+    fileLoad.push(newCharacter);
   }
 
-  // fileLoad = JSON.stringify(fileLoad);
-  // if (fileLoad !== fFiles) {
-  //   fetch('http://localhost:4000/push', {
-  //     method: 'POST',
-  //     body: JSON.stringify(character),
-  //     headers: { 'Content-Type': 'application/json' },
-  //   });
-  // }
+  console.log(fileLoad);
+  fetch('http://localhost:4000/write', {
+    method: 'POST',
+    body: JSON.stringify(fileLoad),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  console.log('Pushed Character');
+
+  fileLoad = JSON.stringify(fileLoad);
+  if (fileLoad !== fFiles) {
+    fetch('http://localhost:4000/push', {
+      method: 'POST',
+      body: JSON.stringify(newCharacter),
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
 }
 
 // creates the form for Character Creation
@@ -74,13 +87,17 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
   const [isUser, setIsUser] = useState('');
   const [isName, setIsName] = useState('');
   const [isRace, setIsRace] = useState('');
+  const [classer, setClasser] = useState('');
 
   let section = (
     <form
       id="characterCreation"
-      onsubmit="return false"
       autoComplete="off"
       method="POST"
+      onSubmit={(e) => {
+        e.preventDefault();
+        submitter(character, setCharacter);
+      }}
     >
       <Input
         label="Username: "
@@ -131,7 +148,11 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
           </span>
         </label>
       )}
-      <Classes classNumber={classNumber} required />
+      <Classes
+        classNumber={classNumber}
+        classer={classer}
+        setClasser={setClasser}
+      />
       <Input
         label="Race: "
         type="text"
@@ -146,10 +167,8 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
         type="submit"
         id="submit"
         value="Submit"
-        onClick={(e) => {
-          e.stopPropagation();
+        onClick={() => {
           classPlanner(classNumber, setCharacter, isUser, isName, isRace);
-          submitter(character);
         }}
       ></input>
     </form>

@@ -104,11 +104,11 @@ app.post('/push', jsonParser, (req, res) => {
     'SELECT id FROM characters WHERE character_name="' + charName + '"',
     function (err, result) {
       if (err) throw err;
-      let charID = result[0].id;
+      let charID = result[0]['id'];
 
       conn.query(
         'SELECT * FROM classes WHERE character_id="' + charID + '"',
-        function (err, result) {
+        function (err, res) {
           if (err) throw err;
 
           //in case of multiclassing, classes are inserted multiple times
@@ -118,8 +118,11 @@ app.post('/push', jsonParser, (req, res) => {
           function repeater(value, index, array) {
             var charClass = value['className'];
             var charLevel = value['classLevel'];
-            if (result.length < 1) {
-              // no class there
+            if (
+              res.length === 0 ||
+              res[index]['character_class'] !== charClass
+            ) {
+              // no class match
               var sql3 =
                 'INSERT INTO classes (id, character_id, character_class, class_level) VALUES ( NULL, ' +
                 charID +
@@ -128,19 +131,20 @@ app.post('/push', jsonParser, (req, res) => {
                 '", ' +
                 charLevel +
                 ')';
-                console.log('Classes Inserted');
+              console.log('Classes Inserted');
             } else {
-              // if there is a class already
+              // class match
               var sql3 =
-                'UPDATE classes SET character_class="' +
-                charClass +
-                '", class_level="' +
+                'UPDATE classes SET class_level="' +
                 charLevel +
-                '" WHERE character_id=' +
+                '" WHERE character_id="' +
                 charID +
-                ' ';
-                console.log('Classes Updated');
+                '" && character_class="' +
+                charClass +
+                '"';
+              console.log('Classes Updated');
             }
+
             //Classes insert
             conn.query(sql3, function (err, result) {
               if (err) throw err;

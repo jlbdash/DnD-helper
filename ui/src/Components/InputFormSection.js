@@ -1,6 +1,4 @@
 
-import './FormStyles.css';
-
 // Input component
 export const Input = ({
   label,

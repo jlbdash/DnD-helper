@@ -35,8 +35,8 @@ export function nameValidation(str, id) {
   } else if (illegalCharacters) {
     invalidityMessage =
       'Only letters, numbers, spaces,-, !, ? and' + '\'' + ' are allowed';
-  } else if (str.length < 3) {
-    invalidityMessage = 'This input needs to be at least 3 characters';
+  } else if (str.startsWith(' ')) {
+    invalidityMessage = 'Cannot be a space or spaces';
   } else {
     invalidityMessage = '';
   }

@@ -4,6 +4,7 @@ import {ProductRow, ProductCategoryRow} from './SearchRows.js';
 // creates the static list of food
 export function ProductTable({ characters, isAlive, searchText }) {
   const characterList = characters;
+  console.log(characters)
   const rows = [];
   characterList.forEach((user) => {
     const charrie = user.character;
@@ -11,8 +12,8 @@ export function ProductTable({ characters, isAlive, searchText }) {
     rows.push(<ProductCategoryRow key={user.name} user={user} />);
     charrie.forEach((character) => {
       if (
-        character.name.toLowerCase().indexOf(searchText.toLowerCase()) === -1 &&
-        character.race.toLowerCase().indexOf(searchText.toLowerCase()) === -1
+        character['name'].toLowerCase().indexOf(searchText.toLowerCase()) === -1 &&
+        character['race'].toLowerCase().indexOf(searchText.toLowerCase()) === -1
       ) {
         return;
       }
