@@ -4,6 +4,7 @@ import {ProductRow, ProductCategoryRow} from './SearchRows.js';
 // creates the static list of food
 export function ProductTable({ characters, isAlive, searchText }) {
   const characterList = characters;
+  console.log(characters)
   const rows = [];
   characterList.forEach((user) => {
     const charrie = user.character;
@@ -11,8 +12,8 @@ export function ProductTable({ characters, isAlive, searchText }) {
     rows.push(<ProductCategoryRow key={user.name} user={user} />);
     charrie.forEach((character) => {
       if (
-        character.name.toLowerCase().indexOf(searchText.toLowerCase()) === -1 &&
-        character.race.toLowerCase().indexOf(searchText.toLowerCase()) === -1
+        character['name'].toLowerCase().indexOf(searchText.toLowerCase()) === -1 &&
+        character['race'].toLowerCase().indexOf(searchText.toLowerCase()) === -1
       ) {
         return;
       }
@@ -32,9 +33,9 @@ export function ProductTable({ characters, isAlive, searchText }) {
       <table style={{ width: '100%' }}>
         <thead key={'header'}>
           <tr key={'rowheader'}>
-            <th key={'header1'} style={{ width: '20%' }}> Character </th>
-            <th key={'header2'} style={{ width: '50%' }}> Class</th>
-            <th key={'header3'}style={{ width: '30%' }}> Race</th>
+            <th key={'header1'} style={{ width: '35%' }}> Character </th>
+            <th key={'header2'} style={{ width: '40%' }}> Class</th>
+            <th key={'header3'}style={{ width: '25%' }}> Race</th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>

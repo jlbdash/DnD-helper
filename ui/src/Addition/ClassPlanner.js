@@ -4,7 +4,7 @@ export const classPlanner = (
   setCharacter,
   isUser,
   isName,
-  isRace
+  isRace,
 ) => {
   let x = 0;
   let classes = [];

@@ -1,14 +1,16 @@
 import React from 'react';
 
 export default function SearchButton({
-    isAlive,
+    searchable,
     searchText,
     onSearchTextChange,
-    onisAliveChange,
+    onSearchableChange,
+    formName,
+    displayText
   }) {
     return (
       <>
-        <form>
+        <form id={formName}>
           <input
             type='text'
             value={searchText}
@@ -19,10 +21,9 @@ export default function SearchButton({
           <label>
             <input
               type='checkbox'
-              checked={isAlive}
-              onChange={(e) => onisAliveChange(e.target.checked)}
-            />{' '}
-            Only show alive characters
+              checked={searchable}
+              onChange={(e) => onSearchableChange(e.target.checked)}
+            />{displayText}
           </label>
         </form>
       </>

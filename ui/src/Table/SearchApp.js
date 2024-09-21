@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './TableStyles.css';
 import Files from '../CharacterFiles.json';
-import SearchButton from './Search.js';
+import SearchButton from '../Components/searchButton.js';
 import { ProductTable } from './ProductTable.js';
 
 export default function SearchApp() {
@@ -15,10 +15,12 @@ export default function SearchApp() {
   return (
     <div className='listInfo'>
       <SearchButton
-        isAlive={isAlive}
+        searchable={isAlive}
         searchText={searchText}
         onSearchTextChange={setSearchText}
-        onisAliveChange={setisAlive}
+        onSearchableChange={setisAlive}
+        formName={'charactersListed'}
+        displayText={'Only show alive characters'}
       />
       <ProductTable
         characters={characters}
