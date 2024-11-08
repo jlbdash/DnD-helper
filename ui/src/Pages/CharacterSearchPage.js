@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import Files from '../CharacterFiles.json';
 import { ProductTable } from '../Components/ProductTable.js';
 import SearchButton from '../Components/searchButton.js';
-import './TableStyles.css';
 
-export default function SearchApp() {
+export default function CharacterSearchPage() {
   const [searchText, setSearchText] = useState('');
   const [isAlive, setisAlive] = useState(false);
   const characters = [];

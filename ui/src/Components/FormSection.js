@@ -7,7 +7,6 @@ import {
 } from '../Validations/validations.js';
 import { classPlanner } from './FormClassPlanner.js';
 import { Classes } from './FormSectionClass.js';
-import './FormStyles.css';
 import { Input } from './InputFormSection.js';
 
 // options for the selection of multiclassing

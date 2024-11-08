@@ -1,6 +1,6 @@
-import SearchApp from './Table/SearchApp.js';
 import CreateCharacter from './Addition/CreateCharacterApp.js';
 import ScrollBoxApp from './ScrollBox/scrollBoxApp.js';
+import SearchApp from './Table/SearchApp.js';
 
 export function handleOnClick(id) {
   //remove active from all

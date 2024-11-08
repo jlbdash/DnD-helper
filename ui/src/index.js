@@ -1,10 +1,10 @@
 import React, { StrictMode } from 'react';
-import './overAllStyle.css';
 import { createRoot } from 'react-dom/client';
+import CharacterSearchPage from './Pages/CharacterSearchPage.js';
+import CreateCharacterPage from './Pages/CreateCharacterPage.js';
+import ScrollBoxPage from './Pages/ScrollBoxPage.js';
 import Navie from './nav.js';
-import SearchApp from './Table/SearchApp.js';
-import CreateCharacter from './Addition/CreateCharacterApp.js';
-import ScrollBoxApp from './ScrollBox/scrollBoxApp.js';
+import './overAllStyle.css';
 
 // loads the page component with React
 const root = createRoot(document.getElementById('root'));
@@ -19,13 +19,13 @@ root.render(
           <h2>Start Your Quest</h2>
         </div>
         <div id="containernavAdd" className="inactive">
-          <CreateCharacter />
+          <CreateCharacterPage />
         </div>
         <div id="containernavList" className="inactive">
-          <SearchApp />
+          <CharacterSearchPage />
         </div>
         <div id="containernavSearch" className="inactive">
-            <ScrollBoxApp />
+            <ScrollBoxPage />
         </div>
       </div>
     </StrictMode>
