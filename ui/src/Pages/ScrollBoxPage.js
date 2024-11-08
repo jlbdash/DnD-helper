@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { searchMonster } from './apiInfo.js';
-import FilterForm from './filterPop.js';
+import { searchMonster } from '../APIScrollBox/apiInfo.js';
+import FilterForm from '../APIScrollBox/filterPop.js';
 
-export default function ScrollBoxApp() {
+export default function ScrollBoxPage() {
   const [searchText, setSearchText] = useState([]);
   const [isExact, setIsExact] = useState(false);
 
