@@ -1,6 +1,6 @@
-import SearchApp from './Table/SearchApp.js';
 import CreateCharacter from './Addition/CreateCharacterApp.js';
 import ScrollBoxApp from './ScrollBox/scrollBoxApp.js';
+import SearchApp from './Table/SearchApp.js';
 
 export function changing(activeID) {
   let switcher = document.getElementById('container');

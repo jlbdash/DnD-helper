@@ -1,6 +1,4 @@
-import './overAllStyle.css';
-
-export default function Navie() {
+export default function NavigavtionBar() {
   function handleOnClick(id) {
     //remove active from all
 
