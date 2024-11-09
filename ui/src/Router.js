@@ -1,8 +1,9 @@
-import { BrowserRouter } from 'react-router-dom';
-import CharacterSearchPage from './Pages/CharacterSearchPage.js';
-import CreateCharacterPage from './Pages/CreateCharacterPage.js';
-import ErrorPage from './Pages/ErrorPage.js';
-import ScrollBoxPage from './Pages/ScrollBoxPage.js';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import CharacterSearchPage from './Pages/CharacterSearchPage';
+import CreateCharacterPage from './Pages/CreateCharacterPage';
+import ErrorPage from './Pages/ErrorPage';
+import ScrollBoxPage from './Pages/ScrollBoxPage';
+import StartYourQuest from './Pages/StartYourQuest';
 
 export function RouterApp() {
   return (

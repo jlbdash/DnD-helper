@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormSection } from '../Components/FormSection.js';
+import { FormSection } from '../Components/formSection.js';
 
 export default function CreateCharacterPage() {
   const [isMulticlassed, setIsMulticlassed] = useState(false);

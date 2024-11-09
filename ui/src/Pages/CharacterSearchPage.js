@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Files from '../CharacterFiles.json';
-import { ProductTable } from '../Components/ProductTable.js';
+import { ProductTable } from '../Components/productTable.js';
 import SearchButton from '../Components/searchButton.js';
 
 export default function CharacterSearchPage() {

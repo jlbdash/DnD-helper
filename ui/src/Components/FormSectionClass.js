@@ -1,5 +1,5 @@
 import React from 'react';
-import { classValidation, levelValidation } from '../Validations/validations';
+import { classValidation, levelValidation } from '../validations/validations';
 
 // class name and level for one row
 
