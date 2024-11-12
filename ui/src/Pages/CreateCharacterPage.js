@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { FormSection } from '../Components/FormSection.js';
-import './FormStyles.css';
+import { FormSection } from '../Components/formSection.js';
 
-export default function CreateCharacter() {
+export default function CreateCharacterPage() {
   const [isMulticlassed, setIsMulticlassed] = useState(false);
 
   return (
-    <div className='listInfoAdd'>
-      <FormSection
-        isMulticlassed={isMulticlassed}
-        onisMulticlassedChange={setIsMulticlassed}
-      />
-    </div>
+      <section>
+        <div className="listInfoAdd">
+          <FormSection
+            isMulticlassed={isMulticlassed}
+            onisMulticlassedChange={setIsMulticlassed}
+          />
+        </div>
+      </section>
   );
 }

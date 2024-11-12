@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import Files from '../CharacterFiles.json';
-import { ProductTable } from '../Components/ProductTable.js';
+import { ProductTable } from '../Components/productTable.js';
 import SearchButton from '../Components/searchButton.js';
-import './TableStyles.css';
 
-export default function SearchApp() {
+export default function CharacterSearchPage() {
   const [searchText, setSearchText] = useState('');
   const [isAlive, setisAlive] = useState(false);
   const characters = [];
@@ -13,20 +12,22 @@ export default function SearchApp() {
     characters.push(Files[i]);
   }
   return (
-    <div className='listInfo'>
-      <SearchButton
-        searchable={isAlive}
-        searchText={searchText}
-        onSearchTextChange={setSearchText}
-        onSearchableChange={setisAlive}
-        formName={'charactersListed'}
-        displayText={'Only show alive characters'}
-      />
-      <ProductTable
-        characters={characters}
-        isAlive={isAlive}
-        searchText={searchText}
-      />
-    </div>
+      <section>
+        <div className="listInfo">
+          <SearchButton
+            searchable={isAlive}
+            searchText={searchText}
+            onSearchTextChange={setSearchText}
+            onSearchableChange={setisAlive}
+            formName={'charactersListed'}
+            displayText={'Only show alive characters'}
+          />
+          <ProductTable
+            characters={characters}
+            isAlive={isAlive}
+            searchText={searchText}
+          />
+        </div>
+      </section>
   );
 }

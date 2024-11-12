@@ -4,11 +4,10 @@ import {
   nameValidation,
   raceValidation,
   usernameValidation,
-} from '../Validations/validations.js';
-import { classPlanner } from './FormClassPlanner.js';
-import { Classes } from './FormSectionClass.js';
-import './FormStyles.css';
-import { Input } from './InputFormSection.js';
+} from '../validations/validations.js';
+import { classPlanner } from './formClassPlanner.js';
+import { Classes } from './formSectionClass.js';
+import { Input } from './inputFormSection.js';
 
 // options for the selection of multiclassing
 const options = (

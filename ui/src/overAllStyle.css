@@ -23,6 +23,10 @@ h4 {
   padding: 0px;
 }
 
+section {
+  padding: 10px;
+}
+
 p {
   border: 0px;
   margin: 5px 10px;
@@ -39,11 +43,8 @@ ul.topnav {
   width: auto;
 }
 
-ul.topnav li {
+ul.topnav li .nav-link {
   float: left;
-}
-
-ul.topnav li button {
   display: block;
   color: black;
   text-align: center;
@@ -51,22 +52,13 @@ ul.topnav li button {
   text-decoration: none;
 }
 
-.active {
-  visibility: visible;
-}
-
-.inactive {
-  visibility: collapse;
-  height: 1px;
-  overflow: hidden;
-}
-
-ul.topnav li button:hover:not(.active) {
+ul.topnav li .nav-link:hover:not(.active) {
   background-color: grey;
 }
 
-ul.topnav li button.active {
+ul.topnav li .nav-link.active {
   background-color: lightseagreen;
+  font-weight: bold;
 }
 
 button {
@@ -95,6 +87,8 @@ container-flex {
   overflow: scroll;
   height: 80vh;
   max-width: 90vw;
+  border: 1px solid lightgray;
+  border-radius: 2.5px;
 }
 .monster-result {
   margin: 3px 10px;
@@ -154,7 +148,6 @@ container-flex {
   padding: 0 5px;
 }
 
-
 .ruler {
   display: flex;
   justify-content: space-around;
@@ -183,3 +176,180 @@ container-flex {
   font-weight: bold;
   color: red;
 }
+
+/* 11 Nov 2024, Sliders
+https://codesandbox.io/p/sandbox/multi-range-slider-react-js-6rzv0f */
+.slider-container {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slider {
+  left: 20px;
+  position: relative;
+}
+
+.slider-track,
+.slider-range {
+  height: 5px;
+  position: absolute;
+}
+
+.slider-track {
+  background-color: white;
+  width: 96%;
+  z-index: 1;
+}
+
+.slider-range {
+  background-color: lightseagreen;
+  z-index: 4;
+}
+
+#crRangeLeft,
+#crRangeRight {
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+#crRangeLeft {
+  background-color: transparent;
+}
+#crRangeRight {
+  background-color: transparent;
+}
+
+/* Removing the default appearance */
+.thumb,
+.thumb::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.thumb {
+  pointer-events: none;
+  position: absolute;
+  height: 0;
+  width: 96%;
+  outline: none;
+}
+
+.thumb-left {
+  z-index: 3;
+}
+
+.thumb-right {
+  z-index: 4;
+}
+
+/* For Chrome browsers */
+.thumb::-webkit-slider-thumb {
+  background-color: lightseagreen;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 1px 1px lightgrey;
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+  pointer-events: all;
+  position: relative;
+}
+
+/* For Firefox browsers */
+.thumb::-moz-range-thumb {
+  background-color: lightseagreen;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 1px 1px lightgrey;
+  cursor: pointer;
+  height: 18px;
+  width: 18px;
+  pointer-events: all;
+  position: relative;
+}
+
+/* Monster Search page End */
+
+/* Search Table Start*/
+.listInfo {
+  width: 400px;
+  height: auto;
+  border: solid grey 1px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+input {
+  margin: 5px;
+  margin-left: 10px;
+}
+
+table {
+  margin: 0px;
+  border-top: solid grey 1px;
+  width: auto;
+  height: auto;
+  justify-content: center;
+}
+thead {
+  font-weight: bold;
+  justify-content: flex-end;
+}
+th {
+  font-weight: bold;
+  padding: 5px;
+  font-size: 1.1em;
+}
+.categoryStyle {
+  font-weight: bold;
+  text-align: left;
+  border-top: 10px;
+  padding: 7px 3px 3px 10px;
+  font-size: 1em;
+  background-color: #d5c9c9;
+}
+td {
+  padding: 3px 17px;
+  width: auto;
+}
+
+tbody > tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/*Search Table End*/
+
+/*Adding Character Form Start*/
+#characterCreation {
+  margin: 10px;
+  width: 400px;
+  height: auto;
+  border: solid grey 1px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+#characterCreation label {
+  display: flex;
+  padding: 10px 0px 3px 0px;
+  align-items: baseline;
+}
+
+#characterCreation input {
+  margin: 5px;
+}
+
+#characterCreation input[type='number'],
+#add {
+  width: 50px;
+}
+
+.spacedType {
+  justify-content: space-between;
+}
+.error {
+  font-size: 0.7em;
+  color: red;
+}
+/*Adding Character Form End*/

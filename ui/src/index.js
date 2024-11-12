@@ -1,33 +1,23 @@
-import React, { StrictMode } from 'react';
+import React from 'react';
+import { createRoot } from 'react-dom';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import './overAllStyle.css';
-import { createRoot } from 'react-dom/client';
-import Navie from './nav.js';
-import SearchApp from './Table/SearchApp.js';
-import CreateCharacter from './Addition/CreateCharacterApp.js';
-import ScrollBoxApp from './ScrollBox/scrollBoxApp.js';
+import configureStore from './redux/store';
+import { RouterApp } from './Router';
 
 // loads the page component with React
 const root = createRoot(document.getElementById('root'));
+const { store, persistor } = configureStore();
 
 root.render(
   <div style={{ display: 'grid' }}>
-    <StrictMode>
-      <Navie />
-      <br />
-      <div id="container">
-        <div id="containernavHome" className="active">
-          <h2>Start Your Quest</h2>
-        </div>
-        <div id="containernavAdd" className="inactive">
-          <CreateCharacter />
-        </div>
-        <div id="containernavList" className="inactive">
-          <SearchApp />
-        </div>
-        <div id="containernavSearch" className="inactive">
-            <ScrollBoxApp />
-        </div>
-      </div>
-    </StrictMode>
+    <React.StrictMode>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <RouterApp future={{ v7_relativeSplatPath: true }} />
+        </PersistGate>
+      </Provider>
+    </React.StrictMode>
   </div>
 );
