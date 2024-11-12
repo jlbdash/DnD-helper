@@ -12,20 +12,22 @@ export default function CharacterSearchPage() {
     characters.push(Files[i]);
   }
   return (
-    <div className='listInfo'>
-      <SearchButton
-        searchable={isAlive}
-        searchText={searchText}
-        onSearchTextChange={setSearchText}
-        onSearchableChange={setisAlive}
-        formName={'charactersListed'}
-        displayText={'Only show alive characters'}
-      />
-      <ProductTable
-        characters={characters}
-        isAlive={isAlive}
-        searchText={searchText}
-      />
-    </div>
+      <section>
+        <div className="listInfo">
+          <SearchButton
+            searchable={isAlive}
+            searchText={searchText}
+            onSearchTextChange={setSearchText}
+            onSearchableChange={setisAlive}
+            formName={'charactersListed'}
+            displayText={'Only show alive characters'}
+          />
+          <ProductTable
+            characters={characters}
+            isAlive={isAlive}
+            searchText={searchText}
+          />
+        </div>
+      </section>
   );
 }

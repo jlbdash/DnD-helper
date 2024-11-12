@@ -5,11 +5,13 @@ export default function CreateCharacterPage() {
   const [isMulticlassed, setIsMulticlassed] = useState(false);
 
   return (
-    <div className='listInfoAdd'>
-      <FormSection
-        isMulticlassed={isMulticlassed}
-        onisMulticlassedChange={setIsMulticlassed}
-      />
-    </div>
+      <section>
+        <div className="listInfoAdd">
+          <FormSection
+            isMulticlassed={isMulticlassed}
+            onisMulticlassedChange={setIsMulticlassed}
+          />
+        </div>
+      </section>
   );
 }

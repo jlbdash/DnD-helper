@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { RatingRange } from '../Components/rangerSlider';
+import { RatingRange } from './scrollBoxRangeSlider';
 
 // makes the form disappear
 function closeForm() {

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 //pips for the range slider
 function pipCalc(measure) {
@@ -42,7 +42,7 @@ export function RatingRange(props) {
   const range = useRef(null);
 
   const getPercent = useCallback(
-    (value) => Math.ceil(((value - min) / (max - min)) * 94),
+    (value) => Math.ceil(((value - min) / (max - min)) * 96),
     [min, max]
   );
 
@@ -54,7 +54,7 @@ export function RatingRange(props) {
 
       if (range.current) {
         range.current.style.left = `${minPercent}%`;
-        range.current.style.width = `${(maxPercent - minPercent)}%`;
+        range.current.style.width = `${maxPercent - minPercent}%`;
       }
     }
   }, [crRangeLeft, getPercent]);
@@ -66,12 +66,11 @@ export function RatingRange(props) {
       const maxPercent = getPercent(crRangeRight);
 
       if (range.current) {
-        range.current.style.width = `${(maxPercent - minPercent)}%`;
+        range.current.style.width = `${maxPercent - minPercent}%`;
       }
     }
   }, [crRangeRight, getPercent]);
 
-  console.log(crRangeLeftRef.current);
   const rating = (
     <label>
       <h4>
@@ -79,7 +78,7 @@ export function RatingRange(props) {
         {`: ${crRangeLeft} to ${crRangeRight}`}
       </h4>
       <br />
-      <div className="slider">
+      <div className="slider-container">
         <input
           type="range"
           id="crRangeLeft"
@@ -87,13 +86,13 @@ export function RatingRange(props) {
           max={max}
           ref={crRangeLeftRef}
           value={crRangeLeft}
-          className="slider"
+          className="thumb thumb-left"
           onChange={(e) => {
             let val = Math.min(e.target.value, crRangeRight);
             setcrRangeLeft(val);
             min = crRangeLeft;
           }}
-        ></input>
+        />
         <input
           type="range"
           id="crRangeRight"
@@ -101,16 +100,17 @@ export function RatingRange(props) {
           max={max}
           ref={crRangeRightRef}
           value={crRangeRight}
-          className="slider"
+          className="thumb thumb-right"
           onChange={(e) => {
             let val = Math.max(e.target.value, crRangeLeft);
             setcrRangeRight(val);
             max = crRangeRight;
           }}
-        ></input>
-
-        <div className="slider__track"></div>
-        <div ref={range} className="slider__range"></div>
+        />
+      </div>
+      <div className="slider">
+        <div className="slider-track"></div>
+        <div ref={range} className="slider-range"></div>
       </div>
       <br />
       <div className="ruler">{pipCalc(30)}</div>
