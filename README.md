@@ -11,3 +11,15 @@ To set up and start server:
 - run npm i
 - run: npm start
 - For the database: npm run setup
+
+
+This App uses:
+- React.JS
+- JavaScript
+- Redux
+- React Router
+- PHP
+- HTML/ CSS
+- Node.JS
+- Express.JS
+- Axios

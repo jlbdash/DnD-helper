@@ -1,3 +1,10 @@
+/* colour hexes
+sandy tan: #d5c9c9
+lightseagreen
+lightgrey
+grey
+*/
+
 * {
   box-sizing: border-box;
 }
@@ -61,12 +68,6 @@ ul.topnav li .nav-link.active {
   font-weight: bold;
 }
 
-button {
-  background: transparent;
-  border: 1px grey solid;
-  padding: 5px;
-}
-
 container-flex {
   margin: 10px;
   padding: 10px;
@@ -124,7 +125,17 @@ container-flex {
 }
 /* Button used to open the filter form */
 .open-button {
+  background: transparent;
+  border: 1px grey solid;
+  padding: 5px;
   margin-left: 10px;
+  cursor: pointer;
+}
+.scrollButton {
+  background: transparent;
+  border: 1px grey solid;
+  padding: 5px;
+  cursor: pointer;
 }
 
 /* The popup form - hidden by default */
@@ -353,3 +364,46 @@ tbody > tr:nth-child(even) {
   color: red;
 }
 /*Adding Character Form End*/
+
+/* Start of Campaign Page */
+.campaignOrder {
+  margin: 10px;
+}
+.sectionOrder {
+  margin: 5px;
+  padding: 0 0 0 25px;
+}
+.sectionOrder2 {
+  margin: 5px;
+  padding: 0 0 0 50px;
+}
+.plotSection {
+  padding: 0 5px;
+  border: grey solid 1px;
+  margin: 5px;
+}
+.plotSection:hover {
+  background-color: lightgrey;
+}
+.sectionOrder:hover {
+  background-color: lightgrey;
+}
+.sectionOrder2:hover {
+  background-color: lightgrey;
+}
+.buttonBox {
+  justify-self: right;
+}
+.buttonAdd .buttonUp .buttonDown .buttonDelete {
+  padding: 20px 10px;
+  background-color: transparent;
+  margin: 10px;
+}
+
+.buttonDelete {
+  color: red;
+}
+.buttonAdd {
+  color: lightseagreen;
+}
+/* End of Campaign Page */

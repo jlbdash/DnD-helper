@@ -166,6 +166,7 @@ export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
         type="submit"
         id="submit"
         value="Submit"
+        style={{ cursor: 'pointer' }}
         onClick={() => {
           classPlanner(classNumber, setCharacter, isUser, isName, isRace);
         }}

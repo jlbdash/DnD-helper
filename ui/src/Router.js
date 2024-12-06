@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import CampaignPage from './Pages/CampaignPage';
 import CharacterSearchPage from './Pages/CharacterSearchPage';
 import CreateCharacterPage from './Pages/CreateCharacterPage';
 import ErrorPage from './Pages/ErrorPage';
@@ -18,6 +19,7 @@ export function RouterApp() {
         <Route path="/search-character" element={<CharacterSearchPage />} />
         <Route path="/error" element={<ErrorPage />} />
         <Route path="/handbook" element={<ScrollBoxPage />} />
+        <Route path="/campaign" element={<CampaignPage />} />
       </Routes>
     </BrowserRouter>
   );
