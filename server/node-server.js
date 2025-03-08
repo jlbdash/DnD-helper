@@ -1,10 +1,10 @@
 'use strict';
 
-import express, { query } from 'express';
-import cors from 'cors';
-import { conn } from './server-operator.js';
 import bodyParser from 'body-parser';
+import cors from 'cors';
+import express from 'express';
 import fs from 'fs';
+import { conn } from './server-operator.js';
 const path = '../ui/src/CharacterFiles.json';
 const port = 4000;
 

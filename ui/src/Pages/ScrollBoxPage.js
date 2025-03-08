@@ -20,7 +20,7 @@ export default function ScrollBoxPage() {
               id="monsterInput"
               placeholder="Enter a monster name"
             />
-            <button type="submit" id="searchButton" onClick={searchMonster}>
+            <button className="scrollButton" type="submit" id="searchButton" onClick={searchMonster}>
               {' '}
               Search{' '}
             </button>{' '}

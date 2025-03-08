@@ -1,3 +1,10 @@
+/* colour hexes
+sandy tan: #d5c9c9
+lightseagreen
+lightgrey
+grey
+*/
+
 * {
   box-sizing: border-box;
 }
@@ -20,7 +27,7 @@ h3,
 h4 {
   border: 0px;
   margin: 0px;
-  padding: 0px;
+  padding: 10px;
 }
 
 section {
@@ -34,6 +41,10 @@ p {
 }
 
 /* Navigation bar start */
+nav {
+  margin-top: 5px;
+}
+
 ul.topnav {
   list-style-type: none;
   margin: 0;
@@ -61,15 +72,9 @@ ul.topnav li .nav-link.active {
   font-weight: bold;
 }
 
-button {
-  background: transparent;
-  border: 1px grey solid;
-  padding: 5px;
-}
-
 container-flex {
-  margin: 10px;
-  padding: 10px;
+  margin: 0;
+  padding: 0px;
 }
 /* Navigation bar end */
 
@@ -124,7 +129,17 @@ container-flex {
 }
 /* Button used to open the filter form */
 .open-button {
+  background: transparent;
+  border: 1px grey solid;
+  padding: 5px;
   margin-left: 10px;
+  cursor: pointer;
+}
+.scrollButton {
+  background: transparent;
+  border: 1px grey solid;
+  padding: 5px;
+  cursor: pointer;
 }
 
 /* The popup form - hidden by default */
@@ -321,7 +336,8 @@ tbody > tr:nth-child(even) {
 /*Search Table End*/
 
 /*Adding Character Form Start*/
-#characterCreation {
+#characterCreation,
+#itemCreation {
   margin: 10px;
   width: 400px;
   height: auto;
@@ -330,17 +346,25 @@ tbody > tr:nth-child(even) {
   padding: 5px;
 }
 
-#characterCreation label {
+#characterCreation label,
+#itemCreation label {
   display: flex;
   padding: 10px 0px 3px 0px;
   align-items: baseline;
 }
 
-#characterCreation input {
+#characterCreation input,
+#itemCreation input {
+  margin: 5px;
+}
+
+#characterCreation textarea,
+#itemCreation textarea {
   margin: 5px;
 }
 
 #characterCreation input[type='number'],
+#itemCreation input[type='number'],
 #add {
   width: 50px;
 }
@@ -353,3 +377,46 @@ tbody > tr:nth-child(even) {
   color: red;
 }
 /*Adding Character Form End*/
+
+/* Start of Campaign Page */
+.campaignOrder {
+  margin: 10px;
+}
+.sectionOrder {
+  margin: 5px;
+  padding: 0 0 0 25px;
+}
+.sectionOrder2 {
+  margin: 5px;
+  padding: 0 0 0 50px;
+}
+.plotSection {
+  padding: 0 5px;
+  border: grey solid 1px;
+  margin: 5px;
+}
+.plotSection:hover {
+  background-color: lightgrey;
+}
+.sectionOrder:hover {
+  background-color: lightgrey;
+}
+.sectionOrder2:hover {
+  background-color: lightgrey;
+}
+.buttonBox {
+  justify-self: right;
+}
+.buttonAdd .buttonUp .buttonDown .buttonDelete {
+  padding: 20px 10px;
+  background-color: transparent;
+  margin: 10px;
+}
+
+.buttonDelete {
+  color: red;
+}
+.buttonAdd {
+  color: lightseagreen;
+}
+/* End of Campaign Page */

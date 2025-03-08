@@ -38,6 +38,20 @@ export default function NavigationBar() {
         </li>
         <li>
           <Link
+            to="/campaign"
+            style={{ border: '1px grey solid' }}
+            className="nav-link"
+            id="navStory"
+            value="navStory"
+            onClick={(e) => {
+              handleOnClick(e.target.id);
+            }}
+          >
+            Campaign Mojo
+          </Link>
+        </li>
+        <li>
+          <Link
             to="/create-character"
             style={{ border: '1px grey solid' }}
             className="nav-link"
