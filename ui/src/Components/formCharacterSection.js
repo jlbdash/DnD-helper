@@ -7,7 +7,7 @@ import {
 } from '../validations/validations.js';
 import { classPlanner } from './formClassPlanner.js';
 import { Classes } from './formSectionClass.js';
-import { Input } from './inputFormSection.js';
+import { Input } from './formComponentsSection.js';
 
 // options for the selection of multiclassing
 const options = (
@@ -80,7 +80,7 @@ function submitter(newCharacter) {
 }
 
 // creates the form for Character Creation
-export function FormSection({ isMulticlassed, onisMulticlassedChange }) {
+export function FormCharacterSection({ isMulticlassed, onisMulticlassedChange }) {
   const [classNumber, setClassNumber] = useState(1);
   const [character, setCharacter] = useState({});
   const [isUser, setIsUser] = useState('');

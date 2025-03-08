@@ -27,7 +27,7 @@ h3,
 h4 {
   border: 0px;
   margin: 0px;
-  padding: 0px;
+  padding: 10px;
 }
 
 section {
@@ -41,6 +41,10 @@ p {
 }
 
 /* Navigation bar start */
+nav {
+  margin-top: 5px;
+}
+
 ul.topnav {
   list-style-type: none;
   margin: 0;
@@ -69,8 +73,8 @@ ul.topnav li .nav-link.active {
 }
 
 container-flex {
-  margin: 10px;
-  padding: 10px;
+  margin: 0;
+  padding: 0px;
 }
 /* Navigation bar end */
 
@@ -332,7 +336,8 @@ tbody > tr:nth-child(even) {
 /*Search Table End*/
 
 /*Adding Character Form Start*/
-#characterCreation {
+#characterCreation,
+#itemCreation {
   margin: 10px;
   width: 400px;
   height: auto;
@@ -341,17 +346,25 @@ tbody > tr:nth-child(even) {
   padding: 5px;
 }
 
-#characterCreation label {
+#characterCreation label,
+#itemCreation label {
   display: flex;
   padding: 10px 0px 3px 0px;
   align-items: baseline;
 }
 
-#characterCreation input {
+#characterCreation input,
+#itemCreation input {
+  margin: 5px;
+}
+
+#characterCreation textarea,
+#itemCreation textarea {
   margin: 5px;
 }
 
 #characterCreation input[type='number'],
+#itemCreation input[type='number'],
 #add {
   width: 50px;
 }

@@ -12,7 +12,9 @@ export default function CharacterSearchPage() {
     characters.push(Files[i]);
   }
   return (
-      <section>
+    <section style={{ flexDirection: 'row', display: 'flex' }}>
+      <div>
+        <h4 style={{ paddingLeft: '10px' }}>Character Collection</h4>
         <div className="listInfo">
           <SearchButton
             searchable={isAlive}
@@ -28,6 +30,26 @@ export default function CharacterSearchPage() {
             searchText={searchText}
           />
         </div>
-      </section>
+      </div>
+
+      <div style={{ paddingLeft: '100px' }}>
+        <h4 style={{ paddingLeft: '10px' }}>Item Collection</h4>
+        <div className="listInfo">
+          <SearchButton
+            searchable={isAlive}
+            searchText={searchText}
+            onSearchTextChange={setSearchText}
+            onSearchableChange={setisAlive}
+            formName={'charactersListed'}
+            displayText={'Only show alive characters'}
+          />
+          <ProductTable
+            characters={characters}
+            isAlive={isAlive}
+            searchText={searchText}
+          />
+        </div>
+      </div>
+    </section>
   );
 }

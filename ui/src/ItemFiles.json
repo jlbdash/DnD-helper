@@ -1,0 +1,107 @@
+[
+  {
+    "username": "Spinach",
+    "character": [
+      {
+        "id": 1,
+        "name": "Blok",
+        "class": [{ "className": "Cleric", "classLevel": 4 }],
+        "race": "Fire",
+        "alive": true
+      },
+      {
+        "id": 2,
+        "name": "Triss",
+        "class": [{ "className": "Warlock", "classLevel": 4 }],
+        "race": "Water",
+        "alive": false
+      },
+      {
+        "id": 3,
+        "name": "Sesmic",
+        "class": [{ "className": "Paladin", "classLevel": 6 }],
+        "race": "Earth",
+        "alive": true
+      }
+    ]
+  },
+  {
+    "username": "Parsley",
+    "character": [
+      {
+        "id": 1,
+        "name": "Cloud",
+        "class": [
+          { "className": "Druid", "classLevel": 4 },
+          { "className": "Barb", "classLevel": 2 }
+        ],
+        "race": "Flower",
+        "alive": false
+      }
+    ]
+  },
+  {
+    "username": "Opea",
+    "character": [
+      {
+        "id": 1,
+        "name": "Fire",
+        "class": [{ "className": "Fire", "classLevel": "6" }],
+        "race": "Fire",
+        "alive": true
+      }
+    ]
+  },
+  {
+    "username": "Tree",
+    "character": [
+      {
+        "id": 1,
+        "name": "Free",
+        "class": [{ "className": "Bloom", "classLevel": "2" }],
+        "race": "Nutmeg",
+        "alive": true
+      }
+    ]
+  },
+  {
+    "username": "Bloop",
+    "character": [
+      {
+        "id": 1,
+        "name": "Free",
+        "class": [
+          { "className": "Bloom", "classLevel": "2" },
+          { "className": "Flower", "classLevel": "6" },
+          { "className": "Lilypad", "classLevel": "2" }
+        ],
+        "race": "Nutmeg",
+        "alive": true
+      }
+    ]
+  },
+  {
+    "username": "Opa",
+    "character": [
+      {
+        "id": 1,
+        "name": "Flower",
+        "class": [{ "className": "Bloom", "classLevel": "7" }],
+        "race": "Glore",
+        "alive": true
+      }
+    ]
+  },
+  {
+    "username": "Ouji",
+    "character": [
+      {
+        "id": 1,
+        "name": "Ouji",
+        "class": [{ "className": "Power", "classLevel": "4" }],
+        "race": "Power",
+        "alive": true
+      }
+    ]
+  }
+]
