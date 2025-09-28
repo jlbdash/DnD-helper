@@ -11,7 +11,7 @@ grey
 
 body {
   font-family: sans-serif;
-  margin: 0px 20px;
+  margin: 0px 2rem;
   padding: 0;
 }
 
@@ -27,22 +27,22 @@ h3,
 h4 {
   border: 0px;
   margin: 0px;
-  padding: 10px;
+  padding: 1rem;
 }
 
 section {
-  padding: 10px;
+  padding: 1rem;
 }
 
 p {
   border: 0px;
-  margin: 5px 10px;
+  margin: 0.5rem 1rem;
   padding: 0px;
 }
 
 /* Navigation bar start */
 nav {
-  margin-top: 5px;
+  margin-top: 0.5rem;
 }
 
 ul.topnav {
@@ -80,11 +80,11 @@ container-flex {
 
 /* Monster ScrollyTelling Search page */
 #container {
-  padding: 0 20px;
+  padding: 0 2rem;
 }
 
 #monsterInput {
-  padding: 5px 10px;
+  padding: 0.5rem 1rem;
   width: 250px;
 }
 
@@ -96,8 +96,8 @@ container-flex {
   border-radius: 2.5px;
 }
 .monster-result {
-  margin: 3px 10px;
-  padding: 20px;
+  margin: 3px 1rem;
+  padding: 2rem;
   border-bottom: 1px solid #483b3b;
   text-align: left;
   display: flex;
@@ -107,7 +107,7 @@ container-flex {
 
 #monsterImage {
   display: flex;
-  padding: 0px 10px;
+  padding: 0px 1rem;
   float: right;
   width: 100%;
 }
@@ -117,7 +117,7 @@ container-flex {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  padding: 50px 0 0 10px;
+  padding: 50px 0 0 1rem;
   max-width: 25vw;
 }
 
@@ -125,20 +125,20 @@ container-flex {
   display: flex;
   flex-direction: column;
   max-width: 50vh;
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 /* Button used to open the filter form */
 .open-button {
   background: transparent;
   border: 1px grey solid;
-  padding: 5px;
-  margin-left: 10px;
+  padding: 0.5rem;
+  margin-left: 1rem;
   cursor: pointer;
 }
 .scrollButton {
   background: transparent;
   border: 1px grey solid;
-  padding: 5px;
+  padding: 0.5rem;
   cursor: pointer;
 }
 
@@ -146,7 +146,7 @@ container-flex {
 .filter-form {
   display: none;
   background-color: #f1f1f1;
-  padding: 10px 10px;
+  padding: 1rem 1rem;
   position: fixed;
   left: 200px;
   border: 2px solid black;
@@ -160,14 +160,14 @@ container-flex {
 }
 
 #FilterForm label {
-  padding: 0 5px;
+  padding: 0 0.5rem;
 }
 
 .ruler {
   display: flex;
   justify-content: space-around;
-  padding-right: 10px;
-  padding-left: 5px;
+  padding-right: 1rem;
+  padding-left: 0.5rem;
 }
 .ruler-pip {
   width: 1px;
@@ -195,19 +195,19 @@ container-flex {
 /* 11 Nov 2024, Sliders
 https://codesandbox.io/p/sandbox/multi-range-slider-react-js-6rzv0f */
 .slider-container {
-  margin-top: 10px;
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .slider {
-  left: 20px;
+  left: 2rem;
   position: relative;
 }
 
 .slider-track,
 .slider-range {
-  height: 5px;
+  height: 0.5rem;
   position: absolute;
 }
 
@@ -224,7 +224,7 @@ https://codesandbox.io/p/sandbox/multi-range-slider-react-js-6rzv0f */
 
 #crRangeLeft,
 #crRangeRight {
-  border-radius: 5px;
+  border-radius: 0.5rem;
   font-size: 12px;
 }
 
@@ -291,13 +291,13 @@ https://codesandbox.io/p/sandbox/multi-range-slider-react-js-6rzv0f */
   width: 400px;
   height: auto;
   border: solid grey 1px;
-  border-radius: 10px;
-  padding: 5px;
+  border-radius: 1rem;
+  padding: 0.5rem;
 }
 
 input {
-  margin: 5px;
-  margin-left: 10px;
+  margin: 0.5rem;
+  margin-left: 1rem;
 }
 
 table {
@@ -313,14 +313,14 @@ thead {
 }
 th {
   font-weight: bold;
-  padding: 5px;
+  padding: 0.5rem;
   font-size: 1.1em;
 }
 .categoryStyle {
   font-weight: bold;
   text-align: left;
-  border-top: 10px;
-  padding: 7px 3px 3px 10px;
+  border-top: 1rem;
+  padding: 7px 3px 3px 1rem;
   font-size: 1em;
   background-color: #d5c9c9;
 }
@@ -338,29 +338,29 @@ tbody > tr:nth-child(even) {
 /*Adding Character Form Start*/
 #characterCreation,
 #itemCreation {
-  margin: 10px;
+  margin: 1rem;
   width: 400px;
   height: auto;
   border: solid grey 1px;
-  border-radius: 10px;
-  padding: 5px;
+  border-radius: 1rem;
+  padding: 0.5rem;
 }
 
 #characterCreation label,
 #itemCreation label {
   display: flex;
-  padding: 10px 0px 3px 0px;
+  padding: 1rem 0px 3px 0px;
   align-items: baseline;
 }
 
 #characterCreation input,
 #itemCreation input {
-  margin: 5px;
+  margin: 0.5rem;
 }
 
 #characterCreation textarea,
 #itemCreation textarea {
-  margin: 5px;
+  margin: 0.5rem;
 }
 
 #characterCreation input[type='number'],
@@ -379,44 +379,74 @@ tbody > tr:nth-child(even) {
 /*Adding Character Form End*/
 
 /* Start of Campaign Page */
-.campaignOrder {
-  margin: 10px;
-}
-.sectionOrder {
-  margin: 5px;
-  padding: 0 0 0 25px;
-}
-.sectionOrder2 {
-  margin: 5px;
-  padding: 0 0 0 50px;
-}
-.plotSection {
-  padding: 0 5px;
-  border: grey solid 1px;
-  margin: 5px;
-}
-.plotSection:hover {
-  background-color: lightgrey;
-}
-.sectionOrder:hover {
-  background-color: lightgrey;
-}
-.sectionOrder2:hover {
-  background-color: lightgrey;
-}
-.buttonBox {
-  justify-self: right;
-}
-.buttonAdd .buttonUp .buttonDown .buttonDelete {
-  padding: 20px 10px;
-  background-color: transparent;
-  margin: 10px;
-}
+.idea-section {
+  ol {
+    margin:  1rem;
+  
+    > li {
+      width: 100%;
+      list-style: none;
+      align-items: center;
+    }
+  }
 
-.buttonDelete {
-  color: red;
-}
-.buttonAdd {
-  color: lightseagreen;
+  .subtitle {
+    margin:  0.5rem;
+    padding: 0 0 0 25px;
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  }
+
+  .detail {
+    margin: 0.5rem;
+    padding: 0 0 0 50px;
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  }
+
+  .plotSection {
+    padding-left: 1rem;
+    border: grey solid 1px;
+    margin: 0.5rem;
+
+    &.plotSection:hover {
+      background-color: #f1f1f1;
+    }
+  }
+
+  .buttonBox {
+    margin: 0 0 0 auto;
+    padding: 2rem  0.5rem  0.5rem;
+
+    .buttonAdd,
+    .buttonUp,
+    .buttonDown,
+    .buttonDelete {
+      background-color: white;
+      margin-left: 0.25rem;
+      padding: 0.125rem;
+      border: grey solid thin;
+    }
+
+    .buttonUp {
+      content: '\f106';
+    }
+
+    .buttonDown {
+      content: '\f107';
+    }
+
+    .buttonDelete {
+      color: red;
+    }
+    
+    .buttonAdd {
+      color: lightseagreen;
+    }
+  }
 }
 /* End of Campaign Page */

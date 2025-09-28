@@ -4,7 +4,6 @@ import { ProductCategoryRow, ProductRow } from './searchRows.js';
 // creates the static list of food
 export function ProductTable({ characters, isAlive, searchText }) {
   const characterList = characters;
-  console.log(characters)
   const rows = [];
   characterList.forEach((user) => {
     const charrie = user.character;

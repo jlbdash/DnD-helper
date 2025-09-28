@@ -3,11 +3,11 @@
     "title": "Well in the Forest",
     "subtitle": [
       {
-        "0": "Well"
+        "text": "Well"
       },
       {
-        "1": "Forest",
-        "subtitle": [{ "0": "Deep in the Well" }]
+        "text": "Forest",
+        "detail": ["Deep in the Well", "The ball fell down"]
       }
     ]
   },
@@ -15,11 +15,11 @@
     "title": "Twinkle Town",
     "subtitle": [
       {
-        "0": "Twinkle"
+        "text": "Twinkle"
       },
       {
-        "1": "Town",
-        "subtitle": [{ "1": "Sparkling up high" }]
+        "text": "Town",
+        "detail": ["Sparkling up high"]
       }
     ]
   }

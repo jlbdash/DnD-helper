@@ -28,7 +28,8 @@ export default function ScrollBoxPage() {
             <button className="open-button" onClick={openForm}>
               Filters
             </button>
-            <input type="checkbox" onClick={(e) => setIsExact(true)}></input>
+            <label htmlFor='isExact'>&emsp; Exact:</label>
+            <input id="isExact" type="checkbox" onClick={(e) => setIsExact(true)} />
             {/* The Filter form */ <FilterForm setSearchText={setSearchText} />}
           </div>
           <section id="monsterResult"></section>

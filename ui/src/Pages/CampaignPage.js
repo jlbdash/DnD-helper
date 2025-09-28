@@ -76,7 +76,7 @@ export default function CampaignPage() {
           style={{ padding: '10px' }}
           type="submit"
           value="Submit"
-          onClick={handleStoryAdditions}
+          // onClick={handleStoryAdditions}
         />
           <IdeaSection />
       </div>
